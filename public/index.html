@@ -889,19 +889,7 @@ function renderCommunity(data, tagCls, rawPosts) {
     return html || emptyBox('💬', '분석 데이터 없음');
   }
 
-  if (!rawPosts?.length) return emptyBox('💬', '수집된 게시글 없음');
-  const shown = rawPosts.slice(0, 12);
-  const items = shown.map(p => `
-    <div style="padding:7px 0;border-bottom:1px solid var(--border);font-size:0.82rem;color:var(--text2)">
-      ${esc(p.title || '(제목 없음)')}
-    </div>
-  `).join('');
-  const extra = rawPosts.length - shown.length;
-  return `
-    <div class="sec-label">수집된 게시글 (${rawPosts.length}개)</div>
-    ${items}
-    ${extra > 0 ? `<div style="font-size:0.7rem;color:var(--text3);text-align:right;margin-top:6px">외 ${extra}개 더</div>` : ''}
-  `;
+  return emptyBox('💬', 'AI 분석 대기 중');
 }
 
 /* ── 렌더: SEO ── */
