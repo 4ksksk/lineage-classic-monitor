@@ -72,9 +72,11 @@ async function runCrawlAndAnalyze() {
 }
 
 function startScheduler() {
+  cron.schedule('0 9  * * *', runCrawlAndAnalyze, { timezone: 'Asia/Seoul' });
   cron.schedule('0 13 * * *', runCrawlAndAnalyze, { timezone: 'Asia/Seoul' });
   cron.schedule('0 16 * * *', runCrawlAndAnalyze, { timezone: 'Asia/Seoul' });
-  console.log('[스케줄러] 등록 완료 (13:00 / 16:00 KST)');
+  cron.schedule('0 20 * * *', runCrawlAndAnalyze, { timezone: 'Asia/Seoul' });
+  console.log('[스케줄러] 등록 완료 — 9/13/16/20시 크롤링+분석 (KST)');
 }
 
 module.exports = { runCrawlAndAnalyze, startScheduler };

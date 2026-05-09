@@ -2,8 +2,10 @@ name: 자동 크롤링 및 Gemini 분석
 
 on:
   schedule:
-    - cron: '0 4 * * *'   # KST 13:00 (UTC+9 → UTC 04:00)
-    - cron: '0 7 * * *'   # KST 16:00 (UTC+9 → UTC 07:00)
+    - cron: '0 0  * * *'  # KST 09:00
+    - cron: '0 4  * * *'  # KST 13:00
+    - cron: '0 7  * * *'  # KST 16:00
+    - cron: '0 11 * * *'  # KST 20:00
   workflow_dispatch:       # 수동 실행 허용
 
 permissions:
@@ -32,11 +34,11 @@ jobs:
         run: |
           node -e "
             require('./scheduler').runCrawlAndAnalyze()
-              .then(() => { console.log('[완료] results.json 저장됨'); process.exit(0); })
+              .then(() => { console.log('[완료]'); process.exit(0); })
               .catch(e => { console.error('[오류]', e.message); process.exit(1); });
           "
 
-      - name: results.json 커밋 및 푸시
+      - name: 결과 커밋 및 푸시
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
