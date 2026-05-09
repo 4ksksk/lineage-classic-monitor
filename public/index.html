@@ -516,6 +516,89 @@
     }
     .push-char.over { color: #ef4444; font-weight: 600; }
 
+    /* ── HISTORY SECTION ── */
+    .history-section {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 2px solid var(--border);
+    }
+    .history-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .history-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .history-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .history-select {
+      flex: 1;
+      min-width: 140px;
+      max-width: 220px;
+      padding: 9px 36px 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23868e96' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      box-shadow: var(--shadow);
+      transition: border-color 0.15s;
+    }
+    .history-select:focus { border-color: var(--official); }
+    .history-panel { display: flex; flex-direction: column; gap: 0; }
+    .history-period-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text3);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+    .history-issue-item {
+      background: #eef2ff;
+      border-left: 3px solid var(--official);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 8px;
+    }
+    .history-issue-item:last-child { margin-bottom: 0; }
+    .history-summary-block {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .history-summary-block:last-child { border-bottom: none; padding-bottom: 0; }
+    .history-ts {
+      font-size: 0.68rem;
+      color: var(--text3);
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
     @media (max-width: 700px) {
       .grid-content { grid-template-columns: 1fr; }
     }
@@ -648,6 +731,26 @@
   </div><!-- /grid-content -->
 
   <footer id="footerStatus">리니지클래식 모니터 · 6시간마다 자동 수집</footer>
+
+  <!-- ── 지난 기록 ── -->
+  <section class="history-section">
+    <div class="history-heading">지난 기록 보기</div>
+
+    <div class="history-controls">
+      <select id="periodType" class="history-select" onchange="buildPeriodOptions()">
+        <option value="daily">일별</option>
+        <option value="weekly">주간</option>
+        <option value="monthly">월간</option>
+      </select>
+      <select id="periodValue" class="history-select" onchange="loadHistoryData(this.value)">
+        <option>기간을 선택하세요</option>
+      </select>
+    </div>
+
+    <div id="historyPanel" class="history-panel">
+      <div class="empty"><div class="empty-icon">📂</div>기간을 선택하면 데이터를 불러옵니다.</div>
+    </div>
+  </section>
 
 </div><!-- /wrap -->
 
@@ -847,12 +950,19 @@ function emptyBox(icon, msg) {
   return `<div class="empty"><div class="empty-icon">${icon}</div>${msg}</div>`;
 }
 
+/* ── 환경 감지 ── */
+const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+const DATA_URL = IS_LOCAL
+  ? '/api/results'
+  : 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/results.json';
+
 /* ── 데이터 로드 ── */
 let lastUpdatedISO = null;
 
 async function loadResults() {
   try {
-    const res  = await fetch('/api/results');
+    const url = IS_LOCAL ? DATA_URL : `${DATA_URL}?t=${Date.now()}`;
+    const res  = await fetch(url);
     const data = await res.json();
     const a    = data.analysis;
     lastUpdatedISO = data.lastUpdated;
@@ -897,8 +1007,9 @@ async function loadResults() {
   }
 }
 
-/* ── 수집 트리거 ── */
+/* ── 수집 트리거 (로컬 전용) ── */
 async function triggerCrawl() {
+  if (!IS_LOCAL) return;
   const btn = document.getElementById('crawlBtn');
   btn.disabled = true;
   btn.innerHTML = `<div class="loader" style="width:13px;height:13px;border-width:2px;margin:0"></div> 수집 중...`;
@@ -918,8 +1029,185 @@ async function triggerCrawl() {
   }
 }
 
+/* ── 히스토리 ── */
+const GITHUB_CONTENTS_API = 'https://api.github.com/repos/4ksksk/lineage-classic-monitor/contents/data/history';
+const HISTORY_RAW_BASE    = 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/history';
+
+let historyFiles = []; // ['2026-05-09-16.json', '2026-05-09-13.json', ...]
+
+async function loadHistoryIndex() {
+  try {
+    if (IS_LOCAL) {
+      const res = await fetch('/api/history');
+      historyFiles = (await res.json()).sort().reverse();
+    } else {
+      const res = await fetch(GITHUB_CONTENTS_API);
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      const items = await res.json();
+      historyFiles = items
+        .filter(f => f.type === 'file' && /^\d{4}-\d{2}-\d{2}-\d{2}\.json$/.test(f.name))
+        .map(f => f.name)
+        .sort()
+        .reverse();
+    }
+    buildPeriodOptions();
+  } catch(e) {
+    document.getElementById('historyPanel').innerHTML =
+      emptyBox('⚠️', `히스토리 목록 로드 실패: ${e.message}`);
+  }
+}
+
+function getWeekNum(dateStr) {
+  const day = parseInt(dateStr.split('-')[2], 10);
+  return Math.ceil(day / 7);
+}
+
+function parsePeriodKey(filename, type) {
+  const m = filename.match(/^(\d{4})-(\d{2})-(\d{2})-\d{2}\.json$/);
+  if (!m) return null;
+  const [, y, mo, d] = m;
+  if (type === 'daily')   return `${y}-${mo}-${d}`;
+  if (type === 'weekly')  return `${y}-${mo} ${getWeekNum(`${y}-${mo}-${d}`)}주차`;
+  if (type === 'monthly') return `${y}-${mo}`;
+  return null;
+}
+
+function buildPeriodOptions() {
+  const type   = document.getElementById('periodType').value;
+  const select = document.getElementById('periodValue');
+  const seen   = new Set();
+  const options = [];
+
+  for (const f of historyFiles) {
+    const key = parsePeriodKey(f, type);
+    if (key && !seen.has(key)) { seen.add(key); options.push(key); }
+  }
+
+  select.innerHTML = options.length
+    ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
+    : '<option value="">데이터 없음</option>';
+
+  document.getElementById('historyPanel').innerHTML =
+    '<div class="empty"><div class="empty-icon">📂</div>기간을 선택하면 데이터를 불러옵니다.</div>';
+
+  if (options.length) loadHistoryData(options[0]);
+}
+
+async function loadHistoryData(period) {
+  if (!period) return;
+  const type  = document.getElementById('periodType').value;
+  const panel = document.getElementById('historyPanel');
+  panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
+
+  const matching = historyFiles.filter(f => parsePeriodKey(f, type) === period);
+  if (!matching.length) {
+    panel.innerHTML = emptyBox('📂', '해당 기간의 데이터가 없습니다.');
+    return;
+  }
+
+  const settled = await Promise.allSettled(matching.map(f => {
+    const url = IS_LOCAL
+      ? `/api/history/${f}`
+      : `${HISTORY_RAW_BASE}/${f}`;
+    return fetch(url).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
+  }));
+  const datasets = settled.filter(r => r.status === 'fulfilled').map(r => r.value);
+
+  if (!datasets.length) {
+    panel.innerHTML = emptyBox('📂', '데이터를 불러올 수 없습니다.');
+    return;
+  }
+  panel.innerHTML = renderHistoryPanel(datasets, period, matching);
+}
+
+function mergeKws(datasets, field) {
+  const map = {};
+  for (const d of datasets) {
+    for (const k of (d.analysis?.[field]?.keywords || [])) {
+      const w = k.word ?? k;
+      map[w] = (map[w] || 0) + (k.count || 1);
+    }
+  }
+  return Object.entries(map)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 12)
+    .map(([word, count]) => ({ word, count }));
+}
+
+function renderHistoryCard(accentCls, iconCls, iconChar, title, datasets, aKey, tagCls) {
+  const kws       = mergeKws(datasets, aKey);
+  const summaries = datasets
+    .map(d => ({
+      ts:          d.lastUpdated,
+      summary:     d.analysis?.[aKey]?.summary,
+      priceImpact: d.analysis?.[aKey]?.priceImpact,
+    }))
+    .filter(s => s.summary || s.priceImpact);
+
+  if (!kws.length && !summaries.length) return '';
+
+  const kwHtml = kws.length
+    ? `<div class="block">
+        <div class="sec-label">합산 키워드</div>
+        <div class="tags">${kws.map(k =>
+          `<span class="tag ${tagCls}">${esc(k.word)}<span class="badge-count">${k.count}</span></span>`
+        ).join('')}</div>
+      </div>`
+    : '';
+
+  const summaryHtml = summaries.map(s => {
+    const ts = s.ts
+      ? new Date(s.ts).toLocaleString('ko-KR', { timeZone:'Asia/Seoul', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })
+      : '';
+    return `<div class="history-summary-block">
+      ${ts ? `<div class="history-ts">${ts}</div>` : ''}
+      ${s.summary     ? `<div class="summary-text">${esc(s.summary)}</div>` : ''}
+      ${s.priceImpact ? `<div class="price-box" style="margin-top:8px">${esc(s.priceImpact)}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  return `<div class="card ${accentCls}" style="margin-bottom:12px">
+    <div class="card-head">
+      <div class="card-head-left">
+        <div class="card-icon ${iconCls}">${iconChar}</div>
+        <span class="card-title">${title}</span>
+      </div>
+      <span class="card-time">${datasets.length}개 수집</span>
+    </div>
+    <div class="card-body">${kwHtml}${summaryHtml}</div>
+  </div>`;
+}
+
+function renderHistoryPanel(datasets, period, filenames) {
+  const issues = datasets.map(d => d.analysis?.todayIssue).filter(Boolean);
+
+  let html = `<div class="history-period-label">${esc(period)} · ${datasets.length}개 데이터</div>`;
+
+  if (issues.length) {
+    html += `<div class="block" style="margin-bottom:16px">
+      <div class="sec-label">주요 이슈</div>
+      ${issues.map(t => `<div class="history-issue-item">${esc(t)}</div>`).join('')}
+    </div>`;
+  }
+
+  html += renderHistoryCard('official', 'icon-official', '공', '공식 업데이트', datasets, 'official',  'official');
+  html += renderHistoryCard('dc',       'icon-dc',       '디', 'DC인사이드',    datasets, 'dcinside',  'dc');
+  html += renderHistoryCard('inven',    'icon-inven',    '인', '인벤',          datasets, 'inven',     'inven');
+
+  return html;
+}
+
 /* ── 초기화 ── */
+(function initEnv() {
+  const btn = document.getElementById('crawlBtn');
+  if (!IS_LOCAL) {
+    btn.style.display = 'none';
+    document.getElementById('lastUpdated').title = 'GitHub Actions가 13:00 / 16:00에 자동 수집합니다.';
+  }
+})();
+
 loadResults();
+loadHistoryIndex();
 setInterval(loadResults, 5 * 60 * 1000);
 setInterval(() => {
   if (lastUpdatedISO) {

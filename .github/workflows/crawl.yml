@@ -6,6 +6,9 @@ on:
     - cron: '0 7 * * *'   # KST 16:00 (UTC+9 → UTC 07:00)
   workflow_dispatch:       # 수동 실행 허용
 
+permissions:
+  contents: write          # git push 권한
+
 jobs:
   crawl:
     runs-on: ubuntu-latest
@@ -37,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json
+          git add data/results.json data/history/
           if git diff --staged --quiet; then
             echo "변경사항 없음 — 커밋 건너뜀"
           else

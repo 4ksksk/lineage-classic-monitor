@@ -6,7 +6,8 @@ const { crawlDCInside } = require('../crawler/dcinside');
 const { crawlInven } = require('../crawler/inven');
 const { analyzePosts } = require('../gemini/analyzer');
 
-const DATA_PATH = path.join(__dirname, '../data/results.json');
+const DATA_PATH    = path.join(__dirname, '../data/results.json');
+const HISTORY_DIR  = path.join(__dirname, '../data/history');
 
 async function runCrawlAndAnalyze() {
   console.log(`[${new Date().toLocaleString('ko-KR')}] 크롤링 시작`);
@@ -47,6 +48,26 @@ async function runCrawlAndAnalyze() {
 
   fs.writeFileSync(DATA_PATH, JSON.stringify(result, null, 2), 'utf-8');
   console.log('[스케줄러] 저장 완료 →', DATA_PATH);
+
+  // history 저장: data/history/YYYY-MM-DD-HH.json (KST 기준)
+  try {
+    if (!fs.existsSync(HISTORY_DIR)) fs.mkdirSync(HISTORY_DIR, { recursive: true });
+    const kst = new Date(new Date(result.lastUpdated).getTime() + 9 * 60 * 60 * 1000);
+    const y  = kst.getUTCFullYear();
+    const mo = String(kst.getUTCMonth() + 1).padStart(2, '0');
+    const d  = String(kst.getUTCDate()).padStart(2, '0');
+    const h  = String(kst.getUTCHours()).padStart(2, '0');
+    const historyFilename = `${y}-${mo}-${d}-${h}.json`;
+    fs.writeFileSync(
+      path.join(HISTORY_DIR, historyFilename),
+      JSON.stringify(result, null, 2),
+      'utf-8'
+    );
+    console.log('[스케줄러] 히스토리 저장 →', historyFilename);
+  } catch (err) {
+    console.error('[히스토리 저장 오류]', err.message);
+  }
+
   return result;
 }
 
