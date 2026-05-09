@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-09T09:00:14.497Z",
+  "lastUpdated": "2026-05-09T15:00:22.136Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
@@ -10,6 +10,10 @@
     }
   ],
   "dcPosts": [
+    {
+      "title": "이거쓰는사람있냐",
+      "content": "lintle.net써본사람"
+    },
     {
       "title": "10년전 프리섭하던 심슨 베어등등 살아있냐??",
       "content": "또 누구있지 시발 까먹엇노"
@@ -77,13 +81,53 @@
     {
       "title": "하 자동",
       "content": "자동좀 잡아조"
-    },
-    {
-      "title": "이더리움 위로티어오를꺼같다..",
-      "content": "봐봐 이거뭔가 이상해.."
     }
   ],
   "invenPosts": [
+    {
+      "title": "각하도 빡쳐버린 리니지 클래식 운영",
+      "content": "noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14467\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14467\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit(); scrapWi"
+    },
+    {
+      "title": "콘요정 장비 순서 질문드립니다.",
+      "content": "현재 6크로 6민투 6요티하고 나머지 4셋들 맞춰져있는데장비 순서가 어케되나요?6엘름? 수호악세? 간간히 사냥만 하고있습니다. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14466\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14466\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getEle"
+    },
+    {
+      "title": "렙업은 타락한 땅이 짱이다 진짜;;",
+      "content": "콘위즈18 인트16 법사 29짜리 6힘지 4셋인데 30까지 키우려는데 물약을 너무 많이 먹어서요정(8장궁) 이랑 파티 맺고 기란던전4층, 타락한땅 가보고법사 혼자서 개미던전 솔로 사냥도 해봤는데스톱워치로 경험치 먹는거 10분당 계산해보니요정이랑 파티해서 타당 가는게 젤 잘오르네. 아무래도 타땅은 몹이 계속 나오다보니몹 찾으러 다니는 시간이 필요없어서 그런가봄. 타땅짱이네..ㅋㅋ참고하십쇼 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14465\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14465\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen()"
+    },
+    {
+      "title": "리니지의 원리(이걸알고도 계속한다면?)",
+      "content": "1. 동남아 현지인들동남아 인들은 현지에서 평범한 직장을 다니는 시급보다 리니지를 해서 버는 뎅이 훨씬 고수익이다. 그래서 동남아 현지에서 ip우회를 통해 리니지를 하며 자동캐릭을 양산한뒤 뎅을캐고 수익을 창출하고있다. 이들은 대부분 소규모인원들이 많다. 친구들 5~10명이서 하고있는 경우가 많음 직접 여러 동남아 현지인들과 소통하며 알아낸 사실 그들은 서버별로 최소 2~3억아덴씩 보유하고있으며 하루 평균 200~500만원을 (우리나라돈) 벌어들이고있다 2. 한국사장을 둔 동남아 작업장 한국인이 사장을 둔 작업장은 더욱더 대규모다. 동남아 외노자들을 고용하며 자동,반자동 작업장을 운영한다 오히려 1번보다 더욱더 악질인 경우가많으며 1번애들은 사실 겜하다보면 귀여울때가있다 I LOVE SON I LOVE BTS 이런 말도함.. 근데 한국사장이 작업장인애들은 개던가보면 용기만보면 환장해서 처먹고 뒤지더라도 용기는 처먹고 뒤짐 자동은 그냥 무한생성 한다고보면됨. 실제 애내들은 어느정도냐하면 '예를들어 아이템매니아에 그들이 아덴을 5000만아덴을 보유해서 판매하고있다고 올려둔다 (실제로 그들은 해당서버에 아덴이 없음) 그러면 내가 결제를 해서 5000만아덴을 구매한다고 치자 채팅이온다. 30~40분기다려줄수있냐고 묻는다 그시간안에 아덴을 구해줄수있으며 예약걸면 취소는 불가능하다고한다. 그러면 정말 30분만에 아덴을 벌어서 5000만원을 거래한다 3. 섭초부터 서버 먹을려고 직장때려치우고 리니지에 목숨건 ㅄ들 애내들이 가장 악질이다 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 솔직히 말하면 자 사회에서 돈도 못벌고 번번한 직장도없다.. 가정도"
+    },
+    {
+      "title": "1주일만에 레벨업 했는데",
+      "content": "콘기사 피10 엠0 오르니까 숨이 턱 막히네 흐벙 ㅠㅠ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14463\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14463\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"s"
+    },
+    {
+      "title": "크리스터 섭인데 대기열 1000명넘어가는데..",
+      "content": "진짜 하다하다 이젠 욕밖에 안나와서오늘은 접속 포기하고 낼 접하는데로 템다팔고 떠나야겠어요내돈 주고 계정비 끊어서 게임하는데 대기열때문에 게임도 못한다니...진짜 지랄맞은 게임이네요어짜피 3개월 끊어둔거 몇일 안 남았는데먼저 떠나겠습니다 다들 건승하십쇼~ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14462\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14462\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,h"
+    },
+    {
+      "title": "착하게 살아야겠습니다.",
+      "content": "과거 섭 초반 시절에 용계에서 몹스틸로 차단 걸고 친추 걸고 접속할 때마다 찾아다니면서 싸우던 놈들 2놈 있었는데요즘 한 일주일 요놈들이 안 보이니까 너무 보고 싶네요.앞으로 칼이 아니라 대화로 풀어가야겠습니다.그 친구들도 나름 다 가정이 있을 텐데이딴 게임이 뭐라고 그리 열내면서 찾아다니고 서로 안 좋은 추억을 쌓으려고 했던 건지 참.제 인생을 되돌이켜보게 되네요.돌아와라 애들아. 보고 싶다. 다시 한 번 자웅을 겨루며 누가 더 자존심 센지.시간 빌게이츠인지 유치한 대화하던 시절이 그립구나. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14461\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14461\"; I"
+    },
+    {
+      "title": "근처피방 몇번갔다가 알아낸정보",
+      "content": "근처피방 몇번갓다가 깃털좀받고 플레이하고나니까 피곤해서집에서 좀 접속해보려고 알아본업체.. 리모트원 << 네이버에서 검색시간당800?? 근처피방 1200원인대.. ㅎㄷㄷ하게 싸서 여기이용중.. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14460\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14460\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,res"
+    },
+    {
+      "title": "하이네 갑자기 왜 대기가 많아진거야;",
+      "content": "신규 유입은 아닐테고 오토가 몰려왔나?접속 전부터 떨리네 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14458\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14458\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \""
+    },
+    {
+      "title": "사냥만하면서 장비맞추는재미로할거면",
+      "content": "100원대섭에서 해도 괜찮을까요?어디든 동자는 많은거같아서젤싼곳가서 장비7검4셋맞추고놀만한가요?사냥으로 돈모아서 장비업글하는재미라뎅파는건안하고 장비만업글할거라서요 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14457\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14457\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var "
+    },
+    {
+      "title": "리니지 클래식 자동사냥..",
+      "content": "혼자 만들어서 조금은 부족해도 잘쓰고 있습니다. 개발자로 낙이 없어서 게임이나 할 까 했는데 게임 자체가 저랑 안맞네요..컴퓨터를 이런데 돌리려니 컴이 아깝다는 생각..괜히만들었군요..개발자로 한마디만 합니다..오토마우스 같은거 보니까 발로 만들어도 저것 보다는 잘만들겠습니다.. 화면인식이라니.. OCR 아무리 전처리해도 한계가 있고요 폰트 매칭도 힘들고 YOLO로 가면 학습하다 망하고 아무튼 화면 인식 기반은 안됩니다. 속지마세요..메모리 분석해서 하는게 가장 좋지만 NC가 워낙 빡세게 방어해서 해봤더니 어지간한 사양의 컴퓨터는 버거워서 몬스터는 좌표까지 찾아도 아이템까지는 힘듭니다 (힘들다고 했지 못한다고는 안했습니다). 그리고 게임상의 월드맵 좌표 알아도 모니터 좌표랑 연산하면 필연적 오차가 있어서 멀리있는 아이템은 루팅 못합니다.남은건 매크로라고 하는데 이건 더 말이 안됩니다. 그냥 매크로는 무시하세요..오토만드는 분들께 힌트가 될지 모르겠는데 이것 저것 조금씩 필요한 것만 가져다 붙이세요. 그러면 됩니다..아무튼 그냥 지나가다 속지마시라고 말씀드립니다. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14455\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function"
+    },
     {
       "title": "타땅 요정 가성비 세팅?",
       "content": "활 뭐들어야 가성비 일까요?방어구는 걍 있는거 쓸거라 4.5셋..다른데 사냥 안하고 오직 타땅 요정지역 사람 모이는곳 거기서만 할거에요.. 물약 아껴야해서 ㅜㅜ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14453\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14453\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var f"
@@ -119,50 +163,6 @@
     {
       "title": "어린이,노약자 금지",
       "content": "토쏠리네요 택진이가 운영합니다,맨날 말만 작업장제제했다고 징징 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14444\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14444\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target "
-    },
-    {
-      "title": "렙이 정말 중요한것 같네요",
-      "content": "물론 대부분 RPG게임이 그렇긴하지만리니지클래식은 스킬에도 명중적용되니 더더욱 중요한것같아요렙만 올려도 장비갭차이 줄일수있는 메리트가 너무 잘맞는듯싶어요물론 24시간 부주로 돌리는 분들은 애초에 돈 시간 다 갈아넣고 하시니 예외로치고일반 라이트 유저들끼리싸울땐 안놀고 렙업만 꾸준히 해도 장비갭차 줄일수있다는게 이겜 최대장점인듯싶네요그런의미에서 타땅 사냥터 패치는 정말 유의미하네요물론 득템의 기회는 아에없지만 렙업은 잘되니 지루함 이겨내고 죽어도 경치안떨구니 괜찮은듯 싶네요데포섭은 아마 좀 힘들수 있지만 발라섭포함 그외섭들은 몹이 넘치는것같네요득템이안되서 손해일수도 있긴한데 하루에 하나정도먹는 미늘 대도 포기하면 확실히 경치는 좋은것같습니다아이템 드랍이 좀더 잘되면 인기가 떨어지긴하겠지만 현재는 타땅 스트레스 안받고 렙업하기는 좋네요 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14443\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=4"
-    },
-    {
-      "title": "리니지 16일차 2번째 7마망 하이네",
-      "content": "2번째 7마만 리니지 16일차 7마망2개 9크로1개 7엘름한개 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14442\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14442\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target "
-    },
-    {
-      "title": "발라카스 서버 물오리들 찾았다!!!!",
-      "content": "참고로 소매52 <- 이런 시리즈도 여기 다 모여있다. 위치는 켄트 잡밭에 물오리들 살아있음.엔씨 모하니???? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14441\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14441\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById"
-    },
-    {
-      "title": "이겜 두번다시 안한다",
-      "content": "카아아아악~~~~~~~퉤 침뱉고 간다.졸라 노잼 시세 팍팍 떨어져라. 다망해라. 저주 걸고 간다.내인생 모든 액땜은 여기에 묻어두고 간다. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14439\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14439\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document"
-    },
-    {
-      "title": "서버마다 9크로시세 알려주세여ㅠㅠ",
-      "content": "서버별특파원~ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14438\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14438\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit();"
-    },
-    {
-      "title": "각서버 용기 수급 원활하시나요?",
-      "content": "기사 용기필수인데 구하기가 힘드네요 시장엔 사는글만 넘치고 판매는 올리자마자 없어지고... 오림갈때 사재기 해야할 판일듯 합니다 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14436\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14436\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getEl"
-    },
-    {
-      "title": "시세질문요",
-      "content": "민투, 4요사. 4요티 4강부 4보망, 활골무시세좀요 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14432\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14432\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"sc"
-    },
-    {
-      "title": "휴식기를 가져야겠음",
-      "content": "득템의 재미도없고 미늘먹고 오 ㅅㅂ 미늘 이러는거도 현타오고허리도 아프고 ㅠㅠ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14429\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14429\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); f"
-    },
-    {
-      "title": "아이오브스톰 얼마쯤하나요?",
-      "content": "서버마다 다르긴하겠지만 대충 얼마쯤 하나요? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14428\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14428\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_a"
-    },
-    {
-      "title": "아툰서버 근황",
-      "content": "전투혈 vs 제우스혈 vs 고스트, 끝장 전투혈, 제우스혈은 라인 같은데 고스트는 6검에 4셋 막피 하다온사람, 외창러, 분배 문제로 전창이 시끄러움 아무나 다 받아서 인원수만 많음라인 하실려면 전투, 제우스 추천요 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14427\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14427\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scro"
-    },
-    {
-      "title": "6검 4셋 기사 vs 요정 개던 앵벌",
-      "content": "기사 풀용기로요정 촐기만시골서버고개던 앵벌 누가 더 많이벌까 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); const _IPOLL_RESULT_ = {\"422675\":{\"setting\":{\"idx\":422675,\"state\":\"N\",\"poll_type\":1,\"title\":\"개던 앵벌\",\"image\":\"\",\"explain\":\"\",\"random\":\"N\",\"multi_select\":\"N\",\"multi_limit\":0,\"anonymity\":\"N\",\"thumb_order\":\"right\",\"end_set\":\"date\",\"end_date\":\"2026-05-09 17:10:59\",\"end_count_limit\":0,\"result_view\":\"poll\",\"memnick\":\"하누누1\",\"total\":74,\"participant\":74,\"other\":\"\",\"gamerank\":\"N\",\"come_idx\":6482,\"uidx\":14426,\"use_html\":\"N\",\"link\":\"https://www.inven.co.kr/board/lineageclassic/6482/14426\"},\"answers\":[{\"idx\":1352975,\"sidx\":422675,\"order\":1,\"answer\":\"기사\",\"thumbnail\":\"\",\"ori_image\":\"\",\"count\":34},{\"idx\":1352976,\"sidx\":422675,\"order\":2,\"answer\":\"요정\",\"thumbnail\":\"\",\"ori_image\":\"\",\"count\":40}"
     }
   ],
   "analysis": null
