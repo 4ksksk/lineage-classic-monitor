@@ -1,0 +1,46 @@
+name: 자동 크롤링 및 Gemini 분석
+
+on:
+  schedule:
+    - cron: '0 4 * * *'   # KST 13:00 (UTC+9 → UTC 04:00)
+    - cron: '0 7 * * *'   # KST 16:00 (UTC+9 → UTC 07:00)
+  workflow_dispatch:       # 수동 실행 허용
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 18 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 패키지 설치
+        run: npm ci
+
+      - name: 크롤링 및 Gemini 분석 실행
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          node -e "
+            require('./scheduler').runCrawlAndAnalyze()
+              .then(() => { console.log('[완료] results.json 저장됨'); process.exit(0); })
+              .catch(e => { console.error('[오류]', e.message); process.exit(1); });
+          "
+
+      - name: results.json 커밋 및 푸시
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/results.json
+          if git diff --staged --quiet; then
+            echo "변경사항 없음 — 커밋 건너뜀"
+          else
+            git commit -m "chore: 자동 크롤링 $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M KST')"
+            git push
+          fi
