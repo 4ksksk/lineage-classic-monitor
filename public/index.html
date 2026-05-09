@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>리니지클래식 모니터</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #ffffff;
+      --card-bg:  #f8f9fa;
+      --official: #4361ee;
+      --dc:       #f72585;
+      --inven:    #7209b7;
+      --text:     #212529;
+      --text2:    #495057;
+      --text3:    #868e96;
+      --border:   #dee2e6;
+      --radius:   12px;
+      --shadow:   0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    html { font-size: 14px; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── WRAPPER ── */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .header-left { display: flex; flex-direction: column; gap: 3px; }
+    .site-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .site-title span {
+      color: var(--official);
+    }
+    #clock {
+      font-size: 0.8rem;
+      color: var(--text3);
+      font-weight: 400;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    #lastUpdated {
+      font-size: 0.75rem;
+      color: var(--text3);
+    }
+    .btn-collect {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: var(--official);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .btn-collect:hover  { opacity: 0.88; }
+    .btn-collect:active { transform: scale(0.97); }
+    .btn-collect:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    /* ── ISSUE BANNER ── */
+    .issue-banner {
+      background: #eef2ff;
+      border-left: 4px solid var(--official);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .issue-badge {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      background: var(--official);
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .pulse {
+      width: 6px; height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
+    }
+    #mainIssueText {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 16px;
+      border-left: 4px solid transparent;
+    }
+    .card.official { border-left-color: var(--official); }
+    .card.dc        { border-left-color: var(--dc); }
+    .card.inven     { border-left-color: var(--inven); }
+    .card.seo       { border-left-color: #0ea5e9; }
+    .card.youtube   { border-left-color: #ef4444; }
+    .card.push      { border-left-color: #10b981; }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-head-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .icon-official { background: var(--official); }
+    .icon-dc       { background: var(--dc); }
+    .icon-inven    { background: var(--inven); }
+    .icon-seo      { background: #0ea5e9; }
+    .icon-yt       { background: #ef4444; }
+    .icon-push     { background: #10b981; }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .card-time {
+      font-size: 0.72rem;
+      color: var(--text3);
+    }
+
+    /* ── CARD BODY ── */
+    .card-body { padding: 18px 20px; }
+
+    /* ── SEC LABEL ── */
+    .sec-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text3);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .block { margin-bottom: 16px; }
+    .block:last-child { margin-bottom: 0; }
+
+    /* ── UPDATE DATE ── */
+    .update-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      background: rgba(67,97,238,0.08);
+      border: 1px solid rgba(67,97,238,0.2);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--official);
+      font-weight: 600;
+    }
+
+    /* ── TAGS / KEYWORD CHIPS ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .tag.official {
+      background: rgba(67,97,238,0.1);
+      color: var(--official);
+      border: 1px solid rgba(67,97,238,0.25);
+    }
+    .tag.dc {
+      background: rgba(247,37,133,0.08);
+      color: var(--dc);
+      border: 1px solid rgba(247,37,133,0.25);
+    }
+    .tag.inven {
+      background: rgba(114,9,183,0.08);
+      color: var(--inven);
+      border: 1px solid rgba(114,9,183,0.25);
+    }
+    .tag.seo {
+      background: rgba(14,165,233,0.08);
+      color: #0ea5e9;
+      border: 1px solid rgba(14,165,233,0.25);
+    }
+    .tag.yt {
+      background: rgba(239,68,68,0.08);
+      color: #ef4444;
+      border: 1px solid rgba(239,68,68,0.25);
+    }
+    .tag.push-tag {
+      background: rgba(16,185,129,0.08);
+      color: #10b981;
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+    .badge-count {
+      display: inline-block;
+      background: rgba(0,0,0,0.1);
+      border-radius: 10px;
+      font-size: 0.63rem;
+      font-weight: 700;
+      padding: 0 5px;
+      line-height: 1.6;
+    }
+
+    /* ── SUMMARY TEXT ── */
+    .summary-text {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    /* ── PRICE IMPACT ── */
+    .price-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    /* ── MARKETING TIPS ── */
+    .tip-list { display: flex; flex-direction: column; gap: 6px; list-style: none; }
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+    .tip-dot {
+      flex-shrink: 0;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--text3);
+      margin-top: 8px;
+    }
+
+    /* ── NUMBERED LIST (SEO / YT) ── */
+    .num-list { display: flex; flex-direction: column; gap: 0; counter-reset: n; }
+    .num-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.6;
+      counter-increment: n;
+    }
+    .num-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .num-item::before {
+      content: counter(n);
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    /* ── PUSH NOTIFICATION ── */
+    .push-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .push-item:last-child { margin-bottom: 0; }
+    .push-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text3);
+      margin-bottom: 3px;
+    }
+    .push-title-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .push-body-text {
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+    .push-char {
+      font-size: 0.65rem;
+      color: var(--text3);
+      text-align: right;
+      margin-top: 4px;
+    }
+    .push-char.over { color: #ef4444; }
+
+    /* ── EMPTY ── */
+    .empty {
+      text-align: center;
+      padding: 28px 0;
+      font-size: 0.8rem;
+      color: var(--text3);
+    }
+    .empty-icon { font-size: 1.6rem; margin-bottom: 8px; opacity: 0.4; }
+
+    /* ── WARN BAR ── */
+    .warn-bar {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: #fff8e1;
+      border: 1px solid #ffd54f;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      color: #795548;
+      margin-bottom: 16px;
+    }
+    .warn-bar.on { display: flex; }
+    .warn-icon {
+      flex-shrink: 0;
+      padding: 1px 8px;
+      background: #ffe082;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #5d4037;
+    }
+
+    /* ── LOADING OVERLAY ── */
+    #overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(255,255,255,0.85);
+      align-items: center; justify-content: center;
+      z-index: 999; flex-direction: column; gap: 14px;
+    }
+    #overlay.on { display: flex; }
+    .loader {
+      width: 32px; height: 32px;
+      border: 3px solid #dee2e6;
+      border-top-color: var(--official);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .loader-text { font-size: 0.82rem; color: var(--text2); font-weight: 500; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.72rem;
+      color: var(--text3);
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    /* ── CONTENT GRID (SEO / YT / Push) ── */
+    .grid-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: start;
+    }
+    .grid-content .card { margin-bottom: 0; }
+
+    /* content card 내부 글씨 크게 */
+    .content-num-list { display: flex; flex-direction: column; gap: 0; counter-reset: n; }
+    .content-num-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.6;
+      counter-increment: n;
+    }
+    .content-num-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .content-num-item::before {
+      content: counter(n);
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    /* push card 내부 */
+    .push-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .push-item:last-child { margin-bottom: 0; }
+    .push-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text3);
+      margin-bottom: 4px;
+    }
+    .push-title-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 2px;
+    }
+    .push-body-text {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+    .push-char {
+      font-size: 0.68rem;
+      color: var(--text3);
+      text-align: right;
+      margin-top: 4px;
+    }
+    .push-char.over { color: #ef4444; font-weight: 600; }
+
+    @media (max-width: 700px) {
+      .grid-content { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .site-header { flex-direction: column; align-items: flex-start; }
+      .header-right { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ── HEADER ── -->
+  <header class="site-header">
+    <div class="header-left">
+      <div class="site-title">⚔ <span>리니지클래식</span> 모니터</div>
+      <div id="clock">—</div>
+    </div>
+    <div class="header-right">
+      <span id="lastUpdated">마지막 수집: —</span>
+      <button class="btn-collect" id="crawlBtn" onclick="triggerCrawl()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/>
+        </svg>
+        지금 수집
+      </button>
+    </div>
+  </header>
+
+  <!-- ── GEMINI WARN ── -->
+  <div class="warn-bar" id="warnBar">
+    <span class="warn-icon">WARN</span>
+    <span id="warnText">Gemini API 할당량 초과 — AI 분석 없이 원본 데이터를 표시합니다. 할당량은 매일 자정(UTC) 초기화됩니다.</span>
+  </div>
+
+  <!-- ── ISSUE BANNER ── -->
+  <div class="issue-banner">
+    <div class="issue-badge"><div class="pulse"></div> TODAY</div>
+    <div id="mainIssueText">데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.</div>
+  </div>
+
+  <!-- ── 공식 업데이트 카드 ── -->
+  <div class="card official">
+    <div class="card-head">
+      <div class="card-head-left">
+        <div class="card-icon icon-official">공</div>
+        <span class="card-title">공식 업데이트</span>
+      </div>
+      <span class="card-time" id="officialTime">—</span>
+    </div>
+    <div class="card-body" id="officialPanel">
+      <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
+    </div>
+  </div>
+
+  <!-- ── DC인사이드 카드 ── -->
+  <div class="card dc">
+    <div class="card-head">
+      <div class="card-head-left">
+        <div class="card-icon icon-dc">디</div>
+        <span class="card-title">DC인사이드</span>
+      </div>
+      <span class="card-time" id="dcTime">—</span>
+    </div>
+    <div class="card-body" id="dcPanel">
+      <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+    </div>
+  </div>
+
+  <!-- ── 인벤 카드 ── -->
+  <div class="card inven">
+    <div class="card-head">
+      <div class="card-head-left">
+        <div class="card-icon icon-inven">인</div>
+        <span class="card-title">인벤</span>
+      </div>
+      <span class="card-time" id="invenTime">—</span>
+    </div>
+    <div class="card-body" id="invenPanel">
+      <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+    </div>
+  </div>
+
+  <!-- ── SEO / 유튜브 / 푸시 3열 ── -->
+  <div class="grid-content">
+
+    <!-- SEO 소재 -->
+    <div class="card seo">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-seo">S</div>
+          <span class="card-title">SEO 소재</span>
+        </div>
+        <span class="card-time">검색 최적화</span>
+      </div>
+      <div class="card-body" id="seoCard">
+        <div class="empty"><div class="empty-icon">🔍</div>수집 후 표시됩니다.</div>
+      </div>
+    </div>
+
+    <!-- 유튜브 소재 -->
+    <div class="card youtube">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-yt">Y</div>
+          <span class="card-title">유튜브 소재</span>
+        </div>
+        <span class="card-time">영상 기획</span>
+      </div>
+      <div class="card-body" id="ytCard">
+        <div class="empty"><div class="empty-icon">🎬</div>수집 후 표시됩니다.</div>
+      </div>
+    </div>
+
+    <!-- 푸시 알림 소재 -->
+    <div class="card push">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-push">P</div>
+          <span class="card-title">푸시 알림 소재</span>
+        </div>
+        <span class="card-time">광고 소재</span>
+      </div>
+      <div class="card-body" id="pushCard">
+        <div class="empty"><div class="empty-icon">🔔</div>수집 후 표시됩니다.</div>
+      </div>
+    </div>
+
+  </div><!-- /grid-content -->
+
+  <footer id="footerStatus">리니지클래식 모니터 · 6시간마다 자동 수집</footer>
+
+</div><!-- /wrap -->
+
+<div id="overlay">
+  <div class="loader"></div>
+  <span class="loader-text">데이터 수집 중...</span>
+</div>
+
+<script>
+/* ── 시계 ── */
+function updateClock() {
+  document.getElementById('clock').textContent = new Date().toLocaleString('ko-KR', {
+    year: 'numeric', month: 'long', day: 'numeric',
+    weekday: 'short', hour: '2-digit', minute: '2-digit'
+  });
+}
+updateClock();
+setInterval(updateClock, 15000);
+
+/* ── 경과시간 ── */
+function timeAgo(iso) {
+  if (!iso) return '—';
+  const s = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (s < 60)    return `${s}초 전`;
+  if (s < 3600)  return `${Math.floor(s/60)}분 전`;
+  if (s < 86400) return `${Math.floor(s/3600)}시간 전`;
+  return `${Math.floor(s/86400)}일 전`;
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ── 렌더: 공식 업데이트 ── */
+function renderOfficial(a, rawPosts) {
+  if (a?.official) {
+    const o = a.official;
+    let html = '';
+
+    if (o.date) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 날짜</div>
+        <span class="update-date">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${esc(o.date)}
+        </span>
+      </div>`;
+    }
+
+    if (o.keywords?.length) {
+      const chips = o.keywords.map(k => `<span class="tag official">${esc(k)}</span>`).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+
+    if (o.summary) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 요약</div>
+        <div class="summary-text">${esc(o.summary)}</div>
+      </div>`;
+    }
+
+    if (o.priceImpact) {
+      html += `<div class="block">
+        <div class="sec-label">시세 영향도</div>
+        <div class="price-box">${esc(o.priceImpact)}</div>
+      </div>`;
+    }
+
+    if (o.marketingTips?.length) {
+      const tips = o.marketingTips.map(t =>
+        `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+      ).join('');
+      html += `<div class="block">
+        <div class="sec-label">마케팅 제안</div>
+        <ul class="tip-list">${tips}</ul>
+      </div>`;
+    }
+
+    return html || emptyBox('📋', '분석 데이터 없음');
+  }
+
+  if (!rawPosts?.length) return emptyBox('📋', '수집된 공식 공지 없음');
+  return rawPosts.map(p => `
+    <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      ${p.date ? `<div class="block"><span class="update-date">${esc(p.date)}</span></div>` : ''}
+      <div class="summary-text">${esc(p.title || '제목 없음')}</div>
+      ${p.content ? `<div class="summary-text" style="margin-top:4px;font-size:0.78rem;color:var(--text3)">${esc(p.content.slice(0,120))}${p.content.length>120?'…':''}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+/* ── 렌더: 커뮤니티 (DC / 인벤) ── */
+function renderCommunity(data, tagCls, rawPosts) {
+  if (data) {
+    let html = '';
+
+    if (data.keywords?.length) {
+      const chips = data.keywords.map(k => {
+        const word  = k.word  ?? k;
+        const count = k.count ?? '';
+        return `<span class="tag ${tagCls}">${esc(word)}${count ? `<span class="badge-count">${count}</span>` : ''}</span>`;
+      }).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+
+    if (data.summary) {
+      html += `<div class="block">
+        <div class="sec-label">상황 요약</div>
+        <div class="summary-text">${esc(data.summary)}</div>
+      </div>`;
+    }
+
+    if (data.priceImpact) {
+      html += `<div class="block">
+        <div class="sec-label">시세 영향도</div>
+        <div class="price-box">${esc(data.priceImpact)}</div>
+      </div>`;
+    }
+
+    if (data.marketingTips?.length) {
+      const tips = data.marketingTips.map(t =>
+        `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+      ).join('');
+      html += `<div class="block">
+        <div class="sec-label">마케팅 제안</div>
+        <ul class="tip-list">${tips}</ul>
+      </div>`;
+    }
+
+    return html || emptyBox('💬', '분석 데이터 없음');
+  }
+
+  if (!rawPosts?.length) return emptyBox('💬', '수집된 게시글 없음');
+  const shown = rawPosts.slice(0, 12);
+  const items = shown.map(p => `
+    <div style="padding:7px 0;border-bottom:1px solid var(--border);font-size:0.82rem;color:var(--text2)">
+      ${esc(p.title || '(제목 없음)')}
+    </div>
+  `).join('');
+  const extra = rawPosts.length - shown.length;
+  return `
+    <div class="sec-label">수집된 게시글 (${rawPosts.length}개)</div>
+    ${items}
+    ${extra > 0 ? `<div style="font-size:0.7rem;color:var(--text3);text-align:right;margin-top:6px">외 ${extra}개 더</div>` : ''}
+  `;
+}
+
+/* ── 렌더: SEO ── */
+function renderSEO(seo) {
+  if (!seo?.length) return emptyBox('🔍', 'AI 분석 대기 중');
+  const items = seo.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
+  return `<div class="content-num-list">${items}</div>`;
+}
+
+/* ── 렌더: 유튜브 ── */
+function renderYoutube(yt) {
+  if (!yt?.length) return emptyBox('🎬', 'AI 분석 대기 중');
+  const items = yt.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
+  return `<div class="content-num-list">${items}</div>`;
+}
+
+/* ── 렌더: 푸시 ── */
+function renderPush(list) {
+  if (!list?.length) return emptyBox('🔔', 'AI 분석 대기 중');
+  return list.map(p => {
+    const rawTitle = p.title || '';
+    const rawBody  = p.content || '';
+    const title = rawTitle.startsWith('(광고)') ? rawTitle : rawTitle ? `(광고) ${rawTitle}` : '';
+    const body  = rawBody.startsWith('(광고)') ? rawBody : rawBody ? `(광고) ${rawBody}` : '';
+    const tCore = rawTitle.replace(/^\(광고\)\s*/,'');
+    const bCore = rawBody.replace(/^\(광고\)\s*/,'');
+    const tLen  = tCore.length;
+    const bLen  = bCore.length;
+    return `
+      <div class="push-item">
+        ${title ? `
+          <div class="push-label">제목</div>
+          <div class="push-title-text">${esc(title)}</div>
+          <div class="push-char${tLen > 35 ? ' over' : ''}">${tLen}/35자</div>
+        ` : ''}
+        <div class="push-label" style="${title ? 'margin-top:12px' : ''}">내용</div>
+        <div class="push-body-text">${esc(body)}</div>
+        <div class="push-char${bLen > 35 ? ' over' : ''}">${bLen}/35자</div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ── 빈 상태 ── */
+function emptyBox(icon, msg) {
+  return `<div class="empty"><div class="empty-icon">${icon}</div>${msg}</div>`;
+}
+
+/* ── 데이터 로드 ── */
+let lastUpdatedISO = null;
+
+async function loadResults() {
+  try {
+    const res  = await fetch('/api/results');
+    const data = await res.json();
+    const a    = data.analysis;
+    lastUpdatedISO = data.lastUpdated;
+
+    const officialPosts = data.officialPosts || [];
+    const dcPosts       = data.dcPosts       || [];
+    const invenPosts    = data.invenPosts    || [];
+    const cnt = officialPosts.length + dcPosts.length + invenPosts.length;
+
+    const warnBar = document.getElementById('warnBar');
+    if (!a && cnt > 0) warnBar.classList.add('on');
+    else warnBar.classList.remove('on');
+
+    document.getElementById('mainIssueText').textContent = a?.todayIssue ||
+      (cnt > 0
+        ? `공식 ${officialPosts.length}개 · DC인사이드 ${dcPosts.length}개 · 인벤 ${invenPosts.length}개 수집됨 (AI 분석 대기)`
+        : '데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.');
+
+    document.getElementById('lastUpdated').textContent =
+      data.lastUpdated ? `마지막 수집: ${timeAgo(data.lastUpdated)}` : '마지막 수집: —';
+
+    const t = data.lastUpdated ? timeAgo(data.lastUpdated) : '—';
+    ['officialTime','dcTime','invenTime'].forEach(id =>
+      document.getElementById(id).textContent = t
+    );
+
+    document.getElementById('officialPanel').innerHTML = renderOfficial(a, officialPosts);
+    document.getElementById('dcPanel').innerHTML       = renderCommunity(a?.dcinside, 'dc',    dcPosts);
+    document.getElementById('invenPanel').innerHTML    = renderCommunity(a?.inven,    'inven', invenPosts);
+
+    document.getElementById('seoCard').innerHTML  = renderSEO(a?.seo);
+    document.getElementById('ytCard').innerHTML   = renderYoutube(a?.youtube);
+    document.getElementById('pushCard').innerHTML = renderPush(a?.push);
+
+    if (cnt > 0) {
+      document.getElementById('footerStatus').textContent =
+        a ? `총 ${cnt}개 게시글 AI 분석 완료 · 6시간마다 자동 수집`
+          : `총 ${cnt}개 게시글 수집됨 · AI 분석 대기 중 · 6시간마다 자동 수집`;
+    }
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+/* ── 수집 트리거 ── */
+async function triggerCrawl() {
+  const btn = document.getElementById('crawlBtn');
+  btn.disabled = true;
+  btn.innerHTML = `<div class="loader" style="width:13px;height:13px;border-width:2px;margin:0"></div> 수집 중...`;
+  document.getElementById('overlay').classList.add('on');
+
+  try {
+    const res  = await fetch('/api/crawl', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) await loadResults();
+    else alert('오류: ' + data.message);
+  } catch {
+    alert('서버 연결 오류');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg> 지금 수집`;
+    document.getElementById('overlay').classList.remove('on');
+  }
+}
+
+/* ── 초기화 ── */
+loadResults();
+setInterval(loadResults, 5 * 60 * 1000);
+setInterval(() => {
+  if (lastUpdatedISO) {
+    document.getElementById('lastUpdated').textContent = `마지막 수집: ${timeAgo(lastUpdatedISO)}`;
+    ['officialTime','dcTime','invenTime'].forEach(id =>
+      document.getElementById(id).textContent = timeAgo(lastUpdatedISO)
+    );
+  }
+}, 30000);
+</script>
+</body>
+</html>

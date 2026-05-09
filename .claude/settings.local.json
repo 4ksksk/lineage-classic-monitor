@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36\" \"https://www.inven.co.kr/board/lineagem/5019\")",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.inven.co.kr/board/lineagem/5019\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/crawl)"
+    ]
+  }
+}
