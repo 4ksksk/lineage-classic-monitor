@@ -82,11 +82,26 @@ ${invenSection}
     messages: [{ role: 'user', content: prompt }],
   });
 
-  const text = message.content[0].text.trim();
+  if (!message.content || message.content.length === 0) {
+    throw new Error(`Claude 응답 content가 비어 있습니다. stop_reason: ${message.stop_reason}`);
+  }
 
+  const textBlock = message.content.find(b => b.type === 'text');
+  if (!textBlock) {
+    throw new Error(`텍스트 블록 없음. content types: ${message.content.map(b => b.type).join(', ')}`);
+  }
+
+  const text = textBlock.text.trim();
   const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error('Claude 응답에서 JSON을 파싱할 수 없습니다.');
-  return JSON.parse(jsonMatch[0]);
+  if (!jsonMatch) {
+    throw new Error(`JSON 추출 실패. 응답 앞부분: ${text.slice(0, 300)}`);
+  }
+
+  try {
+    return JSON.parse(jsonMatch[0]);
+  } catch (e) {
+    throw new Error(`JSON 파싱 실패: ${e.message} / 추출 앞부분: ${jsonMatch[0].slice(0, 300)}`);
+  }
 }
 
 module.exports = { analyzePosts };

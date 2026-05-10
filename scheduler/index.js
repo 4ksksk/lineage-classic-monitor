@@ -40,6 +40,7 @@ async function runCrawlAndAnalyze() {
       console.log('[스케줄러] Claude 분석 완료');
     } catch (err) {
       console.error('[Claude 분석 오류]', err.message);
+      console.error('[Claude 분석 오류 스택]', err.stack);
     }
   }
 
