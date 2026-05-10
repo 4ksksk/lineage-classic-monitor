@@ -27,9 +27,13 @@ async function runCrawlAndAnalyze() {
   console.log(`[스케줄러] 수집 완료 — 공식 ${officialPosts.length} / DC ${dcPosts.length} / 인벤 ${invenPosts.length} (합계 ${total})`);
 
   let analysis = null;
-  const hasKey = process.env.ANTHROPIC_API_KEY && process.env.ANTHROPIC_API_KEY !== 'your_anthropic_api_key_here';
+  const hasKey = !!process.env.ANTHROPIC_API_KEY;
 
-  if (total > 0 && hasKey) {
+  if (!hasKey) {
+    console.warn('[스케줄러] ANTHROPIC_API_KEY 없음 — Claude 분석 건너뜀 (GitHub Secret 설정 필요)');
+  } else if (total === 0) {
+    console.warn('[스케줄러] 수집된 게시글 없음 — Claude 분석 건너뜀');
+  } else {
     try {
       console.log('[스케줄러] Claude 분석 시작 (API 1회 호출)...');
       analysis = await analyzePosts(officialPosts, dcPosts, invenPosts);
