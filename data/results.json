@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-10T07:14:15.245Z",
+  "lastUpdated": "2026-05-10T07:49:36.236Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
@@ -85,6 +85,10 @@
   ],
   "invenPosts": [
     {
+      "title": "수정지팡이질문",
+      "content": "레벨30때끼는데 유튜브보니까 렙29때 수정지팡이를 착용하고있더라구요 잘못본건아닌데 ;; noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14493\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14493\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap"
+    },
+    {
       "title": "6사활 아직도 가나요?",
       "content": "콘16 위즈18 인트18 마법산데 옛날에 했었을땐 6사활 무조건 가라고 했는데 이번엔 어때요? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14492\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14492\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToS"
     },
@@ -110,7 +114,7 @@
     },
     {
       "title": "(투표)우유부단한 아재 질문 답변시 득템!",
-      "content": "초기부터 해오다가 백만원정도 벌고 접고 반복중6검4셋 샀다가 몇일하다팔고 접고 또 샀다가 러쉬하고 덥고반복중.. 어제는 90정액하고 무과금 오림런으로 하자하고 시작했다가 자동때문에 못버는구나하고 환불ㅋ근데 머리속에는 계속 린지생각중ㅜㅜ원래 린엠 쌀먹충회사가 바빠서 거의 일주일전부 출근중이에요연봉도 1억가까이되는데 왜그리 몇십만원 생각이나는지..아깝기도하고 감가도 그렇고.. 태생이 쫌팽인가 ㅡㅡ방금든 생각이 또 사서 한달정액만해보자입니다 ㅋ30짜리 힘콘18법사27짜리 덱요있어요결국질문은 머할까요 ㅋ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); const _IPOLL_RESULT_ = {\"422853\":{\"type\":\"vote\",\"setting\":{\"idx\":422853,\"state\":\"Y\",\"poll_type\":1,\"title\":\"기사 요정 법사\",\"image\":\"\",\"explain\":\"\",\"random\":\"N\",\"multi_select\":\"N\",\"multi_limit\":0,\"anonymity\":\"Y\",\"thumb_order\":\"right\",\"end_set\":\"date\",\"end_date\":\"2026-05-11 12:10:59\",\"end_count_limit\":0,\"result_view\":\"poll\",\"memnick\":\"우히히ooo\",\"participant\":16,\"other\":\"\",\"gamerank\":\"N\",\"come_idx\":6482,\"uidx\":14486,\"use_html\":\"N\",\"link\":\"htt"
+      "content": "초기부터 해오다가 백만원정도 벌고 접고 반복중6검4셋 샀다가 몇일하다팔고 접고 또 샀다가 러쉬하고 덥고반복중.. 어제는 90정액하고 무과금 오림런으로 하자하고 시작했다가 자동때문에 못버는구나하고 환불ㅋ근데 머리속에는 계속 린지생각중ㅜㅜ원래 린엠 쌀먹충회사가 바빠서 거의 일주일전부 출근중이에요연봉도 1억가까이되는데 왜그리 몇십만원 생각이나는지..아깝기도하고 감가도 그렇고.. 태생이 쫌팽인가 ㅡㅡ방금든 생각이 또 사서 한달정액만해보자입니다 ㅋ30짜리 힘콘18법사27짜리 덱요있어요결국질문은 머할까요 ㅋ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); const _IPOLL_RESULT_ = {\"422853\":{\"type\":\"vote\",\"setting\":{\"idx\":422853,\"state\":\"Y\",\"poll_type\":1,\"title\":\"기사 요정 법사\",\"image\":\"\",\"explain\":\"\",\"random\":\"N\",\"multi_select\":\"N\",\"multi_limit\":0,\"anonymity\":\"Y\",\"thumb_order\":\"right\",\"end_set\":\"date\",\"end_date\":\"2026-05-11 12:10:59\",\"end_count_limit\":0,\"result_view\":\"poll\",\"memnick\":\"우히히ooo\",\"participant\":17,\"other\":\"\",\"gamerank\":\"N\",\"come_idx\":6482,\"uidx\":14486,\"use_html\":\"N\",\"link\":\"htt"
     },
     {
       "title": "말하는섬의 두루마리",
@@ -159,111 +163,107 @@
     {
       "title": "마격 부탁드려요~",
       "content": "마격 얍얍 부탁드려여! 크리 시 이니 드려요~ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14470\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14470\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_"
-    },
-    {
-      "title": "형님 동생님들 벌써 이런게.. 있으면 편하겠네요",
-      "content": "한번 써보고 싶네.https://youtu.be/LfwNNyGl8_0?si=Eb_dyj2SNPwCDLsS noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14469\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14469\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fm"
     }
   ],
   "analysis": {
-    "todayIssue": "이번 업데이트는 타락한 축복의 땅 확장과 투명 상태 액션 규칙 개선을 포함하고 있어, 커뮤니티의 큰 관심을 받고 있습니다.",
+    "todayIssue": "5/6 업데이트로 타락한 축복의 땅이 사계절로 확장되며, 투명 상태 액션 규칙이 개선되었습니다. 이로 인해 보다 전략적인 전투가 가능해질 것으로 예상됩니다.",
     "official": {
       "summary": "• 타락한 축복의 땅 확장\n• PC방 전용 판매 상품 추가\n• 투명 상태 액션 규칙 개선",
       "date": "2026. 5. 6.",
       "keywords": [
         "타락한 축복의 땅",
-        "PC방 전용 상품",
+        "PC방 상품",
         "투명 상태",
-        "버그 수정",
-        "게임 안정화"
+        "전투 규칙",
+        "버그 수정"
       ],
       "marketingTips": [
-        "신규 시즌 맞이 이벤트를 개최하여 유저 참여를 유도하라.",
-        "타락한 축복의 땅 관련 아이템 판매 프로모션을 진행하라."
+        "타락한 축복의 땅 시즌 한정 아이템 판매!",
+        "PC방에서만 구매 가능한 특별 패키지 마련"
       ],
-      "priceImpact": "타락한 축복의 땅 확장으로 인해 해당 지역의 아이템 수급이 증가할 것으로 예상되며, 관련 아이템의 시세가 안정될 가능성이 높습니다."
+      "priceImpact": "타락한 축복의 땅 확장으로 사냥 효율성이 증가할 것으로 보이며, 관련 아이템의 시세 상승이 예상됩니다."
     },
     "dcinside": {
       "keywords": [
         {
-          "word": "작업장",
+          "word": "하이네",
+          "count": 5
+        },
+        {
+          "word": "7엘름",
           "count": 3
         },
         {
-          "word": "시세",
+          "word": "작업장",
           "count": 2
         },
         {
-          "word": "법사",
-          "count": 2
-        },
-        {
-          "word": "픽시",
+          "word": "짭스",
           "count": 1
         },
         {
-          "word": "자동사냥",
+          "word": "보험",
           "count": 1
         }
       ],
-      "summary": "디시인사이드 게시글은 게임 내 시세와 작업장 문제에 대한 불만이 주를 이루고 있으며, 사용자들 간의 논의가 활발하게 진행되고 있습니다.",
+      "summary": "디시인사이드에서는 최근 서버 내 작업장 문제와 7엘름 관련 시세 상승이 주 이슈로 떠올랐습니다. 유저들 사이에선 거래와 아이템 시세에 대한 격론이 이어지고 있습니다.",
       "marketingTips": [
-        "작업장 문제 해결을 위한 서비스 제공을 홍보하라.",
-        "게임 아이템 시세 변동에 대해 알림 서비스를 강화하라."
+        "작업장 개선 전, 아이템 거래 기회 잡기!",
+        "7엘름 시세 인상에 따른 마케팅 이벤트 진행"
       ],
-      "priceImpact": "작업장 문제로 인해 특정 아이템의 시세가 하락하고 있으며, 법사 관련 아이템의 거래량이 증가하고 있습니다."
+      "priceImpact": "서버 내 아이템 시세는 7엘름 상승으로 더욱 활발히 거래될 것으로 예상됩니다."
     },
     "inven": {
       "keywords": [
         {
-          "word": "엘름",
-          "count": 3
+          "word": "수정지팡이",
+          "count": 1
         },
         {
-          "word": "법사",
+          "word": "요정",
           "count": 2
         },
         {
-          "word": "제곧내",
-          "count": 1
-        },
-        {
           "word": "시세",
+          "count": 3
+        },
+        {
+          "word": "다템코리아",
           "count": 1
         },
         {
-          "word": "템",
-          "count": 1
+          "word": "마격",
+          "count": 2
         }
       ],
-      "summary": "인벤 게시글에서는 요정과 법사의 장비 거래 및 시세에 대해 활발한 정보 교류가 이루어지고 있으며, 유저들이 자신의 장비 세팅에 대해 질문하고 있습니다.",
+      "summary": "인벤에서는 수정지팡이나 요정 세트와 관련된 질문이 많았고, 다템코리아 거래 관련 사기가 언급되었습니다. 유저들 사이에서 아이템 시세에 대한 많은 관심이 집중되고 있습니다.",
       "marketingTips": [
-        "유저 장비 업그레이드를 돕는 서비스 이벤트를 진행하라.",
-        "시세 보고서를 주기적으로 발행하여 유저의 관심을 모으라."
+        "요정 세트 관련 프로모션 진행!",
+        "다템코리아 대신 신뢰할 수 있는 거래소 추천"
       ],
-      "priceImpact": "엘름을 비롯한 장비들의 상승세가 두드러지며, 거래가 활발해지고 있습니다."
+      "priceImpact": "인벤에서 논의된 아이템 시세와 거래 문제로 인해 시장에서의 가격 변동성이 심화될 것으로 보입니다."
     },
     "seo": [
+      "리니지클래식 업데이트 소식",
       "타락한 축복의 땅 확장",
-      "리니지클래식 업데이트 내용",
-      "게임 아이템 시세 분석",
-      "자동사냥 최적화 방법",
-      "PC방 이벤트 안내"
+      "리니지클래식 아이템 시세",
+      "2026년 게임 업데이트",
+      "리니지클래식 이벤트 진행"
     ],
     "youtube": [
-      "타락한 축복의 땅 공략 영상",
-      "리니지클래식 시세 변동 분석",
-      "게임 시스템 개선 소식",
-      "최신 업데이트 리뷰"
+      "리니지클래식 업데이트 분석하기",
+      "타락한 축복의 땅 사냥 공략",
+      "리니지클래식 아이템 시세 알아보기",
+      "투명 상태 전투 팁 공개!"
     ],
     "push": [
       {
-        "title": "(광고) 타락한 축복의 땅으로 가자!",
-        "content": "(광고) 새로운 사냥터에서 경험치를 쌓아보세요."
+        "title": "(광고) 타락한 축복의 땅 오픈!",
+        "content": "(광고) 새로운 아이템을 만나보세요!"
       },
       {
-        "title": "(광고) 엘름 시세 상승 중!",
-        "content": "(광고) 지금 거래해 보세요, 기회를 놓치지 마세요."
+        "title": "(광고) PC방 전용 상품 할인!",
+        "content": "(광고) 한정 기간 동안 특가 판매!"
       }
     ]
   }
