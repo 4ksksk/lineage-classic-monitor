@@ -1,10 +1,10 @@
-const Anthropic = require('@anthropic-ai/sdk');
+const OpenAI = require('openai');
 
-let anthropic;
+let openai;
 
 function getClient() {
-  if (!anthropic) anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-  return anthropic;
+  if (!openai) openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  return openai;
 }
 
 function buildPostBlock(posts) {
@@ -107,29 +107,22 @@ ${invenSection}
 
 반드시 JSON만 출력하고 다른 텍스트는 절대 포함하지 말 것.`;
 
-  const message = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 4096,
+  const response = await client.chat.completions.create({
+    model: 'gpt-4o-mini',
     messages: [{ role: 'user', content: prompt }],
+    max_tokens: 4096,
+    response_format: { type: 'json_object' },
   });
 
-  console.log('[DEBUG] message 전체:', JSON.stringify(message, null, 2));
-  console.log('[DEBUG] message.content 전체:', JSON.stringify(message.content, null, 2));
+  console.log('[DEBUG] response 전체:', JSON.stringify(response, null, 2));
+  console.log('[DEBUG] response.choices 전체:', JSON.stringify(response.choices, null, 2));
 
-  if (!message.content || message.content.length === 0) {
-    throw new Error(`Claude 응답 content가 비어 있습니다. stop_reason: ${message.stop_reason}`);
-  }
+  const text = response.choices?.[0]?.message?.content ?? '';
+  console.log('[DEBUG] message.content 전체:\n', text);
 
-  const textBlock = message.content.find(b => b.type === 'text');
-  if (!textBlock) {
-    throw new Error(`텍스트 블록 없음. content types: ${message.content.map(b => b.type).join(', ')}`);
-  }
-
-  console.log('[DEBUG] textBlock.text 전체:\n', textBlock.text);
-
-  const parsed = extractJson(textBlock.text.trim());
+  const parsed = extractJson(text.trim());
   if (!parsed) {
-    console.error('[Claude 파싱 실패] 응답 앞부분:', textBlock.text.slice(0, 300));
+    console.error('[OpenAI 파싱 실패] 응답 앞부분:', text.slice(0, 300));
     return EMPTY_ANALYSIS;
   }
 
