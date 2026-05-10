@@ -113,6 +113,9 @@ ${invenSection}
     messages: [{ role: 'user', content: prompt }],
   });
 
+  console.log('[DEBUG] message 전체:', JSON.stringify(message, null, 2));
+  console.log('[DEBUG] message.content 전체:', JSON.stringify(message.content, null, 2));
+
   if (!message.content || message.content.length === 0) {
     throw new Error(`Claude 응답 content가 비어 있습니다. stop_reason: ${message.stop_reason}`);
   }
@@ -121,6 +124,8 @@ ${invenSection}
   if (!textBlock) {
     throw new Error(`텍스트 블록 없음. content types: ${message.content.map(b => b.type).join(', ')}`);
   }
+
+  console.log('[DEBUG] textBlock.text 전체:\n', textBlock.text);
 
   const parsed = extractJson(textBlock.text.trim());
   if (!parsed) {
