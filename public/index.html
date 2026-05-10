@@ -837,10 +837,10 @@ function renderOfficial(a, rawPosts) {
 
   if (!rawPosts?.length) return emptyBox('📋', '수집된 공식 공지 없음');
   return rawPosts.map(p => `
-    <div style="padding:10px 0;border-bottom:1px solid var(--border)">
-      ${p.date ? `<div class="block"><span class="update-date">${esc(p.date)}</span></div>` : ''}
-      <div class="summary-text">${esc(p.title || '제목 없음')}</div>
-      ${p.content ? `<div class="summary-text" style="margin-top:4px;font-size:0.78rem;color:var(--text3)">${esc(p.content.slice(0,120))}${p.content.length>120?'…':''}</div>` : ''}
+    <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+      ${p.date ? `<div style="margin-bottom:8px"><span class="update-date">${esc(p.date)}</span></div>` : ''}
+      <div style="font-size:15px;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:8px">${esc(p.title || '제목 없음')}</div>
+      ${p.content ? `<div class="summary-text">${esc(p.content.slice(0, 400))}${p.content.length > 400 ? '…' : ''}</div>` : ''}
     </div>
   `).join('');
 }
@@ -889,7 +889,25 @@ function renderCommunity(data, tagCls, rawPosts) {
     return html || emptyBox('💬', '분석 데이터 없음');
   }
 
-  return emptyBox('💬', 'AI 분석 대기 중');
+  if (!rawPosts?.length) return emptyBox('💬', '수집된 게시글 없음');
+  const cleanContent = (s) => {
+    if (!s) return '';
+    const cut = s.search(/noKidnap|function\s+\w+\s*\(|INVEN\.|window\.open|document\./);
+    return (cut > 0 ? s.slice(0, cut) : s).trim().slice(0, 200);
+  };
+  const items = rawPosts.slice(0, 8).map(p => {
+    const body = cleanContent(p.content);
+    return `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:${body ? '5px' : '0'}">${esc(p.title || '(제목 없음)')}</div>
+      ${body ? `<div class="summary-text" style="font-size:13px">${esc(body)}${p.content && p.content.length > 200 ? '…' : ''}</div>` : ''}
+    </div>`;
+  }).join('');
+  const extra = rawPosts.length - Math.min(rawPosts.length, 8);
+  return `<div class="block" style="margin-bottom:10px">
+    <div class="sec-label">수집된 게시글 · AI 분석 대기 중</div>
+  </div>
+  ${items}
+  ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
 }
 
 /* ── 렌더: SEO ── */
