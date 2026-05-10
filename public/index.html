@@ -283,32 +283,40 @@
 
     /* ── PRICE IMPACT ── */
     .price-box {
-      background: #f8fafc;
-      border: 1px solid var(--border);
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
       border-radius: 8px;
       padding: 16px 20px;
       font-size: 15px;
-      color: var(--text2);
+      color: #92400e;
       line-height: 1.7;
     }
+    .sec-label-price { color: #b45309 !important; }
 
     /* ── MARKETING TIPS ── */
+    .tip-list-wrap {
+      background: #f0fdf4;
+      border-left: 3px solid #10b981;
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
     .tip-list { display: flex; flex-direction: column; gap: 8px; list-style: none; }
     .tip-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
       font-size: 15px;
-      color: var(--text2);
+      color: #065f46;
       line-height: 1.65;
     }
     .tip-dot {
       flex-shrink: 0;
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--text3);
+      background: #10b981;
       margin-top: 8px;
     }
+    .sec-label-marketing { color: #065f46 !important; }
 
     /* ── NUMBERED LIST (SEO / YT) ── */
     .num-list { display: flex; flex-direction: column; gap: 0; counter-reset: n; }
@@ -836,7 +844,7 @@ function renderOfficial(a, rawPosts) {
 
     if (o.priceImpact) {
       html += `<div class="block">
-        <div class="sec-label">시세 영향도</div>
+        <div class="sec-label sec-label-price">시세 영향도</div>
         <div class="price-box">${esc(o.priceImpact)}</div>
       </div>`;
     }
@@ -846,8 +854,8 @@ function renderOfficial(a, rawPosts) {
         `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
       ).join('');
       html += `<div class="block">
-        <div class="sec-label">마케팅 제안</div>
-        <ul class="tip-list">${tips}</ul>
+        <div class="sec-label sec-label-marketing">마케팅 제안</div>
+        <div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>
       </div>`;
     }
 
@@ -890,7 +898,7 @@ function renderCommunity(data, tagCls, rawPosts) {
 
     if (data.priceImpact) {
       html += `<div class="block">
-        <div class="sec-label">시세 영향도</div>
+        <div class="sec-label sec-label-price">시세 영향도</div>
         <div class="price-box">${esc(data.priceImpact)}</div>
       </div>`;
     }
@@ -900,8 +908,8 @@ function renderCommunity(data, tagCls, rawPosts) {
         `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
       ).join('');
       html += `<div class="block">
-        <div class="sec-label">마케팅 제안</div>
-        <ul class="tip-list">${tips}</ul>
+        <div class="sec-label sec-label-marketing">마케팅 제안</div>
+        <div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>
       </div>`;
     }
 
