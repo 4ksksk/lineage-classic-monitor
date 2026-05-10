@@ -542,7 +542,30 @@
       gap: 10px;
       margin-bottom: 20px;
       flex-wrap: wrap;
+      align-items: center;
     }
+    .history-btn {
+      padding: 9px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .history-btn-query {
+      background: var(--official);
+      color: #fff;
+    }
+    .history-btn-query:hover { opacity: 0.85; }
+    .history-btn-close {
+      background: var(--border);
+      color: var(--text2);
+    }
+    .history-btn-close:hover { opacity: 0.75; }
+    .history-panel { display: none; flex-direction: column; gap: 0; }
+    .history-panel.open { display: flex; }
     .history-select {
       flex: 1;
       min-width: 140px;
@@ -742,14 +765,14 @@
         <option value="weekly">주간</option>
         <option value="monthly">월간</option>
       </select>
-      <select id="periodValue" class="history-select" onchange="loadHistoryData(this.value)">
+      <select id="periodValue" class="history-select">
         <option>기간을 선택하세요</option>
       </select>
+      <button class="history-btn history-btn-query" id="historyQueryBtn" onclick="queryHistory()">조회</button>
+      <button class="history-btn history-btn-close" id="historyCloseBtn" onclick="closeHistory()" style="display:none">닫기</button>
     </div>
 
-    <div id="historyPanel" class="history-panel">
-      <div class="empty"><div class="empty-icon">📂</div>기간을 선택하면 데이터를 불러옵니다.</div>
-    </div>
+    <div id="historyPanel" class="history-panel"></div>
   </section>
 
 </div><!-- /wrap -->
@@ -1080,8 +1103,9 @@ async function loadHistoryIndex() {
     }
     buildPeriodOptions();
   } catch(e) {
-    document.getElementById('historyPanel').innerHTML =
-      emptyBox('⚠️', `히스토리 목록 로드 실패: ${e.message}`);
+    console.error('[historyIndex 로드 실패]', e.message);
+    document.getElementById('periodValue').innerHTML =
+      `<option value="">로드 실패: ${esc(e.message)}</option>`;
   }
 }
 
@@ -1115,10 +1139,23 @@ function buildPeriodOptions() {
     ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
     : '<option value="">데이터 없음</option>';
 
-  document.getElementById('historyPanel').innerHTML =
-    '<div class="empty"><div class="empty-icon">📂</div>기간을 선택하면 데이터를 불러옵니다.</div>';
+  closeHistory();
+}
 
-  if (options.length) loadHistoryData(options[0]);
+function queryHistory() {
+  const period = document.getElementById('periodValue').value;
+  if (!period || period === '데이터 없음') return;
+  const panel = document.getElementById('historyPanel');
+  panel.classList.add('open');
+  document.getElementById('historyCloseBtn').style.display = '';
+  loadHistoryData(period);
+}
+
+function closeHistory() {
+  const panel = document.getElementById('historyPanel');
+  panel.classList.remove('open');
+  panel.innerHTML = '';
+  document.getElementById('historyCloseBtn').style.display = 'none';
 }
 
 async function loadHistoryData(period) {
