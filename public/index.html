@@ -10,17 +10,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #ffffff;
-      --card-bg:  #f8f9fa;
-      --official: #4361ee;
-      --dc:       #f72585;
-      --inven:    #7209b7;
-      --text:     #212529;
-      --text2:    #495057;
-      --text3:    #868e96;
-      --border:   #dee2e6;
-      --radius:   12px;
-      --shadow:   0 2px 12px rgba(0,0,0,0.07);
+      --bg:        #f0f4f8;
+      --card-bg:   #ffffff;
+      --header-bg: #1a2332;
+      --accent:    #2563eb;
+      --accent-bg: #e8f0fe;
+      --text:      #1e293b;
+      --text2:     #64748b;
+      --text3:     #94a3b8;
+      --border:    #e2e8f0;
+      --radius:    12px;
+      --shadow:    0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+      /* 하위 호환 */
+      --official: var(--accent);
+      --dc:       var(--accent);
+      --inven:    var(--accent);
     }
 
     html { font-size: 14px; }
@@ -31,56 +35,61 @@
       min-height: 100vh;
       line-height: 1.6;
     }
+    /* wrap에서 header 위 여백 없애기 */
+    .wrap { padding-top: 0; }
 
     /* ── WRAPPER ── */
     .wrap {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 32px 80px;
+      padding: 0 40px 100px;
     }
 
     /* ── HEADER ── */
+    .header-outer {
+      background: var(--header-bg);
+      width: 100%;
+      margin-bottom: 40px;
+    }
     .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 24px 0 20px;
+      padding: 20px 40px;
       gap: 16px;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .header-left { display: flex; flex-direction: column; gap: 3px; }
+    .header-left { display: flex; flex-direction: column; gap: 4px; }
     .site-title {
       font-size: 22px;
       font-weight: 700;
-      color: var(--text);
+      color: #ffffff;
       letter-spacing: -0.02em;
     }
-    .site-title span {
-      color: var(--official);
-    }
+    .site-title span { color: #93c5fd; }
     #clock {
-      font-size: 0.8rem;
-      color: var(--text3);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
       font-weight: 400;
     }
     .header-right {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     #lastUpdated {
       font-size: 0.75rem;
-      color: var(--text3);
+      color: rgba(255,255,255,0.55);
     }
     .btn-collect {
       display: flex;
       align-items: center;
       gap: 6px;
       padding: 8px 18px;
-      background: var(--official);
+      background: var(--accent);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -97,14 +106,14 @@
 
     /* ── ISSUE BANNER ── */
     .issue-banner {
-      background: #eef2ff;
-      border-left: 4px solid var(--official);
+      background: var(--accent-bg);
+      border-left: 4px solid var(--accent);
       border-radius: var(--radius);
-      padding: 22px 28px;
-      margin-bottom: 32px;
+      padding: 24px 32px;
+      margin-bottom: 36px;
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 16px;
     }
     .issue-badge {
       flex-shrink: 0;
@@ -112,7 +121,7 @@
       align-items: center;
       gap: 5px;
       padding: 3px 10px;
-      background: var(--official);
+      background: var(--accent);
       border-radius: 20px;
       font-size: 0.65rem;
       font-weight: 700;
@@ -144,27 +153,27 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
-      margin-bottom: 24px;
-      border-left: 4px solid transparent;
+      margin-bottom: 28px;
+      border-left: 4px solid var(--accent);
     }
-    .card.official { border-left-color: var(--official); }
-    .card.dc        { border-left-color: var(--dc); }
-    .card.inven     { border-left-color: var(--inven); }
-    .card.seo       { border-left-color: #0ea5e9; }
-    .card.youtube   { border-left-color: #ef4444; }
-    .card.push      { border-left-color: #10b981; }
+    .card.official,
+    .card.dc,
+    .card.inven,
+    .card.seo,
+    .card.youtube,
+    .card.push { border-left-color: var(--accent); }
 
     .card-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 28px 20px;
+      padding: 22px 32px 20px;
       border-bottom: 1px solid var(--border);
     }
     .card-head-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .card-icon {
       width: 34px; height: 34px;
@@ -172,26 +181,27 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 0.78rem; font-weight: 700; color: #fff;
       flex-shrink: 0;
+      background: var(--accent);
     }
-    .icon-official { background: var(--official); }
-    .icon-dc       { background: var(--dc); }
-    .icon-inven    { background: var(--inven); }
-    .icon-seo      { background: #0ea5e9; }
-    .icon-yt       { background: #ef4444; }
-    .icon-push     { background: #10b981; }
+    .icon-official,
+    .icon-dc,
+    .icon-inven,
+    .icon-seo,
+    .icon-yt,
+    .icon-push { background: var(--accent); }
 
     .card-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       color: var(--text);
     }
     .card-time {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text3);
     }
 
     /* ── CARD BODY ── */
-    .card-body { padding: 24px 28px; }
+    .card-body { padding: 28px 32px; }
 
     /* ── SEC LABEL ── */
     .sec-label {
@@ -200,7 +210,7 @@
       text-transform: uppercase;
       letter-spacing: 0.09em;
       color: var(--text3);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -211,7 +221,7 @@
       height: 1px;
       background: var(--border);
     }
-    .block { margin-bottom: 20px; }
+    .block { margin-bottom: 24px; }
     .block:last-child { margin-bottom: 0; }
 
     /* ── UPDATE DATE ── */
@@ -220,11 +230,11 @@
       align-items: center;
       gap: 5px;
       padding: 3px 10px;
-      background: rgba(67,97,238,0.08);
-      border: 1px solid rgba(67,97,238,0.2);
+      background: var(--accent-bg);
+      border: 1px solid rgba(37,99,235,0.2);
       border-radius: 6px;
       font-size: 0.75rem;
-      color: var(--official);
+      color: var(--accent);
       font-weight: 600;
     }
 
@@ -238,45 +248,29 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: 500;
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid rgba(37,99,235,0.2);
     }
-    .tag.official {
-      background: rgba(67,97,238,0.1);
-      color: var(--official);
-      border: 1px solid rgba(67,97,238,0.25);
-    }
-    .tag.dc {
-      background: rgba(247,37,133,0.08);
-      color: var(--dc);
-      border: 1px solid rgba(247,37,133,0.25);
-    }
-    .tag.inven {
-      background: rgba(114,9,183,0.08);
-      color: var(--inven);
-      border: 1px solid rgba(114,9,183,0.25);
-    }
-    .tag.seo {
-      background: rgba(14,165,233,0.08);
-      color: #0ea5e9;
-      border: 1px solid rgba(14,165,233,0.25);
-    }
-    .tag.yt {
-      background: rgba(239,68,68,0.08);
-      color: #ef4444;
-      border: 1px solid rgba(239,68,68,0.25);
-    }
+    .tag.official,
+    .tag.dc,
+    .tag.inven,
+    .tag.seo,
+    .tag.yt,
     .tag.push-tag {
-      background: rgba(16,185,129,0.08);
-      color: #10b981;
-      border: 1px solid rgba(16,185,129,0.25);
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid rgba(37,99,235,0.2);
     }
     .badge-count {
       display: inline-block;
-      background: rgba(0,0,0,0.1);
+      background: rgba(37,99,235,0.15);
       border-radius: 10px;
       font-size: 0.63rem;
       font-weight: 700;
       padding: 0 5px;
       line-height: 1.6;
+      color: var(--accent);
     }
 
     /* ── SUMMARY TEXT ── */
@@ -289,10 +283,10 @@
 
     /* ── PRICE IMPACT ── */
     .price-box {
-      background: #fff;
+      background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 14px 18px;
+      padding: 16px 20px;
       font-size: 15px;
       color: var(--text2);
       line-height: 1.7;
@@ -394,38 +388,38 @@
       display: none;
       align-items: center;
       gap: 8px;
-      background: #fff8e1;
-      border: 1px solid #ffd54f;
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
       border-radius: 8px;
       padding: 10px 16px;
       font-size: 0.78rem;
-      color: #795548;
-      margin-bottom: 16px;
+      color: #92400e;
+      margin-bottom: 20px;
     }
     .warn-bar.on { display: flex; }
     .warn-icon {
       flex-shrink: 0;
       padding: 1px 8px;
-      background: #ffe082;
-      border: 1px solid #ffc107;
+      background: #fde68a;
+      border: 1px solid #fcd34d;
       border-radius: 4px;
       font-size: 0.65rem;
       font-weight: 700;
-      color: #5d4037;
+      color: #78350f;
     }
 
     /* ── LOADING OVERLAY ── */
     #overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(255,255,255,0.85);
+      background: rgba(240,244,248,0.88);
       align-items: center; justify-content: center;
       z-index: 999; flex-direction: column; gap: 14px;
     }
     #overlay.on { display: flex; }
     .loader {
       width: 32px; height: 32px;
-      border: 3px solid #dee2e6;
-      border-top-color: var(--official);
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
     }
@@ -435,19 +429,19 @@
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 20px 0;
+      padding: 24px 0;
       font-size: 0.72rem;
       color: var(--text3);
       border-top: 1px solid var(--border);
-      margin-top: 8px;
+      margin-top: 12px;
     }
 
     /* ── CONTENT GRID (SEO / YT / Push) ── */
     .grid-content {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 24px;
+      gap: 28px;
+      margin-bottom: 28px;
       align-items: start;
     }
     .grid-content .card { margin-bottom: 0; }
@@ -458,7 +452,7 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      padding: 10px 0;
+      padding: 11px 0;
       border-bottom: 1px solid var(--border);
       font-size: 15px;
       color: var(--text2);
@@ -470,18 +464,18 @@
       content: counter(n);
       flex-shrink: 0;
       width: 24px; height: 24px;
-      background: #fff;
-      border: 1px solid var(--border);
+      background: var(--accent-bg);
+      border: 1px solid rgba(37,99,235,0.2);
       border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
       font-size: 0.72rem; font-weight: 700;
-      color: var(--text3);
+      color: var(--accent);
       margin-top: 1px;
     }
 
     /* push card 내부 */
     .push-item {
-      background: #fff;
+      background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 14px 16px;
@@ -518,18 +512,18 @@
 
     /* ── HISTORY SECTION ── */
     .history-section {
-      margin-top: 48px;
-      padding-top: 36px;
+      margin-top: 56px;
+      padding-top: 40px;
       border-top: 2px solid var(--border);
     }
     .history-heading {
       font-size: 20px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .history-heading::after {
       content: '';
@@ -555,7 +549,7 @@
       transition: background 0.15s, opacity 0.15s;
     }
     .history-btn-query {
-      background: var(--official);
+      background: var(--accent);
       color: #fff;
     }
     .history-btn-query:hover { opacity: 0.85; }
@@ -599,8 +593,8 @@
       margin-bottom: 16px;
     }
     .history-issue-item {
-      background: #eef2ff;
-      border-left: 3px solid var(--official);
+      background: var(--accent-bg);
+      border-left: 3px solid var(--accent);
       border-radius: 6px;
       padding: 10px 14px;
       font-size: 0.85rem;
@@ -624,18 +618,17 @@
 
     @media (max-width: 700px) {
       .grid-content { grid-template-columns: 1fr; }
+      .wrap { padding: 0 20px 80px; }
     }
     @media (max-width: 600px) {
-      .site-header { flex-direction: column; align-items: flex-start; }
+      .site-header { flex-direction: column; align-items: flex-start; padding: 18px 20px; }
       .header-right { width: 100%; justify-content: space-between; }
     }
   </style>
 </head>
 <body>
 
-<div class="wrap">
-
-  <!-- ── HEADER ── -->
+<div class="header-outer">
   <header class="site-header">
     <div class="header-left">
       <div class="site-title">⚔ <span>리니지클래식</span> 모니터</div>
@@ -651,6 +644,9 @@
       </button>
     </div>
   </header>
+</div>
+
+<div class="wrap">
 
   <!-- ── AI WARN ── -->
   <div class="warn-bar" id="warnBar">
