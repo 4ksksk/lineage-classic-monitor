@@ -14,6 +14,35 @@ function buildPostBlock(posts) {
   ).join('\n\n');
 }
 
+const EMPTY_ANALYSIS = {
+  todayIssue: null,
+  official: { summary: null, date: null, keywords: [], marketingTips: [], priceImpact: null },
+  dcinside: { keywords: [], summary: null, marketingTips: [], priceImpact: null },
+  inven:    { keywords: [], summary: null, marketingTips: [], priceImpact: null },
+  seo: [],
+  youtube: [],
+  push: [],
+};
+
+function extractJson(text) {
+  // 1. ```json 코드블록 안에서 추출
+  const codeBlock = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (codeBlock) {
+    try { return JSON.parse(codeBlock[1].trim()); } catch (_) {}
+  }
+
+  // 2. { 부터 마지막 } 까지 추출
+  const braceMatch = text.match(/\{[\s\S]*\}/);
+  if (braceMatch) {
+    try { return JSON.parse(braceMatch[0]); } catch (_) {}
+  }
+
+  // 3. 텍스트 전체를 JSON.parse 시도
+  try { return JSON.parse(text); } catch (_) {}
+
+  return null;
+}
+
 async function analyzePosts(officialPosts, dcPosts, invenPosts) {
   const client = getClient();
 
@@ -74,7 +103,9 @@ ${invenSection}
     {"title": null, "content": "광고 본문 (35자 이내, 필수)"},
     {"title": "광고 제목 (35자 이내, 없으면 null)", "content": "광고 본문 (35자 이내, 필수)"}
   ]
-}`;
+}
+
+반드시 JSON만 출력하고 다른 텍스트는 절대 포함하지 말 것.`;
 
   const message = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
@@ -91,17 +122,13 @@ ${invenSection}
     throw new Error(`텍스트 블록 없음. content types: ${message.content.map(b => b.type).join(', ')}`);
   }
 
-  const text = textBlock.text.trim();
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) {
-    throw new Error(`JSON 추출 실패. 응답 앞부분: ${text.slice(0, 300)}`);
+  const parsed = extractJson(textBlock.text.trim());
+  if (!parsed) {
+    console.error('[Claude 파싱 실패] 응답 앞부분:', textBlock.text.slice(0, 300));
+    return EMPTY_ANALYSIS;
   }
 
-  try {
-    return JSON.parse(jsonMatch[0]);
-  } catch (e) {
-    throw new Error(`JSON 파싱 실패: ${e.message} / 추출 앞부분: ${jsonMatch[0].slice(0, 300)}`);
-  }
+  return parsed;
 }
 
 module.exports = { analyzePosts };
