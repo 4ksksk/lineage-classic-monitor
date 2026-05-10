@@ -347,13 +347,11 @@
 
     /* ── PUSH NOTIFICATION ── */
     .push-item {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-bottom: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .push-item:last-child { margin-bottom: 0; }
+    .push-item:first-child { padding-top: 4px; }
+    .push-item:last-child { border-bottom: none; padding-bottom: 0; }
     .push-label {
       font-size: 0.65rem;
       font-weight: 700;
@@ -366,7 +364,6 @@
       font-size: 0.88rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 8px;
       line-height: 1.5;
     }
     .push-body-text {
@@ -374,13 +371,6 @@
       color: var(--text2);
       line-height: 1.65;
     }
-    .push-char {
-      font-size: 0.65rem;
-      color: var(--text3);
-      text-align: right;
-      margin-top: 4px;
-    }
-    .push-char.over { color: #ef4444; }
 
     /* ── EMPTY ── */
     .empty {
@@ -483,13 +473,11 @@
 
     /* push card 내부 */
     .push-item {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .push-item:last-child { margin-bottom: 0; }
+    .push-item:first-child { padding-top: 4px; }
+    .push-item:last-child { border-bottom: none; padding-bottom: 0; }
     .push-label {
       font-size: 0.68rem;
       font-weight: 700;
@@ -503,20 +491,12 @@
       font-weight: 700;
       color: var(--text);
       line-height: 1.55;
-      margin-bottom: 2px;
     }
     .push-body-text {
       font-size: 15px;
       color: var(--text2);
       line-height: 1.65;
     }
-    .push-char {
-      font-size: 0.68rem;
-      color: var(--text3);
-      text-align: right;
-      margin-top: 4px;
-    }
-    .push-char.over { color: #ef4444; font-weight: 600; }
 
     /* ── HISTORY SECTION ── */
     .history-section {
@@ -959,22 +939,11 @@ function renderPush(list) {
     const rawBody  = p.content || '';
     const title = rawTitle.startsWith('(광고)') ? rawTitle : rawTitle ? `(광고) ${rawTitle}` : '';
     const body  = rawBody.startsWith('(광고)') ? rawBody : rawBody ? `(광고) ${rawBody}` : '';
-    const tCore = rawTitle.replace(/^\(광고\)\s*/,'');
-    const bCore = rawBody.replace(/^\(광고\)\s*/,'');
-    const tLen  = tCore.length;
-    const bLen  = bCore.length;
-    return `
-      <div class="push-item">
-        ${title ? `
-          <div class="push-label">제목</div>
-          <div class="push-title-text">${esc(title)}</div>
-          <div class="push-char${tLen > 35 ? ' over' : ''}">${tLen}/35자</div>
-        ` : ''}
-        <div class="push-label" style="${title ? 'margin-top:12px' : ''}">내용</div>
-        <div class="push-body-text">${esc(body)}</div>
-        <div class="push-char${bLen > 35 ? ' over' : ''}">${bLen}/35자</div>
-      </div>
-    `;
+    return `<div class="push-item">
+      ${title ? `<div class="push-label">제목</div><div class="push-title-text">${esc(title)}</div>` : ''}
+      <div class="push-label"${title ? ' style="margin-top:8px"' : ''}>내용</div>
+      <div class="push-body-text">${esc(body)}</div>
+    </div>`;
   }).join('');
 }
 
@@ -1204,16 +1173,13 @@ function mergeKws(datasets, field) {
 }
 
 function renderHistoryCard(accentCls, iconCls, iconChar, title, datasets, aKey, tagCls) {
-  const kws       = mergeKws(datasets, aKey);
-  const summaries = datasets
-    .map(d => ({
-      ts:          d.lastUpdated,
-      summary:     d.analysis?.[aKey]?.summary,
-      priceImpact: d.analysis?.[aKey]?.priceImpact,
-    }))
-    .filter(s => s.summary || s.priceImpact);
+  const kws = mergeKws(datasets, aKey);
 
-  if (!kws.length && !summaries.length) return '';
+  // 가장 최근 시간대의 요약/시세 1개만 표시
+  const sorted = [...datasets].sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
+  const latest = sorted.find(d => d.analysis?.[aKey]?.summary || d.analysis?.[aKey]?.priceImpact);
+
+  if (!kws.length && !latest) return '';
 
   const kwHtml = kws.length
     ? `<div class="block">
@@ -1224,16 +1190,16 @@ function renderHistoryCard(accentCls, iconCls, iconChar, title, datasets, aKey, 
       </div>`
     : '';
 
-  const summaryHtml = summaries.map(s => {
-    const ts = s.ts
-      ? new Date(s.ts).toLocaleString('ko-KR', { timeZone:'Asia/Seoul', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })
+  const summaryHtml = latest ? (() => {
+    const ts = latest.lastUpdated
+      ? new Date(latest.lastUpdated).toLocaleString('ko-KR', { timeZone:'Asia/Seoul', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })
       : '';
     return `<div class="history-summary-block">
       ${ts ? `<div class="history-ts">${ts}</div>` : ''}
-      ${s.summary     ? `<div class="summary-text">${esc(s.summary)}</div>` : ''}
-      ${s.priceImpact ? `<div class="price-box" style="margin-top:8px">${esc(s.priceImpact)}</div>` : ''}
+      ${latest.analysis[aKey].summary     ? `<div class="summary-text">${esc(latest.analysis[aKey].summary)}</div>` : ''}
+      ${latest.analysis[aKey].priceImpact ? `<div class="price-box" style="margin-top:8px">${esc(latest.analysis[aKey].priceImpact)}</div>` : ''}
     </div>`;
-  }).join('');
+  })() : '';
 
   return `<div class="card ${accentCls}" style="margin-bottom:12px">
     <div class="card-head">
