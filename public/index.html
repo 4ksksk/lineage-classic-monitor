@@ -978,11 +978,15 @@ async function loadResults() {
     const invenPosts    = data.invenPosts    || [];
     const cnt = officialPosts.length + dcPosts.length + invenPosts.length;
 
+    // null이거나 모든 핵심 필드가 비어있으면 분석 없는 것으로 판단
+    const hasAnalysis = !!(a && (a.todayIssue || a.official?.summary || a.dcinside?.summary || a.inven?.summary));
+    console.log(`[loadResults] hasAnalysis=${hasAnalysis} / 공식=${officialPosts.length} DC=${dcPosts.length} 인벤=${invenPosts.length}`);
+
     const warnBar = document.getElementById('warnBar');
-    if (!a && cnt > 0) warnBar.classList.add('on');
+    if (!hasAnalysis && cnt > 0) warnBar.classList.add('on');
     else warnBar.classList.remove('on');
 
-    document.getElementById('mainIssueText').textContent = a?.todayIssue ||
+    document.getElementById('mainIssueText').textContent = (hasAnalysis && a.todayIssue) ||
       (cnt > 0
         ? `공식 ${officialPosts.length}개 · DC인사이드 ${dcPosts.length}개 · 인벤 ${invenPosts.length}개 수집됨 (AI 분석 대기)`
         : '데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.');
@@ -995,18 +999,19 @@ async function loadResults() {
       document.getElementById(id).textContent = t
     );
 
-    document.getElementById('officialPanel').innerHTML = renderOfficial(a, officialPosts);
-    document.getElementById('dcPanel').innerHTML       = renderCommunity(a?.dcinside, 'dc',    dcPosts);
-    document.getElementById('invenPanel').innerHTML    = renderCommunity(a?.inven,    'inven', invenPosts);
+    // analysis가 있으면 분석 결과를, 없으면 원본 데이터를 렌더
+    document.getElementById('officialPanel').innerHTML = renderOfficial(hasAnalysis ? a : null, officialPosts);
+    document.getElementById('dcPanel').innerHTML       = renderCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('invenPanel').innerHTML    = renderCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
 
-    document.getElementById('seoCard').innerHTML  = renderSEO(a?.seo);
-    document.getElementById('ytCard').innerHTML   = renderYoutube(a?.youtube);
-    document.getElementById('pushCard').innerHTML = renderPush(a?.push);
+    document.getElementById('seoCard').innerHTML  = renderSEO(hasAnalysis ? a?.seo     : null);
+    document.getElementById('ytCard').innerHTML   = renderYoutube(hasAnalysis ? a?.youtube : null);
+    document.getElementById('pushCard').innerHTML = renderPush(hasAnalysis ? a?.push    : null);
 
     if (cnt > 0) {
       document.getElementById('footerStatus').textContent =
-        a ? `총 ${cnt}개 게시글 AI 분석 완료 · 6시간마다 자동 수집`
-          : `총 ${cnt}개 게시글 수집됨 · AI 분석 대기 중 · 6시간마다 자동 수집`;
+        hasAnalysis ? `총 ${cnt}개 게시글 AI 분석 완료 · 6시간마다 자동 수집`
+                    : `총 ${cnt}개 게시글 수집됨 · AI 분석 대기 중 · 6시간마다 자동 수집`;
     }
   } catch(e) {
     console.error(e);
