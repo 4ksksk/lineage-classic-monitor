@@ -3,7 +3,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 let genAI;
 
 function getClient() {
-  if (!genAI) genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  if (!genAI) genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY, { apiVersion: 'v1' });
   return genAI;
 }
 
@@ -16,7 +16,7 @@ function buildPostBlock(posts) {
 
 async function analyzePosts(officialPosts, dcPosts, invenPosts) {
   const client = getClient();
-  const model = client.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  const model = client.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
   const officialSection = officialPosts.length > 0
     ? officialPosts.map(p =>
