@@ -1,10 +1,10 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const Anthropic = require('@anthropic-ai/sdk');
 
-let genAI;
+let anthropic;
 
 function getClient() {
-  if (!genAI) genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY, { apiVersion: 'v1' });
-  return genAI;
+  if (!anthropic) anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  return anthropic;
 }
 
 function buildPostBlock(posts) {
@@ -16,7 +16,6 @@ function buildPostBlock(posts) {
 
 async function analyzePosts(officialPosts, dcPosts, invenPosts) {
   const client = getClient();
-  const model = client.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
   const officialSection = officialPosts.length > 0
     ? officialPosts.map(p =>
@@ -77,11 +76,16 @@ ${invenSection}
   ]
 }`;
 
-  const result = await model.generateContent(prompt);
-  const text = result.response.text().trim();
+  const message = await client.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 4096,
+    messages: [{ role: 'user', content: prompt }],
+  });
+
+  const text = message.content[0].text.trim();
 
   const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error('Gemini 응답에서 JSON을 파싱할 수 없습니다.');
+  if (!jsonMatch) throw new Error('Claude 응답에서 JSON을 파싱할 수 없습니다.');
   return JSON.parse(jsonMatch[0]);
 }
 
