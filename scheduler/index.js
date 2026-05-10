@@ -32,16 +32,27 @@ async function runCrawlAndAnalyze() {
   if (!hasKey) {
     console.warn('[스케줄러] OPENAI_API_KEY 없음 — OpenAI 분석 건너뜀 (GitHub Secret 설정 필요)');
   } else if (total === 0) {
-    console.warn('[스케줄러] 수집된 게시글 없음 — Claude 분석 건너뜀');
+    console.warn('[스케줄러] 수집된 게시글 없음 — OpenAI 분석 건너뜀');
   } else {
     try {
-      console.log('[스케줄러] Claude 분석 시작 (API 1회 호출)...');
+      console.log('[스케줄러] OpenAI 분석 시작 (API 1회 호출)...');
       analysis = await analyzePosts(officialPosts, dcPosts, invenPosts);
-      console.log('[스케줄러] Claude 분석 완료');
+      console.log('[스케줄러] OpenAI 분석 완료');
     } catch (err) {
-      console.error('[Claude 분석 오류]', err.message);
-      console.error('[Claude 분석 오류 스택]', err.stack);
+      console.error('[OpenAI 분석 오류]', err.message);
+      console.error('[OpenAI 분석 오류 스택]', err.stack);
     }
+  }
+
+  // 분석 실패 시 이전 results.json의 analysis 보존
+  if (!analysis && fs.existsSync(DATA_PATH)) {
+    try {
+      const prev = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
+      if (prev.analysis) {
+        analysis = prev.analysis;
+        console.log('[스케줄러] 이전 분석 결과 보존 (API 미설정 또는 오류)');
+      }
+    } catch (_) {}
   }
 
   const result = {

@@ -970,7 +970,6 @@ async function loadResults() {
     const url = IS_LOCAL ? DATA_URL : `${DATA_URL}?t=${Date.now()}`;
     const res  = await fetch(url);
     const data = await res.json();
-    const a    = data.analysis;
     lastUpdatedISO = data.lastUpdated;
 
     const officialPosts = data.officialPosts || [];
@@ -978,8 +977,26 @@ async function loadResults() {
     const invenPosts    = data.invenPosts    || [];
     const cnt = officialPosts.length + dcPosts.length + invenPosts.length;
 
-    // null이거나 모든 핵심 필드가 비어있으면 분석 없는 것으로 판단
-    const hasAnalysis = !!(a && (a.todayIssue || a.official?.summary || a.dcinside?.summary || a.inven?.summary));
+    // 유효한 analysis인지 판단
+    const isValidAnalysis = a => !!(a && (a.todayIssue || a.official?.summary || a.dcinside?.summary || a.inven?.summary));
+
+    let a = data.analysis;
+
+    // 분석 결과가 있으면 localStorage에 캐시
+    if (isValidAnalysis(a)) {
+      try { localStorage.setItem('cachedAnalysis', JSON.stringify(a)); } catch (_) {}
+    } else {
+      // 없으면 localStorage 캐시에서 복원
+      try {
+        const cached = localStorage.getItem('cachedAnalysis');
+        if (cached) {
+          a = JSON.parse(cached);
+          console.log('[loadResults] localStorage에서 이전 분석 결과 복원');
+        }
+      } catch (_) {}
+    }
+
+    const hasAnalysis = isValidAnalysis(a);
     console.log(`[loadResults] hasAnalysis=${hasAnalysis} / 공식=${officialPosts.length} DC=${dcPosts.length} 인벤=${invenPosts.length}`);
 
     const warnBar = document.getElementById('warnBar');
