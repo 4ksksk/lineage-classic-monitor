@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-05-10T04:51:49.922Z",
+  "lastUpdated": "2026-05-10T03:00:15.795Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
-      "date": "2026. 5. 6. AM 8:00:00",
+      "date": "2026. 5. 6. 오전 8:00:00",
       "content": "안녕하세요. 리니지 클래식 입니다.따뜻한 햇살과 함께 가정의 달이 시작되며,아덴 월드에도 한층 부드러운 기운이 스며들고 있습니다.바쁜 일상 속에서도 잠시 여유를 찾아아덴에서의 모험을 이어가고 계신 여러분께,보다 편안하고 즐거운 환경을 전해드리고자 이번 정기점검을 준비했습니다.그럼, 5월 6일 정기점검을 통해 적용되는 내용을 안내해 드리겠습니다.​새로운 소식[타락한 축복의 땅 확장]타락한 기운이 스며든 축복의 땅이, 사계절의 흐름을 따라 더욱 넓게 펼쳐집니다.이제 하나의 공간이 아닌, 봄·여름·가을·겨울 네 개의 계절로 나뉜 지역에서 각기 다른 분위기 속 사냥을 경험하실 수 있습니다.원하시는 계절의 땅에서 보다 쾌적하고 여유로운 사냥을 즐겨보시기 바랍니다.모든 타락한 축복의 땅은 크기, 구조, 몬스터 배치 및 난이도가 동일하게 적용됩니다.​[PC방 전용 판매 상품 추가]언제나 기다려지는 픽센, 픽셀 형제의 신상품 입고 소식입니다.이번에도 다양한 유용한 아이템이 준비되어 있으니 확인해 보시기 바랍니다.항마의 반지를 최대 2개까지 구매할 수 있습니다.드워프의 톱니바퀴를 일 최대 3개 구매할 수 있습니다.픽시의 2단 가속 선택 주머니를 일 최대 5개 구매할 수 있습니다. 픽시의 2단 가속 선택 주머니 사용 시, 아래 아이템 중 1종을 선택하여 획득할 수 있습니다.활기찬 악마의 피 2개활기찬 용기의 물약 2개활기찬 엘븐 와퍼 1개활기찬 지혜의 물약 3개활기찬 파란 물약 3개​[투명 상태 액션 규칙 개선]보다 자연스러운 전투 진행을 위해 투명 상태 액션 관련 규칙이 조정되었습니다.기존에는 투명 상태 해제 직후 즉시 공격이 가능했으나, 해당 부분이 다음과 같이 개선되었습니다.스스로 투명 상태를 해제한 경우 3초간의 딜레이 후 공격이 가능합니다.타인에 의해 투명 상태가 해제된 경우, 딜레이 없이 바로 공격이 가능합니다.​함께 적용된 개선 사항화룡의 둥지에서 간헐적으로 이동이 원활하지 않던 현상이 개선되었습니다.신규 캐릭터 생성 시, 더 이상 말하는 두루마리를 지급하지 않도록 변경되었습니다.그 외 버그 수정 및 안정화 작업이 진행되었습니다.​가정의 달 5월,소중한 분들과 함께하는 시간만큼이나아덴에서의 여정 또한 편안하고 즐겁게 이어지길 바랍니다.리니지 클래식은 앞으로도여러분의 모험이 더욱 안정되고 깊이 있게 이어질 수 있도록지속적인 개선과 준비를 이어가겠습니다.감사합니다.",
       "link": "https://lineageclassic.plaync.com/ko-kr/board/update/view?articleId=50114018",
       "isRecent": false
@@ -77,33 +77,9 @@
     {
       "title": "피시방에서 하는 사람 있음?",
       "content": "자폐아도 아니고 디코하면 헤드셋 쳐 껴라피시방 쩌렁쩌렁 울리게 스피커로 디코 하지말고소리좀 줄여달라니까 띠겁다는 듯이 쳐다보네보면 어쩔건데"
-    },
-    {
-      "title": "아 뭐하지 벌써1",
-      "content": "벌써 잘시간다됐네….."
     }
   ],
   "invenPosts": [
-    {
-      "title": "조우섭 근황",
-      "content": "장사꾼 너무 많음. 쌀먹들만 가득함. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14490\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14490\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\";"
-    },
-    {
-      "title": "다템코리아 사기사이트 조심",
-      "content": "다템코리아 사기사이트다.. 네이버에서 나오고 거기서 거래하자길래 돈입금했드만 280 더 넣어야지 최소금액500마춰져서 돈준데 .. 사기야 다들조심해형들 나 220으로 지식을하나배웠어 .. 속이쓰려 ㅜ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14489\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14489\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no"
-    },
-    {
-      "title": "질리언 ..",
-      "content": "화둥 통제라니이!!!!!! noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14488\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14488\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.su"
-    },
-    {
-      "title": "오 이제 도박중독자들밖에 안남았나본데??ㅋㅋㅋ",
-      "content": "뭐떳어요 뭐떳어요~~ㅋㅋㅋㅋ잃은거 생각 말고 계속 가즈아!!맛있으면 0칼로리 제~~~ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14487\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14487\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\""
-    },
-    {
-      "title": "(투표)우유부단한 아재 질문 답변시 득템!",
-      "content": "초기부터 해오다가 백만원정도 벌고 접고 반복중6검4셋 샀다가 몇일하다팔고 접고 또 샀다가 러쉬하고 덥고반복중.. 어제는 90정액하고 무과금 오림런으로 하자하고 시작했다가 자동때문에 못버는구나하고 환불ㅋ근데 머리속에는 계속 린지생각중ㅜㅜ원래 린엠 쌀먹충회사가 바빠서 거의 일주일전부 출근중이에요연봉도 1억가까이되는데 왜그리 몇십만원 생각이나는지..아깝기도하고 감가도 그렇고.. 태생이 쫌팽인가 ㅡㅡ방금든 생각이 또 사서 한달정액만해보자입니다 ㅋ30짜리 힘콘18법사27짜리 덱요있어요결국질문은 머할까요 ㅋ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); const _IPOLL_RESULT_ = {\"422853\":{\"type\":\"vote\",\"setting\":{\"idx\":422853,\"state\":\"Y\",\"poll_type\":1,\"title\":\"기사 요정 법사\",\"image\":\"\",\"explain\":\"\",\"random\":\"N\",\"multi_select\":\"N\",\"multi_limit\":0,\"anonymity\":\"Y\",\"thumb_order\":\"right\",\"end_set\":\"date\",\"end_date\":\"2026-05-11 12:10:59\",\"end_count_limit\":0,\"result_view\":\"poll\",\"memnick\":\"우히히ooo\",\"participant\":10,\"other\":\"\",\"gamerank\":\"N\",\"come_idx\":6482,\"uidx\":14486,\"use_html\":\"N\",\"link\":\"htt"
-    },
     {
       "title": "예전에 하다가 지금하는데요 아이템 착용질문",
       "content": "마법사 18위즈18인트16콘인데요무기랑 장비좀 추천해주세요.. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14485\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14485\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target "
@@ -163,6 +139,26 @@
     {
       "title": "각하도 빡쳐버린 리니지 클래식 운영",
       "content": "noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14467\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14467\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit(); scrapWi"
+    },
+    {
+      "title": "콘요정 장비 순서 질문드립니다.",
+      "content": "현재 6크로 6민투 6요티하고 나머지 4셋들 맞춰져있는데장비 순서가 어케되나요?6엘름? 수호악세? 간간히 사냥만 하고있습니다. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14466\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14466\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getEle"
+    },
+    {
+      "title": "렙업은 타락한 땅이 짱이다 진짜;;",
+      "content": "콘위즈18 인트16 법사 29짜리 6힘지 4셋인데 30까지 키우려는데 물약을 너무 많이 먹어서요정(8장궁) 이랑 파티 맺고 기란던전4층, 타락한땅 가보고법사 혼자서 개미던전 솔로 사냥도 해봤는데스톱워치로 경험치 먹는거 10분당 계산해보니요정이랑 파티해서 타당 가는게 젤 잘오르네. 아무래도 타땅은 몹이 계속 나오다보니몹 찾으러 다니는 시간이 필요없어서 그런가봄. 타땅짱이네..ㅋㅋ참고하십쇼 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14465\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14465\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen()"
+    },
+    {
+      "title": "리니지의 원리(이걸알고도 계속한다면?)",
+      "content": "1. 동남아 현지인들동남아 인들은 현지에서 평범한 직장을 다니는 시급보다 리니지를 해서 버는 뎅이 훨씬 고수익이다. 그래서 동남아 현지에서 ip우회를 통해 리니지를 하며 자동캐릭을 양산한뒤 뎅을캐고 수익을 창출하고있다. 이들은 대부분 소규모인원들이 많다. 친구들 5~10명이서 하고있는 경우가 많음 직접 여러 동남아 현지인들과 소통하며 알아낸 사실 그들은 서버별로 최소 2~3억아덴씩 보유하고있으며 하루 평균 200~500만원을 (우리나라돈) 벌어들이고있다 2. 한국사장을 둔 동남아 작업장 한국인이 사장을 둔 작업장은 더욱더 대규모다. 동남아 외노자들을 고용하며 자동,반자동 작업장을 운영한다 오히려 1번보다 더욱더 악질인 경우가많으며 1번애들은 사실 겜하다보면 귀여울때가있다 I LOVE SON I LOVE BTS 이런 말도함.. 근데 한국사장이 작업장인애들은 개던가보면 용기만보면 환장해서 처먹고 뒤지더라도 용기는 처먹고 뒤짐 자동은 그냥 무한생성 한다고보면됨. 실제 애내들은 어느정도냐하면 '예를들어 아이템매니아에 그들이 아덴을 5000만아덴을 보유해서 판매하고있다고 올려둔다 (실제로 그들은 해당서버에 아덴이 없음) 그러면 내가 결제를 해서 5000만아덴을 구매한다고 치자 채팅이온다. 30~40분기다려줄수있냐고 묻는다 그시간안에 아덴을 구해줄수있으며 예약걸면 취소는 불가능하다고한다. 그러면 정말 30분만에 아덴을 벌어서 5000만원을 거래한다 3. 섭초부터 서버 먹을려고 직장때려치우고 리니지에 목숨건 ㅄ들 애내들이 가장 악질이다 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 솔직히 말하면 자 사회에서 돈도 못벌고 번번한 직장도없다.. 가정도"
+    },
+    {
+      "title": "1주일만에 레벨업 했는데",
+      "content": "콘기사 피10 엠0 오르니까 숨이 턱 막히네 흐벙 ㅠㅠ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14463\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14463\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"s"
+    },
+    {
+      "title": "착하게 살아야겠습니다.",
+      "content": "과거 섭 초반 시절에 용계에서 몹스틸로 차단 걸고 친추 걸고 접속할 때마다 찾아다니면서 싸우던 놈들 2놈 있었는데요즘 한 일주일 요놈들이 안 보이니까 너무 보고 싶네요.앞으로 칼이 아니라 대화로 풀어가야겠습니다.그 친구들도 나름 다 가정이 있을 텐데이딴 게임이 뭐라고 그리 열내면서 찾아다니고 서로 안 좋은 추억을 쌓으려고 했던 건지 참.제 인생을 되돌이켜보게 되네요.돌아와라 애들아. 보고 싶다. 다시 한 번 자웅을 겨루며 누가 더 자존심 센지.시간 빌게이츠인지 유치한 대화하던 시절이 그립구나. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14461\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14461\"; I"
     }
   ],
   "analysis": null
