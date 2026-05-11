@@ -440,9 +440,12 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
       margin-bottom: 28px;
-      align-items: start;
+      align-items: stretch;
     }
-    .grid-content .card { margin-bottom: 0; }
+    .grid-content .card { margin-bottom: 0; display: flex; flex-direction: column; }
+    .grid-content .card .card-body { flex: 1; }
+    .grid-content .card.push .card-body { display: flex; flex-direction: column; }
+    .grid-content .card.push .push-item { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
 
     /* content card 내부 글씨 크게 */
     .content-num-list { display: flex; flex-direction: column; gap: 0; counter-reset: n; }
@@ -1114,20 +1117,20 @@ function renderOfficial(a, rawPosts) {
       </div>`;
     }
 
-    if (o.priceImpact) {
+    if (o.priceImpact || o.marketingTips?.length) {
+      let inner = '';
+      if (o.priceImpact) {
+        inner += `<div class="price-box"${o.marketingTips?.length ? ' style="margin-bottom:12px"' : ''}>${esc(o.priceImpact)}</div>`;
+      }
+      if (o.marketingTips?.length) {
+        const tips = o.marketingTips.map(t =>
+          `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+        ).join('');
+        inner += `<div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>`;
+      }
       html += `<div class="block">
-        <div class="sec-label sec-label-price">시세 영향도</div>
-        <div class="price-box">${esc(o.priceImpact)}</div>
-      </div>`;
-    }
-
-    if (o.marketingTips?.length) {
-      const tips = o.marketingTips.map(t =>
-        `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
-      ).join('');
-      html += `<div class="block">
-        <div class="sec-label sec-label-marketing">마케팅 제안</div>
-        <div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>
+        <div class="sec-label sec-label-price">시장 인사이트</div>
+        ${inner}
       </div>`;
     }
 
@@ -1168,20 +1171,20 @@ function renderCommunity(data, tagCls, rawPosts) {
       </div>`;
     }
 
-    if (data.priceImpact) {
+    if (data.priceImpact || data.marketingTips?.length) {
+      let inner = '';
+      if (data.priceImpact) {
+        inner += `<div class="price-box"${data.marketingTips?.length ? ' style="margin-bottom:12px"' : ''}>${esc(data.priceImpact)}</div>`;
+      }
+      if (data.marketingTips?.length) {
+        const tips = data.marketingTips.map(t =>
+          `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+        ).join('');
+        inner += `<div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>`;
+      }
       html += `<div class="block">
-        <div class="sec-label sec-label-price">시세 영향도</div>
-        <div class="price-box">${esc(data.priceImpact)}</div>
-      </div>`;
-    }
-
-    if (data.marketingTips?.length) {
-      const tips = data.marketingTips.map(t =>
-        `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
-      ).join('');
-      html += `<div class="block">
-        <div class="sec-label sec-label-marketing">마케팅 제안</div>
-        <div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>
+        <div class="sec-label sec-label-price">시장 인사이트</div>
+        ${inner}
       </div>`;
     }
 

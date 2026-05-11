@@ -10,6 +10,19 @@ const HEADERS = {
   'Accept-Language': 'ko-KR,ko;q=0.9',
 };
 
+const DATE_SELECTORS = [
+  'time[datetime]',
+  '.view_date',
+  '.article_date',
+  '.post_date',
+  '.info_date',
+  '.date',
+  '.news_date',
+  '.board_date',
+  '.list_date',
+  '.txt_date',
+];
+
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 function extractText($, el) {
@@ -18,13 +31,24 @@ function extractText($, el) {
   return $el.text().replace(/\s+/g, ' ').trim();
 }
 
+function pickDate($, scope) {
+  for (const sel of DATE_SELECTORS) {
+    const el = (scope ? $(scope).find(sel) : $(sel)).first();
+    if (!el.length) continue;
+    const raw = (el.attr('datetime') || el.text()).replace(/\s+/g, ' ').trim();
+    if (raw) return raw;
+  }
+  return '';
+}
+
 async function fetchArticle(url) {
   try {
     const { data } = await axios.get(url, { headers: HEADERS, timeout: 12000 });
     const $ = cheerio.load(data);
 
-    // Nexon MapleStory 공식 사이트 공통 본문 선택자
-    const selectors = [
+    const date = pickDate($, null);
+
+    const contentSelectors = [
       '.news_detail_content',
       '.article_content',
       '.view_content',
@@ -34,23 +58,22 @@ async function fetchArticle(url) {
       '.detail_content',
     ];
 
-    for (const sel of selectors) {
+    for (const sel of contentSelectors) {
       const el = $(sel).first();
       if (el.length) {
         const text = extractText($, el);
-        if (text.length > 30) return text.slice(0, 4000);
+        if (text.length > 30) return { content: text.slice(0, 4000), date };
       }
     }
 
-    // fallback: main 영역에서 가장 긴 p·div 텍스트
     let best = '';
     $('main p, main div, article p, article div').each((_, el) => {
       const t = $(el).clone().find('script,style').remove().end().text().trim();
       if (t.length > best.length) best = t;
     });
-    return best.slice(0, 4000) || null;
+    return { content: best.slice(0, 4000) || null, date };
   } catch {
-    return null;
+    return { content: null, date: '' };
   }
 }
 
@@ -63,7 +86,6 @@ async function crawlMapleOfficial() {
     const candidates = [];
     const seen = new Set();
 
-    // 업데이트 공지 링크 추출 (Nexon 사이트 공통 패턴)
     const linkSelectors = [
       'a[href*="/News/Update/"]',
       'a[href*="/news/update/"]',
@@ -77,21 +99,32 @@ async function crawlMapleOfficial() {
       $(sel).each((_, el) => {
         const href = $(el).attr('href') || '';
         if (!href || seen.has(href)) return;
-        // 목록 페이지 자신은 제외
         const full = href.startsWith('http') ? href : `${BASE_URL}${href}`;
         if (full === LIST_URL || full === `${LIST_URL}/`) return;
+
         const titleEl = $(el).find('strong, .tit, .title, h3, h4').first();
         const title = (titleEl.length ? titleEl.text() : $(el).text()).replace(/\s+/g, ' ').trim();
         if (!title || title.length < 2) return;
+
+        // 목록에서 날짜 추출 시도 (부모 li/tr에서 탐색)
+        const parent = $(el).closest('li, tr, .list_item, .board_item, .news_item');
+        const listDate = pickDate($, parent.length ? parent : el);
+
         seen.add(href);
-        candidates.push({ title, url: full });
+        candidates.push({ title, url: full, listDate });
       });
       if (candidates.length >= 5) break;
     }
 
     for (const item of candidates.slice(0, 5)) {
-      const content = await fetchArticle(item.url);
-      posts.push({ title: item.title, date: '', content: content || '', link: item.url, isRecent: false });
+      const { content, date } = await fetchArticle(item.url);
+      posts.push({
+        title: item.title,
+        date: item.listDate || date,
+        content: content || '',
+        link: item.url,
+        isRecent: false,
+      });
       await sleep(500);
     }
 
