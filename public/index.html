@@ -147,6 +147,28 @@
       line-height: 1.65;
     }
 
+    .maple-insight-block {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 32px 24px;
+      margin-bottom: 28px;
+    }
+    .maple-insight-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .insight-section + .insight-section {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
     /* ── CARD ── */
     .card {
       background: var(--card-bg);
@@ -954,6 +976,11 @@
       <div id="mapleIssueText">데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.</div>
     </div>
 
+    <div class="maple-insight-block" id="mapleInsightBlock" style="display:none">
+      <div class="maple-insight-title">📊 시장 인사이트</div>
+      <div id="mapleInsightContent"></div>
+    </div>
+
     <div class="card official">
       <div class="card-head">
         <div class="card-head-left">
@@ -990,18 +1017,6 @@
       </div>
       <div class="card-body" id="mapleInvenPanel">
         <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
-      </div>
-    </div>
-
-    <div class="card insight">
-      <div class="card-head">
-        <div class="card-head-left">
-          <div class="card-icon icon-insight">시</div>
-          <span class="card-title">시장 인사이트</span>
-        </div>
-      </div>
-      <div class="card-body" id="mapleInsightPanel">
-        <div class="empty"><div class="empty-icon">📊</div>수집 후 표시됩니다.</div>
       </div>
     </div>
 
@@ -1311,29 +1326,33 @@ function renderMapleCommunity(data, tagCls, rawPosts) {
 
 /* ── 렌더: 메이플 시장 인사이트 (공식+DC+인벤 통합) ── */
 function renderMapleInsight(a) {
-  if (!a) return emptyBox('📊', '분석 데이터 없음');
-  const sources = [
-    { label: '공식', data: a.official },
-    { label: 'DC',   data: a.dcinside },
-    { label: '인벤', data: a.inven },
+  if (!a) return null;
+  const prices = [a.official?.priceImpact, a.dcinside?.priceImpact, a.inven?.priceImpact]
+    .filter(Boolean);
+  const allTips = [
+    ...(a.official?.marketingTips ?? []),
+    ...(a.dcinside?.marketingTips ?? []),
+    ...(a.inven?.marketingTips ?? []),
   ];
+  const tips = [...new Set(allTips.map(t => t.trim()))].slice(0, 3);
+  if (!prices.length && !tips.length) return null;
   let html = '';
-  for (const { label, data } of sources) {
-    if (!data || (!data.priceImpact && !data.marketingTips?.length)) continue;
-    html += `<div class="block">
-      <div class="sec-label sec-label-price">${esc(label)}</div>`;
-    if (data.priceImpact) {
-      html += `<div class="price-box"${data.marketingTips?.length ? ' style="margin-bottom:12px"' : ''}>${esc(data.priceImpact)}</div>`;
-    }
-    if (data.marketingTips?.length) {
-      const tips = data.marketingTips.map(t =>
-        `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
-      ).join('');
-      html += `<div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>`;
-    }
-    html += `</div>`;
+  if (prices.length) {
+    html += `<div class="insight-section">
+      <div class="sec-label sec-label-price" style="margin-bottom:8px">시세 영향</div>
+      <div class="price-box">${esc(prices.join(' '))}</div>
+    </div>`;
   }
-  return html || emptyBox('📊', '분석 데이터 없음');
+  if (tips.length) {
+    const items = tips.map(t =>
+      `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+    ).join('');
+    html += `<div class="insight-section">
+      <div class="sec-label sec-label-price" style="margin-bottom:8px">마케팅 제안</div>
+      <div class="tip-list-wrap"><ul class="tip-list">${items}</ul></div>
+    </div>`;
+  }
+  return html;
 }
 
 /* ── 렌더: SEO ── */
@@ -1782,7 +1801,9 @@ async function loadMapleResults() {
     document.getElementById('mapleOfficialPanel').innerHTML = renderMapleOfficial(hasAnalysis ? a : null, officialPosts);
     document.getElementById('mapleDcPanel').innerHTML       = renderMapleCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
     document.getElementById('mapleInvenPanel').innerHTML    = renderMapleCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
-    document.getElementById('mapleInsightPanel').innerHTML  = renderMapleInsight(hasAnalysis ? a : null);
+    const insightHtml = renderMapleInsight(hasAnalysis ? a : null);
+    document.getElementById('mapleInsightContent').innerHTML = insightHtml || '';
+    document.getElementById('mapleInsightBlock').style.display = insightHtml ? '' : 'none';
     document.getElementById('mapleSeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
     document.getElementById('mapleYtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
     document.getElementById('maplePushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
