@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-11T07:41:06.864Z",
+  "lastUpdated": "2026-05-11T07:51:34.710Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
@@ -85,6 +85,10 @@
   ],
   "invenPosts": [
     {
+      "title": "8장궁vs9크로",
+      "content": "덱18땅속성렙348장궁 5셋인데싸움안하고오직 사냥만합니다.9크로.바꾸면 더 좋을까?아님8장궁 그냥.유지할까?경험해본 형있어? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14535\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14535\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElem"
+    },
+    {
       "title": "9일도 구매 어때?",
       "content": "현재 우리섭 기준 1200~1300 아덴정도하는데싸울이 아직까지 안나오는것보니까..쉽게 가격이 떨어지진 않을것같은데지금 구매해도 괜찮을까? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14534\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14534\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document"
     },
@@ -159,103 +163,107 @@
     {
       "title": "이번에 현타온 이유",
       "content": "2월8일부터 시간빌게이츠라 3개월을 하루에 10시간씩 했는데 본던위주로ㅅㅂ 스턴은 기대는 안했고 선버는 먹을줄 알았다. 젤데이도5번ㅋㅋㅋ솔직히 뎅은모여서 장비업하는 재미도 있는데 어느정도 도파민이있어야 하는데 그게없음 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14501\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14501\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scr"
-    },
-    {
-      "title": "논피 말구 통제 없는 서버 있나요?",
-      "content": "있으면 ㄷㄱ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14500\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14500\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit(); "
     }
   ],
   "analysis": {
-    "todayIssue": "타락한 축복의 땅 확장과 투명 상태 액션 규칙 개선이 주된 업데이트 이슈로 다뤄지고 있습니다.",
+    "todayIssue": "5월 6일 업데이트로 타락한 축복의 땅이 확장되었으며, PC방 전용 아이템이 추가되었습니다. 투명 상태 액션 규칙이 개선되어 전투의 전략성이 높아질 것입니다.",
     "official": {
-      "summary": "• 타락한 축복의 땅이 계절별로 나뉘어 확장\n• PC방 전용 판매 상품 추가\n• 투명 상태 해제 후 공격 딜레이 조정",
+      "summary": "• 타락한 축복의 땅이 4개 계절로 확장됨\n• PC방 전용 아이템과 판매 상품 추가\n• 투명 상태 액션 규칙 개선",
       "date": "2026. 5. 6.",
       "keywords": [
         "타락한 축복의 땅",
-        "PC방",
+        "PC방 아이템",
         "투명 상태",
-        "버그 수정",
-        "전투 규칙"
+        "전투 규칙",
+        "아이템 판매"
       ],
       "marketingTips": [
-        "타락한 축복의 땅을 활용한 새로운 아이템 판매 캠페인",
-        "PC방 전용 아이템의 한정 판매 프로모션"
+        "타락한 축복의 땅에서 보다 다양한 사냥 경험 제공",
+        "PC방 전용 아이템으로 유저 유입 촉진"
       ],
-      "priceImpact": "이번 업데이트로 인해 타락한 축복의 땅의 사냥 환경이 개선되면서 관련 아이템 가격이 오를 것으로 예상됩니다."
+      "priceImpact": "이번 업데이트로 인해 타락한 축복의 땅에서의 사냥이 증가할 것으로 예상되며, 관련 아이템의 수요가 급격히 상승할 가능성이 있습니다."
     },
     "dcinside": {
       "keywords": [
         {
-          "word": "하이네",
+          "word": "엔트열매",
+          "count": 1
+        },
+        {
+          "word": "자동작업장",
           "count": 5
         },
         {
-          "word": "자동",
-          "count": 4
+          "word": "시세",
+          "count": 3
         },
         {
-          "word": "타락",
+          "word": "서버",
           "count": 2
         },
         {
-          "word": "아덴",
-          "count": 2
+          "word": "버프",
+          "count": 1
         }
       ],
-      "summary": "디시인사이드에서는 자동 사냥과 유저 간의 갈등이 주요 이슈로 다뤄지고 있습니다. 하이네 서버에서의 자동 플레이와 관련된 불만이 많아 보입니다.",
+      "summary": "디시인사이드에서는 자동작업장 문제와 서버 시세에 대한 논의가 주를 이루며, 시세와 효율에 대한 궁금증이 표현되었습니다.",
       "marketingTips": [
-        "자동 사냥과 관련된 아이템 거래 촉진 이벤트",
-        "하이네 서버 유저를 겨냥한 특별 프로모션"
+        "자동작업장 이슈에 대비한 아이템 거래 제안",
+        "서버 시세에 맞는 전략적 유통 방안 강조"
       ],
-      "priceImpact": "자동 사냥 관련 아이템의 수요 증가로 인해 시세가 오를 가능성이 있는 상황입니다."
+      "priceImpact": "디시에서는 특정 아이템의 시세가 안정세를 보이며 거래가 활발해질 것으로 보입니다."
     },
     "inven": {
       "keywords": [
         {
           "word": "수호셋",
-          "count": 3
-        },
-        {
-          "word": "자동",
-          "count": 3
-        },
-        {
-          "word": "시세",
           "count": 2
         },
         {
-          "word": "애드온",
+          "word": "드랍율",
+          "count": 1
+        },
+        {
+          "word": "자동작업장",
+          "count": 3
+        },
+        {
+          "word": "아덴",
+          "count": 1
+        },
+        {
+          "word": "기란일보",
           "count": 1
         }
       ],
-      "summary": "인벤에서는 수호셋과 기타 아이템의 거래 시세에 대한 논의가 활발합니다. 특히 자동 플레이와 유저 간의 긴장감이 주요 이슈로 떠오르고 있습니다.",
+      "summary": "인벤에서는 수호셋 시세와 드랍율 문제에 대한 논의가 활발하며, 자동작업장으로 인한 게임 내 문제점이 짚어졌습니다.",
       "marketingTips": [
-        "수호셋 관련 시세 정보 제공 콘텐츠",
-        "자동 플레이 아이템을 거래하는 유저를 위한 혜택 제공"
+        "수호셋에 대한 시세 분석 및 거래를 통한 유저 참여 유도",
+        "드랍율 향상 관련 아이템 홍보"
       ],
-      "priceImpact": "수호셋의 시세 안정성이 떨어질 것으로 보이며, 이에 따른 거래 활성화가 예상됩니다."
+      "priceImpact": "인벤에서는 특정 아이템의 드랍율이 낮아져 거래가 줄어들 것으로 예상되고 있습니다."
     },
     "seo": [
-      "타락한 축복의 땅 업데이트",
-      "리니지클래식 아이템 시세",
-      "PC방 판매 상품",
-      "게임 내 전투 개선",
-      "리니지클래식 커뮤니티 이슈"
+      "리니지클래식 업데이트 소식",
+      "리니지클래식 아이템 거래 트렌드",
+      "리니지클래식 시세 변화 살펴보기",
+      "리니지클래식 유저 의견 모음",
+      "리니지클래식 완벽 가이드"
     ],
     "youtube": [
-      "타락한 축복의 땅의 변화 알아보기",
-      "PC방 전용 아이템 사용법",
-      "투명 상태 규칙 변화 안내",
-      "리니지클래식 사냥 팁"
+      "5월 6일 리니지클래식 업데이트 리뷰",
+      "타락한 축복의 땅 사냥하기",
+      "투명 상태 액션 규칙 분석해보기",
+      "PC방 전용 아이템 소개"
     ],
     "push": [
       {
-        "title": "(광고) 가격 오를 아이템 확인하세요!",
-        "content": "(광고) 이번 업데이트로 수요 증가 예상!"
+        "title": "(광고) 타락한 축복의 땅 격상!",
+        "content": "(광고) 리니지클래식에서 새로운 사냥터를 경험해보세요!🌟"
       },
       {
-        "title": "(광고) 수호셋 시세 궁금하시죠?",
-        "content": "(광고) 지금 바로 시세 확인하고 거래하세요!"
+        "title": "(광고) 시세 확인 지금 해보세요!",
+        "content": "(광고) 리니지클래식 아이템 거래 시세를 빠르게 확인하세요!💰"
       }
     ]
   }
