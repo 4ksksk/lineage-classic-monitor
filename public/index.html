@@ -188,11 +188,17 @@
       transition: background 0.15s;
     }
     .more-btn:hover { background: var(--accent-bg); }
-    .collapsible-content { display: none; }
-    .collapsible-content.open {
-      display: block;
-      animation: fadeSlideDown 0.2s ease;
+    .card-preview {
+      font-size: 12px;
+      color: var(--text3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
     }
+    .collapsible-content { display: none; }
+    .collapsible-content.open { display: block; }
+    .panel-opening { animation: fadeSlideDown 0.22s ease; }
     @keyframes fadeSlideDown {
       from { opacity: 0; transform: translateY(-5px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1015,10 +1021,11 @@
         <div class="card-head-left">
           <div class="card-icon icon-official">공</div>
           <span class="card-title">공식 업데이트</span>
+          <span class="card-preview" id="mapleOfficialPreview"></span>
         </div>
         <div class="card-head-right">
           <span class="card-time" id="mapleOfficialTime">—</span>
-          <button class="more-btn" id="mapleOfficialMoreBtn" onclick="toggleMapleCard('mapleOfficialExpand','mapleOfficialMoreBtn')" style="display:none">더보기</button>
+          <button class="more-btn" id="mapleOfficialMoreBtn" onclick="toggleMapleCard('mapleOfficialPanel','mapleOfficialMoreBtn')" style="display:none">더보기</button>
         </div>
       </div>
       <div class="card-body" id="mapleOfficialPanel">
@@ -1031,10 +1038,11 @@
         <div class="card-head-left">
           <div class="card-icon icon-dc">디</div>
           <span class="card-title">DC인사이드</span>
+          <span class="card-preview" id="mapleDcPreview"></span>
         </div>
         <div class="card-head-right">
           <span class="card-time" id="mapleDcTime">—</span>
-          <button class="more-btn" id="mapleDcMoreBtn" onclick="toggleMapleCard('mapleDcExpand','mapleDcMoreBtn')" style="display:none">더보기</button>
+          <button class="more-btn" id="mapleDcMoreBtn" onclick="toggleMapleCard('mapleDcPanel','mapleDcMoreBtn')" style="display:none">더보기</button>
         </div>
       </div>
       <div class="card-body" id="mapleDcPanel">
@@ -1047,10 +1055,11 @@
         <div class="card-head-left">
           <div class="card-icon icon-inven">인</div>
           <span class="card-title">인벤</span>
+          <span class="card-preview" id="mapleInvenPreview"></span>
         </div>
         <div class="card-head-right">
           <span class="card-time" id="mapleInvenTime">—</span>
-          <button class="more-btn" id="mapleInvenMoreBtn" onclick="toggleMapleCard('mapleInvenExpand','mapleInvenMoreBtn')" style="display:none">더보기</button>
+          <button class="more-btn" id="mapleInvenMoreBtn" onclick="toggleMapleCard('mapleInvenPanel','mapleInvenMoreBtn')" style="display:none">더보기</button>
         </div>
       </div>
       <div class="card-body" id="mapleInvenPanel">
@@ -1279,12 +1288,26 @@ function renderCommunity(data, tagCls, rawPosts) {
   ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
 }
 
-function toggleMapleCard(expandId, btnId) {
-  const el  = document.getElementById(expandId);
-  const btn = document.getElementById(btnId);
-  if (!el || !btn) return;
-  const isOpen = el.classList.toggle('open');
-  btn.textContent = isOpen ? '접기' : '더보기';
+function toggleMapleCard(panelId, btnId) {
+  const panel = document.getElementById(panelId);
+  const btn   = document.getElementById(btnId);
+  if (!panel || !btn) return;
+  const isHidden = panel.style.display === 'none';
+  panel.style.display = isHidden ? '' : 'none';
+  if (isHidden) {
+    panel.classList.add('panel-opening');
+    setTimeout(() => panel.classList.remove('panel-opening'), 250);
+  }
+  btn.textContent = isHidden ? '접기' : '더보기';
+}
+
+function formatPreviewDate(dateStr) {
+  if (!dateStr) return '';
+  const m = dateStr.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+  if (m) return `${m[1]}.${m[2]}.${m[3]}`;
+  const m2 = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (m2) return `${m2[1]}.${parseInt(m2[2])}.${parseInt(m2[3])}`;
+  return dateStr;
 }
 
 /* ── 렌더: 메이플 공식 (시장 인사이트 블록 제외) ── */
@@ -1309,10 +1332,10 @@ function renderMapleOfficial(a, rawPosts) {
       </div>`;
     }
     if (o.summary) {
-      html += `<div class="collapsible-content" id="mapleOfficialExpand"><div class="block">
+      html += `<div class="block">
         <div class="sec-label">업데이트 요약</div>
         <div class="summary-text">${esc(o.summary)}</div>
-      </div></div>`;
+      </div>`;
     }
     return html || emptyBox('📋', '분석 데이터 없음');
   }
@@ -1327,7 +1350,7 @@ function renderMapleOfficial(a, rawPosts) {
 }
 
 /* ── 렌더: 메이플 커뮤니티 (시장 인사이트 블록 제외) ── */
-function renderMapleCommunity(data, tagCls, rawPosts, expandId) {
+function renderMapleCommunity(data, tagCls, rawPosts) {
   if (data) {
     let html = '';
     if (data.keywords?.length) {
@@ -1341,11 +1364,11 @@ function renderMapleCommunity(data, tagCls, rawPosts, expandId) {
         <div class="tags">${chips}</div>
       </div>`;
     }
-    if (data.summary && expandId) {
-      html += `<div class="collapsible-content" id="${expandId}"><div class="block">
+    if (data.summary) {
+      html += `<div class="block">
         <div class="sec-label">상황 요약</div>
         <div class="summary-text">${esc(data.summary)}</div>
-      </div></div>`;
+      </div>`;
     }
     return html || emptyBox('💬', '분석 데이터 없음');
   }
@@ -1844,18 +1867,22 @@ async function loadMapleResults() {
       document.getElementById(id).textContent = t
     );
 
+    ['mapleOfficialPanel', 'mapleDcPanel', 'mapleInvenPanel'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
     document.getElementById('mapleOfficialPanel').innerHTML = renderMapleOfficial(hasAnalysis ? a : null, officialPosts);
-    document.getElementById('mapleDcPanel').innerHTML       = renderMapleCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts,      'mapleDcExpand');
-    document.getElementById('mapleInvenPanel').innerHTML    = renderMapleCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts,   'mapleInvenExpand');
-    [
-      ['mapleOfficialExpand', 'mapleOfficialMoreBtn'],
-      ['mapleDcExpand',       'mapleDcMoreBtn'],
-      ['mapleInvenExpand',    'mapleInvenMoreBtn'],
-    ].forEach(([expandId, btnId]) => {
-      const btn = document.getElementById(btnId);
+    document.getElementById('mapleDcPanel').innerHTML       = renderMapleCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('mapleInvenPanel').innerHTML    = renderMapleCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('mapleOfficialPreview').textContent = hasAnalysis ? formatPreviewDate(a?.official?.date) : '';
+    document.getElementById('mapleDcPreview').textContent       = hasAnalysis ? (a?.dcinside?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
+    document.getElementById('mapleInvenPreview').textContent    = hasAnalysis ? (a?.inven?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
+    const showMoreBtn = cnt > 0 || hasAnalysis;
+    ['mapleOfficialMoreBtn', 'mapleDcMoreBtn', 'mapleInvenMoreBtn'].forEach(id => {
+      const btn = document.getElementById(id);
       if (!btn) return;
       btn.textContent = '더보기';
-      btn.style.display = document.getElementById(expandId) ? '' : 'none';
+      btn.style.display = showMoreBtn ? '' : 'none';
     });
     const insightHtml = renderMapleInsight(hasAnalysis ? a : null);
     document.getElementById('mapleInsightContent').innerHTML = insightHtml || '';
