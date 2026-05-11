@@ -1343,6 +1343,26 @@ function renderSEO(seo) {
   return `<div class="content-num-list">${items}</div>`;
 }
 
+/* ── 렌더: 메이플 SEO (DC+인벤 키워드 합산 상위 5개) ── */
+function renderMapleSEO(a) {
+  if (!a) return emptyBox('🔍', 'AI 분석 대기 중');
+  const raw = [...(a.dcinside?.keywords ?? []), ...(a.inven?.keywords ?? [])];
+  if (!raw.length) return emptyBox('🔍', '키워드 데이터 없음');
+  const merged = new Map();
+  for (const k of raw) {
+    const word  = k.word  ?? k;
+    const count = k.count ?? 1;
+    merged.set(word, (merged.get(word) ?? 0) + count);
+  }
+  const top5 = [...merged.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([word]) => word);
+  if (!top5.length) return emptyBox('🔍', '키워드 데이터 없음');
+  const items = top5.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
+  return `<div class="content-num-list">${items}</div>`;
+}
+
 /* ── 렌더: 유튜브 ── */
 function renderYoutube(yt) {
   if (!yt?.length) return emptyBox('🎬', 'AI 분석 대기 중');
@@ -1783,7 +1803,7 @@ async function loadMapleResults() {
     document.getElementById('mapleDcPanel').innerHTML       = renderMapleCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
     document.getElementById('mapleInvenPanel').innerHTML    = renderMapleCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
     document.getElementById('mapleInsightPanel').innerHTML  = renderMapleInsight(hasAnalysis ? a : null);
-    document.getElementById('mapleSeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
+    document.getElementById('mapleSeoCard').innerHTML       = renderMapleSEO(hasAnalysis ? a : null);
     document.getElementById('mapleYtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
     document.getElementById('maplePushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
 
