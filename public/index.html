@@ -782,14 +782,23 @@
     <div id="mainIssueText">데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.</div>
   </div>
 
+  <div class="maple-insight-block" id="lineageInsightBlock" style="display:none">
+    <div class="maple-insight-title">📊 시장 인사이트</div>
+    <div id="lineageInsightContent"></div>
+  </div>
+
   <!-- ── 공식 업데이트 카드 ── -->
   <div class="card official">
     <div class="card-head">
       <div class="card-head-left">
         <div class="card-icon icon-official">공</div>
         <span class="card-title">공식 업데이트</span>
+        <span class="card-preview" id="lineageOfficialPreview"></span>
       </div>
-      <span class="card-time" id="officialTime">—</span>
+      <div class="card-head-right">
+        <span class="card-time" id="officialTime">—</span>
+        <button class="more-btn" id="lineageOfficialMoreBtn" onclick="toggleMapleCard('officialPanel','lineageOfficialMoreBtn')" style="display:none">더보기</button>
+      </div>
     </div>
     <div class="card-body" id="officialPanel">
       <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
@@ -802,8 +811,12 @@
       <div class="card-head-left">
         <div class="card-icon icon-dc">디</div>
         <span class="card-title">DC인사이드</span>
+        <span class="card-preview" id="lineageDcPreview"></span>
       </div>
-      <span class="card-time" id="dcTime">—</span>
+      <div class="card-head-right">
+        <span class="card-time" id="dcTime">—</span>
+        <button class="more-btn" id="lineageDcMoreBtn" onclick="toggleMapleCard('dcPanel','lineageDcMoreBtn')" style="display:none">더보기</button>
+      </div>
     </div>
     <div class="card-body" id="dcPanel">
       <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
@@ -816,8 +829,12 @@
       <div class="card-head-left">
         <div class="card-icon icon-inven">인</div>
         <span class="card-title">인벤</span>
+        <span class="card-preview" id="lineageInvenPreview"></span>
       </div>
-      <span class="card-time" id="invenTime">—</span>
+      <div class="card-head-right">
+        <span class="card-time" id="invenTime">—</span>
+        <button class="more-btn" id="lineageInvenMoreBtn" onclick="toggleMapleCard('invenPanel','lineageInvenMoreBtn')" style="display:none">더보기</button>
+      </div>
     </div>
     <div class="card-body" id="invenPanel">
       <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
@@ -908,13 +925,22 @@
       <div id="aion2IssueText">데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.</div>
     </div>
 
+    <div class="maple-insight-block" id="aion2InsightBlock" style="display:none">
+      <div class="maple-insight-title">📊 시장 인사이트</div>
+      <div id="aion2InsightContent"></div>
+    </div>
+
     <div class="card official">
       <div class="card-head">
         <div class="card-head-left">
           <div class="card-icon icon-official">공</div>
           <span class="card-title">공식 업데이트</span>
+          <span class="card-preview" id="aion2OfficialPreview"></span>
         </div>
-        <span class="card-time" id="aion2OfficialTime">—</span>
+        <div class="card-head-right">
+          <span class="card-time" id="aion2OfficialTime">—</span>
+          <button class="more-btn" id="aion2OfficialMoreBtn" onclick="toggleMapleCard('aion2OfficialPanel','aion2OfficialMoreBtn')" style="display:none">더보기</button>
+        </div>
       </div>
       <div class="card-body" id="aion2OfficialPanel">
         <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
@@ -926,8 +952,12 @@
         <div class="card-head-left">
           <div class="card-icon icon-dc">디</div>
           <span class="card-title">DC인사이드</span>
+          <span class="card-preview" id="aion2DcPreview"></span>
         </div>
-        <span class="card-time" id="aion2DcTime">—</span>
+        <div class="card-head-right">
+          <span class="card-time" id="aion2DcTime">—</span>
+          <button class="more-btn" id="aion2DcMoreBtn" onclick="toggleMapleCard('aion2DcPanel','aion2DcMoreBtn')" style="display:none">더보기</button>
+        </div>
       </div>
       <div class="card-body" id="aion2DcPanel">
         <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
@@ -939,8 +969,12 @@
         <div class="card-head-left">
           <div class="card-icon icon-inven">인</div>
           <span class="card-title">인벤</span>
+          <span class="card-preview" id="aion2InvenPreview"></span>
         </div>
-        <span class="card-time" id="aion2InvenTime">—</span>
+        <div class="card-head-right">
+          <span class="card-time" id="aion2InvenTime">—</span>
+          <button class="more-btn" id="aion2InvenMoreBtn" onclick="toggleMapleCard('aion2InvenPanel','aion2InvenMoreBtn')" style="display:none">더보기</button>
+        </div>
       </div>
       <div class="card-body" id="aion2InvenPanel">
         <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
@@ -1436,6 +1470,234 @@ function renderMapleInsight(a) {
   return html;
 }
 
+/* ── 렌더: 리니지 공식 (시장 인사이트 블록 제외) ── */
+function renderLineageOfficial(a, rawPosts) {
+  if (a?.official) {
+    const o = a.official;
+    let html = '';
+    if (o.date) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 날짜</div>
+        <span class="update-date">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${esc(o.date)}
+        </span>
+      </div>`;
+    }
+    if (o.keywords?.length) {
+      const chips = o.keywords.map(k => `<span class="tag official">${esc(k)}</span>`).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+    if (o.summary) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 요약</div>
+        <div class="summary-text">${esc(o.summary)}</div>
+      </div>`;
+    }
+    return html || emptyBox('📋', '분석 데이터 없음');
+  }
+  if (!rawPosts?.length) return emptyBox('📋', '수집된 공식 공지 없음');
+  return rawPosts.map(p => `
+    <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+      ${p.date ? `<div style="margin-bottom:8px"><span class="update-date">${esc(p.date)}</span></div>` : ''}
+      <div style="font-size:15px;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:8px">${esc(p.title || '제목 없음')}</div>
+      ${p.content ? `<div class="summary-text">${esc(p.content.slice(0, 400))}${p.content.length > 400 ? '…' : ''}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+/* ── 렌더: 리니지 커뮤니티 (시장 인사이트 블록 제외) ── */
+function renderLineageCommunity(data, tagCls, rawPosts) {
+  if (data) {
+    let html = '';
+    if (data.keywords?.length) {
+      const chips = data.keywords.map(k => {
+        const word  = k.word  ?? k;
+        const count = k.count ?? '';
+        return `<span class="tag ${tagCls}">${esc(word)}${count ? `<span class="badge-count">${count}</span>` : ''}</span>`;
+      }).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+    if (data.summary) {
+      html += `<div class="block">
+        <div class="sec-label">상황 요약</div>
+        <div class="summary-text">${esc(data.summary)}</div>
+      </div>`;
+    }
+    return html || emptyBox('💬', '분석 데이터 없음');
+  }
+  if (!rawPosts?.length) return emptyBox('💬', '수집된 게시글 없음');
+  const cleanContent = (s) => {
+    if (!s) return '';
+    const cut = s.search(/noKidnap|function\s+\w+\s*\(|INVEN\.|window\.open|document\./);
+    return (cut > 0 ? s.slice(0, cut) : s).trim().slice(0, 200);
+  };
+  const items = rawPosts.slice(0, 8).map(p => {
+    const body = cleanContent(p.content);
+    return `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:${body ? '5px' : '0'}">${esc(p.title || '(제목 없음)')}</div>
+      ${body ? `<div class="summary-text" style="font-size:13px">${esc(body)}${p.content && p.content.length > 200 ? '…' : ''}</div>` : ''}
+    </div>`;
+  }).join('');
+  const extra = rawPosts.length - Math.min(rawPosts.length, 8);
+  return `<div class="block" style="margin-bottom:10px">
+    <div class="sec-label">수집된 게시글 · AI 분석 대기 중</div>
+  </div>
+  ${items}
+  ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
+}
+
+/* ── 렌더: 리니지 시장 인사이트 ── */
+function renderLineageInsight(a) {
+  if (!a) return null;
+  const prices = [a.official?.priceImpact, a.dcinside?.priceImpact, a.inven?.priceImpact]
+    .filter(Boolean);
+  const allTips = [
+    ...(a.official?.marketingTips ?? []),
+    ...(a.dcinside?.marketingTips ?? []),
+    ...(a.inven?.marketingTips ?? []),
+  ];
+  const tips = [...new Set(allTips.map(t => t.trim()))].slice(0, 3);
+  if (!prices.length && !tips.length) return null;
+  let html = '';
+  if (prices.length) {
+    html += `<div class="insight-section">
+      <div class="sec-label sec-label-price" style="margin-bottom:8px">시세 영향</div>
+      <div class="price-box">${esc(prices.join(' '))}</div>
+    </div>`;
+  }
+  if (tips.length) {
+    const items = tips.map(t =>
+      `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+    ).join('');
+    html += `<div class="insight-section">
+      <div class="sec-label sec-label-price" style="margin-bottom:8px">마케팅 제안</div>
+      <div class="tip-list-wrap"><ul class="tip-list">${items}</ul></div>
+    </div>`;
+  }
+  return html;
+}
+
+/* ── 렌더: 아이온2 공식 (시장 인사이트 블록 제외) ── */
+function renderAion2Official(a, rawPosts) {
+  if (a?.official) {
+    const o = a.official;
+    let html = '';
+    if (o.date) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 날짜</div>
+        <span class="update-date">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${esc(o.date)}
+        </span>
+      </div>`;
+    }
+    if (o.keywords?.length) {
+      const chips = o.keywords.map(k => `<span class="tag official">${esc(k)}</span>`).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+    if (o.summary) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 요약</div>
+        <div class="summary-text">${esc(o.summary)}</div>
+      </div>`;
+    }
+    return html || emptyBox('📋', '분석 데이터 없음');
+  }
+  if (!rawPosts?.length) return emptyBox('📋', '수집된 공식 공지 없음');
+  return rawPosts.map(p => `
+    <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+      ${p.date ? `<div style="margin-bottom:8px"><span class="update-date">${esc(p.date)}</span></div>` : ''}
+      <div style="font-size:15px;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:8px">${esc(p.title || '제목 없음')}</div>
+      ${p.content ? `<div class="summary-text">${esc(p.content.slice(0, 400))}${p.content.length > 400 ? '…' : ''}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+/* ── 렌더: 아이온2 커뮤니티 (시장 인사이트 블록 제외) ── */
+function renderAion2Community(data, tagCls, rawPosts) {
+  if (data) {
+    let html = '';
+    if (data.keywords?.length) {
+      const chips = data.keywords.map(k => {
+        const word  = k.word  ?? k;
+        const count = k.count ?? '';
+        return `<span class="tag ${tagCls}">${esc(word)}${count ? `<span class="badge-count">${count}</span>` : ''}</span>`;
+      }).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+    if (data.summary) {
+      html += `<div class="block">
+        <div class="sec-label">상황 요약</div>
+        <div class="summary-text">${esc(data.summary)}</div>
+      </div>`;
+    }
+    return html || emptyBox('💬', '분석 데이터 없음');
+  }
+  if (!rawPosts?.length) return emptyBox('💬', '수집된 게시글 없음');
+  const cleanContent = (s) => {
+    if (!s) return '';
+    const cut = s.search(/noKidnap|function\s+\w+\s*\(|INVEN\.|window\.open|document\./);
+    return (cut > 0 ? s.slice(0, cut) : s).trim().slice(0, 200);
+  };
+  const items = rawPosts.slice(0, 8).map(p => {
+    const body = cleanContent(p.content);
+    return `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:${body ? '5px' : '0'}">${esc(p.title || '(제목 없음)')}</div>
+      ${body ? `<div class="summary-text" style="font-size:13px">${esc(body)}${p.content && p.content.length > 200 ? '…' : ''}</div>` : ''}
+    </div>`;
+  }).join('');
+  const extra = rawPosts.length - Math.min(rawPosts.length, 8);
+  return `<div class="block" style="margin-bottom:10px">
+    <div class="sec-label">수집된 게시글 · AI 분석 대기 중</div>
+  </div>
+  ${items}
+  ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
+}
+
+/* ── 렌더: 아이온2 시장 인사이트 ── */
+function renderAion2Insight(a) {
+  if (!a) return null;
+  const prices = [a.official?.priceImpact, a.dcinside?.priceImpact, a.inven?.priceImpact]
+    .filter(Boolean);
+  const allTips = [
+    ...(a.official?.marketingTips ?? []),
+    ...(a.dcinside?.marketingTips ?? []),
+    ...(a.inven?.marketingTips ?? []),
+  ];
+  const tips = [...new Set(allTips.map(t => t.trim()))].slice(0, 3);
+  if (!prices.length && !tips.length) return null;
+  let html = '';
+  if (prices.length) {
+    html += `<div class="insight-section">
+      <div class="sec-label sec-label-price" style="margin-bottom:8px">시세 영향</div>
+      <div class="price-box">${esc(prices.join(' '))}</div>
+    </div>`;
+  }
+  if (tips.length) {
+    const items = tips.map(t =>
+      `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+    ).join('');
+    html += `<div class="insight-section">
+      <div class="sec-label sec-label-price" style="margin-bottom:8px">마케팅 제안</div>
+      <div class="tip-list-wrap"><ul class="tip-list">${items}</ul></div>
+    </div>`;
+  }
+  return html;
+}
+
 /* ── 렌더: SEO ── */
 function renderSEO(seo) {
   if (!seo?.length) return emptyBox('🔍', 'AI 분석 대기 중');
@@ -1538,9 +1800,25 @@ async function loadResults() {
     );
 
     // analysis가 있으면 분석 결과를, 없으면 원본 데이터를 렌더
-    document.getElementById('officialPanel').innerHTML = renderOfficial(hasAnalysis ? a : null, officialPosts);
-    document.getElementById('dcPanel').innerHTML       = renderCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
-    document.getElementById('invenPanel').innerHTML    = renderCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    ['officialPanel', 'dcPanel', 'invenPanel'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.style.display = 'none';
+    });
+    document.getElementById('officialPanel').innerHTML = renderLineageOfficial(hasAnalysis ? a : null, officialPosts);
+    document.getElementById('dcPanel').innerHTML       = renderLineageCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('invenPanel').innerHTML    = renderLineageCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('lineageOfficialPreview').textContent = hasAnalysis ? formatPreviewDate(a?.official?.date) : '';
+    document.getElementById('lineageDcPreview').textContent       = hasAnalysis ? (a?.dcinside?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
+    document.getElementById('lineageInvenPreview').textContent    = hasAnalysis ? (a?.inven?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
+    const showLineageMoreBtn = cnt > 0 || hasAnalysis;
+    ['lineageOfficialMoreBtn', 'lineageDcMoreBtn', 'lineageInvenMoreBtn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.textContent = '더보기';
+      btn.style.display = showLineageMoreBtn ? '' : 'none';
+    });
+    const lineageInsightHtml = renderLineageInsight(hasAnalysis ? a : null);
+    document.getElementById('lineageInsightContent').innerHTML = lineageInsightHtml || '';
+    document.getElementById('lineageInsightBlock').style.display = lineageInsightHtml ? '' : 'none';
 
     document.getElementById('seoCard').innerHTML  = renderSEO(hasAnalysis ? a?.seo     : null);
     document.getElementById('ytCard').innerHTML   = renderYoutube(hasAnalysis ? a?.youtube : null);
@@ -2037,9 +2315,25 @@ async function loadAion2Results() {
       document.getElementById(id).textContent = t
     );
 
-    document.getElementById('aion2OfficialPanel').innerHTML = renderOfficial(hasAnalysis ? a : null, officialPosts);
-    document.getElementById('aion2DcPanel').innerHTML       = renderCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
-    document.getElementById('aion2InvenPanel').innerHTML    = renderCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    ['aion2OfficialPanel', 'aion2DcPanel', 'aion2InvenPanel'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.style.display = 'none';
+    });
+    document.getElementById('aion2OfficialPanel').innerHTML = renderAion2Official(hasAnalysis ? a : null, officialPosts);
+    document.getElementById('aion2DcPanel').innerHTML       = renderAion2Community(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('aion2InvenPanel').innerHTML    = renderAion2Community(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('aion2OfficialPreview').textContent = hasAnalysis ? formatPreviewDate(a?.official?.date) : '';
+    document.getElementById('aion2DcPreview').textContent       = hasAnalysis ? (a?.dcinside?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
+    document.getElementById('aion2InvenPreview').textContent    = hasAnalysis ? (a?.inven?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
+    const showAion2MoreBtn = cnt > 0 || hasAnalysis;
+    ['aion2OfficialMoreBtn', 'aion2DcMoreBtn', 'aion2InvenMoreBtn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.textContent = '더보기';
+      btn.style.display = showAion2MoreBtn ? '' : 'none';
+    });
+    const aion2InsightHtml = renderAion2Insight(hasAnalysis ? a : null);
+    document.getElementById('aion2InsightContent').innerHTML = aion2InsightHtml || '';
+    document.getElementById('aion2InsightBlock').style.display = aion2InsightHtml ? '' : 'none';
     document.getElementById('aion2SeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
     document.getElementById('aion2YtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
     document.getElementById('aion2PushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
