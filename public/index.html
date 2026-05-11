@@ -604,9 +604,61 @@
       font-variant-numeric: tabular-nums;
     }
 
+    /* ── SIDEBAR LAYOUT ── */
+    .layout-outer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .sidebar {
+      width: 180px;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 20px;
+      overflow: hidden;
+    }
+    .sidebar-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text3);
+      padding: 16px 16px 10px;
+    }
+    .sidebar-menu-item {
+      display: block;
+      padding: 11px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text2);
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+      border-left: 3px solid transparent;
+      user-select: none;
+    }
+    .sidebar-menu-item:hover { background: var(--bg); color: var(--text); }
+    .sidebar-menu-item.active {
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-weight: 700;
+      border-left-color: var(--accent);
+    }
+    .main-content { flex: 1; min-width: 0; padding-bottom: 100px; }
+    .coming-soon { text-align: center; padding: 80px 20px; }
+    .coming-soon-icon { font-size: 2.5rem; margin-bottom: 20px; }
+    .coming-soon-text { font-size: 1.1rem; font-weight: 600; color: var(--text2); }
+
     @media (max-width: 700px) {
       .grid-content { grid-template-columns: 1fr; }
-      .wrap { padding: 0 20px 80px; }
+      .layout-outer { padding: 0 20px; flex-direction: column; }
+      .sidebar { width: 100%; position: static; }
+      .main-content { padding-bottom: 80px; }
     }
     @media (max-width: 600px) {
       .site-header { flex-direction: column; align-items: flex-start; padding: 18px 20px; }
@@ -634,7 +686,15 @@
   </header>
 </div>
 
-<div class="wrap">
+<div class="layout-outer">
+  <aside class="sidebar">
+    <div class="sidebar-title">게임 선택</div>
+    <div class="sidebar-menu-item active" data-game="lineage" onclick="selectGame('lineage')">⚔ 리니지클래식</div>
+    <div class="sidebar-menu-item" data-game="aion2" onclick="selectGame('aion2')">✦ 아이온2</div>
+    <div class="sidebar-menu-item" data-game="maple" onclick="selectGame('maple')">🍁 메이플스토리</div>
+  </aside>
+  <main class="main-content">
+  <div id="lineageContent">
 
   <!-- ── AI WARN ── -->
   <div class="warn-bar" id="warnBar">
@@ -759,7 +819,15 @@
     <div id="historyPanel" class="history-panel"></div>
   </section>
 
-</div><!-- /wrap -->
+  </div><!-- /lineageContent -->
+  <div id="comingSoonPanel" style="display:none">
+    <div class="coming-soon">
+      <div class="coming-soon-icon">🎮</div>
+      <div class="coming-soon-text">준비 중입니다</div>
+    </div>
+  </div>
+  </main>
+</div><!-- /layout-outer -->
 
 <div id="overlay">
   <div class="loader"></div>
@@ -1230,6 +1298,16 @@ function renderHistoryPanel(datasets, period, filenames) {
   html += renderHistoryCard('inven',    'icon-inven',    '인', '인벤',          datasets, 'inven',     'inven');
 
   return html;
+}
+
+/* ── 게임 선택 ── */
+function selectGame(game) {
+  document.querySelectorAll('.sidebar-menu-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.game === game);
+  });
+  const isLineage = game === 'lineage';
+  document.getElementById('lineageContent').style.display = isLineage ? '' : 'none';
+  document.getElementById('comingSoonPanel').style.display = isLineage ? 'none' : '';
 }
 
 /* ── 초기화 ── */
