@@ -50,11 +50,21 @@ jobs:
               .catch(e => { console.error('[아이온2 오류]', e.message); process.exit(1); });
           "
 
+      - name: 메이플스토리 크롤링 및 분석
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          node -e "
+            require('./scheduler').runMapleCrawlAndAnalyze()
+              .then(() => { console.log('[메이플스토리 완료]'); process.exit(0); })
+              .catch(e => { console.error('[메이플스토리 오류]', e.message); process.exit(1); });
+          "
+
       - name: 결과 커밋 및 푸시
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json data/history/ data/aion2-results.json data/aion2-history/ 2>/dev/null || true
+          git add data/results.json data/history/ data/aion2-results.json data/aion2-history/ data/maple-results.json data/maple-history/ 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "변경사항 없음 — 커밋 건너뜀"
           else

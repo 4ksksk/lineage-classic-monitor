@@ -936,13 +936,120 @@
 
   </div><!-- /aion2Content -->
 
-  <!-- ── 메이플스토리 준비중 ── -->
-  <div id="comingSoonPanel" style="display:none">
-    <div class="coming-soon">
-      <div class="coming-soon-icon">🎮</div>
-      <div class="coming-soon-text">준비 중입니다</div>
+  <!-- ── 메이플스토리 콘텐츠 ── -->
+  <div id="mapleContent" style="display:none">
+
+    <div class="warn-bar" id="mapleWarnBar">
+      <span class="warn-icon">WARN</span>
+      <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
     </div>
-  </div>
+
+    <div class="issue-banner">
+      <div class="issue-badge"><div class="pulse"></div> TODAY</div>
+      <div id="mapleIssueText">데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.</div>
+    </div>
+
+    <div class="card official">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-official">공</div>
+          <span class="card-title">공식 업데이트</span>
+        </div>
+        <span class="card-time" id="mapleOfficialTime">—</span>
+      </div>
+      <div class="card-body" id="mapleOfficialPanel">
+        <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
+      </div>
+    </div>
+
+    <div class="card dc">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-dc">디</div>
+          <span class="card-title">DC인사이드</span>
+        </div>
+        <span class="card-time" id="mapleDcTime">—</span>
+      </div>
+      <div class="card-body" id="mapleDcPanel">
+        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+      </div>
+    </div>
+
+    <div class="card inven">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-inven">인</div>
+          <span class="card-title">인벤</span>
+        </div>
+        <span class="card-time" id="mapleInvenTime">—</span>
+      </div>
+      <div class="card-body" id="mapleInvenPanel">
+        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+      </div>
+    </div>
+
+    <div class="grid-content">
+      <div class="card seo">
+        <div class="card-head">
+          <div class="card-head-left">
+            <div class="card-icon icon-seo">S</div>
+            <span class="card-title">SEO 소재</span>
+          </div>
+          <span class="card-time">검색 최적화</span>
+        </div>
+        <div class="card-body" id="mapleSeoCard">
+          <div class="empty"><div class="empty-icon">🔍</div>수집 후 표시됩니다.</div>
+        </div>
+      </div>
+      <div class="card youtube">
+        <div class="card-head">
+          <div class="card-head-left">
+            <div class="card-icon icon-yt">Y</div>
+            <span class="card-title">유튜브 소재</span>
+          </div>
+          <span class="card-time">영상 기획</span>
+        </div>
+        <div class="card-body" id="mapleYtCard">
+          <div class="empty"><div class="empty-icon">🎬</div>수집 후 표시됩니다.</div>
+        </div>
+      </div>
+      <div class="card push">
+        <div class="card-head">
+          <div class="card-head-left">
+            <div class="card-icon icon-push">P</div>
+            <span class="card-title">푸시 알림 소재</span>
+          </div>
+          <span class="card-time">광고 소재</span>
+        </div>
+        <div class="card-body" id="maplePushCard">
+          <div class="empty"><div class="empty-icon">🔔</div>수집 후 표시됩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="mapleFooterStatus">메이플스토리 모니터 · 6시간마다 자동 수집</footer>
+
+    <!-- ── 메이플스토리 지난 기록 ── -->
+    <section class="history-section">
+      <div class="history-heading">지난 기록 보기</div>
+
+      <div class="history-controls">
+        <select id="maplePeriodType" class="history-select" onchange="buildMaplePeriodOptions()">
+          <option value="daily">일별</option>
+          <option value="weekly">주간</option>
+          <option value="monthly">월간</option>
+        </select>
+        <select id="maplePeriodValue" class="history-select">
+          <option>기간을 선택하세요</option>
+        </select>
+        <button class="history-btn history-btn-query" id="mapleHistoryQueryBtn" onclick="queryMapleHistory()">조회</button>
+        <button class="history-btn history-btn-close" id="mapleHistoryCloseBtn" onclick="closeMapleHistory()" style="display:none">닫기</button>
+      </div>
+
+      <div id="mapleHistoryPanel" class="history-panel"></div>
+    </section>
+
+  </div><!-- /mapleContent -->
   </main>
 </div><!-- /layout-outer -->
 
@@ -1145,6 +1252,9 @@ const DATA_URL = IS_LOCAL
 const AION2_DATA_URL = IS_LOCAL
   ? '/api/aion2-results'
   : 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/aion2-results.json';
+const MAPLE_DATA_URL = IS_LOCAL
+  ? '/api/maple-results'
+  : 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/maple-results.json';
 
 /* ── 데이터 로드 ── */
 let lastUpdatedISO = null;
@@ -1420,6 +1530,147 @@ function renderHistoryPanel(datasets, period, filenames) {
   return html;
 }
 
+/* ── 메이플스토리 히스토리 ── */
+const GITHUB_CONTENTS_API_MAPLE = 'https://api.github.com/repos/4ksksk/lineage-classic-monitor/contents/data/maple-history';
+const HISTORY_RAW_BASE_MAPLE    = 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/maple-history';
+
+let mapleHistoryFiles = [];
+
+async function loadMapleHistoryIndex() {
+  try {
+    if (IS_LOCAL) {
+      const res = await fetch('/api/maple-history');
+      mapleHistoryFiles = (await res.json()).sort().reverse();
+    } else {
+      const res = await fetch(GITHUB_CONTENTS_API_MAPLE);
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      const items = await res.json();
+      mapleHistoryFiles = items
+        .filter(f => f.type === 'file' && /^\d{4}-\d{2}-\d{2}-\d{2}\.json$/.test(f.name))
+        .map(f => f.name)
+        .sort()
+        .reverse();
+    }
+    buildMaplePeriodOptions();
+  } catch(e) {
+    console.error('[메이플 historyIndex 로드 실패]', e.message);
+    document.getElementById('maplePeriodValue').innerHTML =
+      `<option value="">로드 실패: ${esc(e.message)}</option>`;
+  }
+}
+
+function buildMaplePeriodOptions() {
+  const type   = document.getElementById('maplePeriodType').value;
+  const select = document.getElementById('maplePeriodValue');
+  const seen   = new Set();
+  const options = [];
+
+  for (const f of mapleHistoryFiles) {
+    const key = parsePeriodKey(f, type);
+    if (key && !seen.has(key)) { seen.add(key); options.push(key); }
+  }
+
+  select.innerHTML = options.length
+    ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
+    : '<option value="">데이터 없음</option>';
+
+  closeMapleHistory();
+}
+
+function queryMapleHistory() {
+  const period = document.getElementById('maplePeriodValue').value;
+  if (!period || period === '데이터 없음') return;
+  const panel = document.getElementById('mapleHistoryPanel');
+  panel.classList.add('open');
+  document.getElementById('mapleHistoryCloseBtn').style.display = '';
+  loadMapleHistoryData(period);
+}
+
+function closeMapleHistory() {
+  const panel = document.getElementById('mapleHistoryPanel');
+  panel.classList.remove('open');
+  panel.innerHTML = '';
+  document.getElementById('mapleHistoryCloseBtn').style.display = 'none';
+}
+
+async function loadMapleHistoryData(period) {
+  if (!period) return;
+  const type  = document.getElementById('maplePeriodType').value;
+  const panel = document.getElementById('mapleHistoryPanel');
+  panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
+
+  const matching = mapleHistoryFiles.filter(f => parsePeriodKey(f, type) === period);
+  if (!matching.length) {
+    panel.innerHTML = emptyBox('📂', '해당 기간의 데이터가 없습니다.');
+    return;
+  }
+
+  const settled = await Promise.allSettled(matching.map(f => {
+    const url = IS_LOCAL
+      ? `/api/maple-history/${f}`
+      : `${HISTORY_RAW_BASE_MAPLE}/${f}`;
+    return fetch(url).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
+  }));
+  const datasets = settled.filter(r => r.status === 'fulfilled').map(r => r.value);
+
+  if (!datasets.length) {
+    panel.innerHTML = emptyBox('📂', '데이터를 불러올 수 없습니다.');
+    return;
+  }
+  panel.innerHTML = renderHistoryPanel(datasets, period, matching);
+}
+
+/* ── 메이플스토리 데이터 로드 ── */
+let mapleLoaded = false;
+
+async function loadMapleResults() {
+  try {
+    const url = IS_LOCAL ? MAPLE_DATA_URL : `${MAPLE_DATA_URL}?t=${Date.now()}`;
+    const res  = await fetch(url);
+    const data = await res.json();
+
+    const officialPosts = data.officialPosts || [];
+    const dcPosts       = data.dcPosts       || [];
+    const invenPosts    = data.invenPosts    || [];
+    const cnt = officialPosts.length + dcPosts.length + invenPosts.length;
+
+    const isValidAnalysis = a => !!(a && (a.todayIssue || a.official?.summary || a.dcinside?.summary || a.inven?.summary));
+    const a = data.analysis;
+    const hasAnalysis = isValidAnalysis(a);
+
+    const warnBar = document.getElementById('mapleWarnBar');
+    if (!hasAnalysis && cnt > 0) warnBar.classList.add('on');
+    else warnBar.classList.remove('on');
+
+    document.getElementById('mapleIssueText').textContent = (hasAnalysis && a.todayIssue) ||
+      (cnt > 0
+        ? `공식 ${officialPosts.length}개 · DC인사이드 ${dcPosts.length}개 · 인벤 ${invenPosts.length}개 수집됨 (AI 분석 대기)`
+        : '데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.');
+
+    const t = data.lastUpdated ? timeAgo(data.lastUpdated) : '—';
+    ['mapleOfficialTime', 'mapleDcTime', 'mapleInvenTime'].forEach(id =>
+      document.getElementById(id).textContent = t
+    );
+
+    document.getElementById('mapleOfficialPanel').innerHTML = renderOfficial(hasAnalysis ? a : null, officialPosts);
+    document.getElementById('mapleDcPanel').innerHTML       = renderCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('mapleInvenPanel').innerHTML    = renderCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('mapleSeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
+    document.getElementById('mapleYtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
+    document.getElementById('maplePushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
+
+    if (cnt > 0) {
+      document.getElementById('mapleFooterStatus').textContent =
+        hasAnalysis ? `총 ${cnt}개 게시글 AI 분석 완료 · 6시간마다 자동 수집`
+                    : `총 ${cnt}개 게시글 수집됨 · AI 분석 대기 중 · 6시간마다 자동 수집`;
+    }
+
+    mapleLoaded = true;
+  } catch(e) {
+    console.error('[메이플스토리 데이터 로드 오류]', e);
+  }
+}
+
 /* ── 아이온2 히스토리 ── */
 const GITHUB_CONTENTS_API_AION2 = 'https://api.github.com/repos/4ksksk/lineage-classic-monitor/contents/data/aion2-history';
 const HISTORY_RAW_BASE_AION2    = 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/aion2-history';
@@ -1566,18 +1817,25 @@ function selectGame(game) {
   document.querySelectorAll('.sidebar-menu-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
-  document.getElementById('lineageContent').style.display  = game === 'lineage' ? '' : 'none';
-  document.getElementById('aion2Content').style.display    = game === 'aion2'   ? '' : 'none';
-  document.getElementById('comingSoonPanel').style.display = game === 'maple'   ? '' : 'none';
+  document.getElementById('lineageContent').style.display = game === 'lineage' ? '' : 'none';
+  document.getElementById('aion2Content').style.display   = game === 'aion2'   ? '' : 'none';
+  document.getElementById('mapleContent').style.display   = game === 'maple'   ? '' : 'none';
 
   if (game === 'aion2' && !aion2Loaded) loadAion2Results();
+  if (game === 'maple' && !mapleLoaded) loadMapleResults();
 
   if (game === 'lineage') {
     closeAion2History();
+    closeMapleHistory();
     loadHistoryIndex();
   } else if (game === 'aion2') {
     closeHistory();
+    closeMapleHistory();
     loadAion2HistoryIndex();
+  } else if (game === 'maple') {
+    closeHistory();
+    closeAion2History();
+    loadMapleHistoryIndex();
   }
 }
 
