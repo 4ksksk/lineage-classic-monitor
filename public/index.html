@@ -716,6 +716,18 @@
     .coming-soon-icon { font-size: 2.5rem; margin-bottom: 20px; }
     .coming-soon-text { font-size: 1.1rem; font-weight: 600; color: var(--text2); }
 
+    /* 뷰포트 >= 1404px: 메인 콘텐츠 시각적 중심 = 뷰포트 중심
+       공식: margin-left = 50vw - (padding-left(40) + sidebar(180) + gap(24) + main-width/2(458)) = 50vw - 702px */
+    @media (min-width: 1404px) {
+      .layout-outer {
+        margin-left: calc(50vw - 702px);
+        margin-right: auto;
+      }
+      .site-header {
+        margin-left: calc(50vw - 702px);
+        margin-right: auto;
+      }
+    }
     @media (max-width: 700px) {
       .grid-content { grid-template-columns: 1fr; }
       .layout-outer { padding: 0 20px; flex-direction: column; }
