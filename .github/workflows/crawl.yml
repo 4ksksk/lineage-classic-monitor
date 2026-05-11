@@ -1,4 +1,4 @@
-name: 자동 크롤링 및 Gemini 분석
+name: 자동 크롤링 및 분석
 
 on:
   schedule:
@@ -6,7 +6,9 @@ on:
     - cron: '0 4  * * *'  # KST 13:00
     - cron: '0 7  * * *'  # KST 16:00
     - cron: '0 11 * * *'  # KST 20:00
-  workflow_dispatch:       # 수동 실행 허용
+  workflow_dispatch:       # 수동 실행
+  push:
+    branches: [main]       # main push 시 실행
 
 permissions:
   contents: write          # git push 권한
@@ -19,7 +21,7 @@ jobs:
       - name: 저장소 체크아웃
         uses: actions/checkout@v4
 
-      - name: Node.js 18 설정
+      - name: Node.js 20 설정
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -28,21 +30,31 @@ jobs:
       - name: 패키지 설치
         run: npm ci
 
-      - name: 크롤링 및 Gemini 분석 실행
+      - name: 리니지클래식 크롤링 및 분석
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           node -e "
             require('./scheduler').runCrawlAndAnalyze()
-              .then(() => { console.log('[완료]'); process.exit(0); })
-              .catch(e => { console.error('[오류]', e.message); process.exit(1); });
+              .then(() => { console.log('[리니지클래식 완료]'); process.exit(0); })
+              .catch(e => { console.error('[리니지클래식 오류]', e.message); process.exit(1); });
+          "
+
+      - name: 아이온2 크롤링 및 분석
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          node -e "
+            require('./scheduler').runAion2CrawlAndAnalyze()
+              .then(() => { console.log('[아이온2 완료]'); process.exit(0); })
+              .catch(e => { console.error('[아이온2 오류]', e.message); process.exit(1); });
           "
 
       - name: 결과 커밋 및 푸시
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json data/history/
+          git add data/results.json data/history/ data/aion2-results.json data/aion2-history/ 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "변경사항 없음 — 커밋 건너뜀"
           else
