@@ -3,12 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const { runCrawlAndAnalyze, startScheduler } = require('./scheduler/index');
+const { runCrawlAndAnalyze, runAion2CrawlAndAnalyze, startScheduler } = require('./scheduler/index');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_PATH    = path.join(__dirname, 'data', 'results.json');
-const HISTORY_DIR  = path.join(__dirname, 'data', 'history');
+const DATA_PATH       = path.join(__dirname, 'data', 'results.json');
+const HISTORY_DIR     = path.join(__dirname, 'data', 'history');
+const DATA_PATH_AION2 = path.join(__dirname, 'data', 'aion2-results.json');
 
 const EMPTY = { lastUpdated: null, officialPosts: [], dcPosts: [], invenPosts: [], analysis: null };
 
@@ -48,6 +49,15 @@ app.get('/api/history/:filename', (req, res) => {
     res.json(JSON.parse(fs.readFileSync(filepath, 'utf-8')));
   } catch {
     res.status(500).json({ error: '파일을 읽을 수 없습니다.' });
+  }
+});
+
+app.get('/api/aion2-results', (req, res) => {
+  if (!fs.existsSync(DATA_PATH_AION2)) return res.json(EMPTY);
+  try {
+    res.json(JSON.parse(fs.readFileSync(DATA_PATH_AION2, 'utf-8')));
+  } catch {
+    res.status(500).json({ error: '데이터 파일을 읽을 수 없습니다.' });
   }
 });
 

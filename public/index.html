@@ -820,6 +820,103 @@
   </section>
 
   </div><!-- /lineageContent -->
+
+  <!-- ── 아이온2 콘텐츠 ── -->
+  <div id="aion2Content" style="display:none">
+
+    <div class="warn-bar" id="aion2WarnBar">
+      <span class="warn-icon">WARN</span>
+      <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
+    </div>
+
+    <div class="issue-banner">
+      <div class="issue-badge"><div class="pulse"></div> TODAY</div>
+      <div id="aion2IssueText">데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.</div>
+    </div>
+
+    <div class="card official">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-official">공</div>
+          <span class="card-title">공식 업데이트</span>
+        </div>
+        <span class="card-time" id="aion2OfficialTime">—</span>
+      </div>
+      <div class="card-body" id="aion2OfficialPanel">
+        <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
+      </div>
+    </div>
+
+    <div class="card dc">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-dc">디</div>
+          <span class="card-title">DC인사이드</span>
+        </div>
+        <span class="card-time" id="aion2DcTime">—</span>
+      </div>
+      <div class="card-body" id="aion2DcPanel">
+        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+      </div>
+    </div>
+
+    <div class="card inven">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-inven">인</div>
+          <span class="card-title">인벤</span>
+        </div>
+        <span class="card-time" id="aion2InvenTime">—</span>
+      </div>
+      <div class="card-body" id="aion2InvenPanel">
+        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+      </div>
+    </div>
+
+    <div class="grid-content">
+      <div class="card seo">
+        <div class="card-head">
+          <div class="card-head-left">
+            <div class="card-icon icon-seo">S</div>
+            <span class="card-title">SEO 소재</span>
+          </div>
+          <span class="card-time">검색 최적화</span>
+        </div>
+        <div class="card-body" id="aion2SeoCard">
+          <div class="empty"><div class="empty-icon">🔍</div>수집 후 표시됩니다.</div>
+        </div>
+      </div>
+      <div class="card youtube">
+        <div class="card-head">
+          <div class="card-head-left">
+            <div class="card-icon icon-yt">Y</div>
+            <span class="card-title">유튜브 소재</span>
+          </div>
+          <span class="card-time">영상 기획</span>
+        </div>
+        <div class="card-body" id="aion2YtCard">
+          <div class="empty"><div class="empty-icon">🎬</div>수집 후 표시됩니다.</div>
+        </div>
+      </div>
+      <div class="card push">
+        <div class="card-head">
+          <div class="card-head-left">
+            <div class="card-icon icon-push">P</div>
+            <span class="card-title">푸시 알림 소재</span>
+          </div>
+          <span class="card-time">광고 소재</span>
+        </div>
+        <div class="card-body" id="aion2PushCard">
+          <div class="empty"><div class="empty-icon">🔔</div>수집 후 표시됩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="aion2FooterStatus">아이온2 모니터 · 6시간마다 자동 수집</footer>
+
+  </div><!-- /aion2Content -->
+
+  <!-- ── 메이플스토리 준비중 ── -->
   <div id="comingSoonPanel" style="display:none">
     <div class="coming-soon">
       <div class="coming-soon-icon">🎮</div>
@@ -1025,6 +1122,9 @@ const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127
 const DATA_URL = IS_LOCAL
   ? '/api/results'
   : 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/results.json';
+const AION2_DATA_URL = IS_LOCAL
+  ? '/api/aion2-results'
+  : 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/aion2-results.json';
 
 /* ── 데이터 로드 ── */
 let lastUpdatedISO = null;
@@ -1300,14 +1400,67 @@ function renderHistoryPanel(datasets, period, filenames) {
   return html;
 }
 
+/* ── 아이온2 데이터 로드 ── */
+let aion2Loaded = false;
+
+async function loadAion2Results() {
+  try {
+    const url = IS_LOCAL ? AION2_DATA_URL : `${AION2_DATA_URL}?t=${Date.now()}`;
+    const res  = await fetch(url);
+    const data = await res.json();
+
+    const officialPosts = data.officialPosts || [];
+    const dcPosts       = data.dcPosts       || [];
+    const invenPosts    = data.invenPosts    || [];
+    const cnt = officialPosts.length + dcPosts.length + invenPosts.length;
+
+    const isValidAnalysis = a => !!(a && (a.todayIssue || a.official?.summary || a.dcinside?.summary || a.inven?.summary));
+    const a = data.analysis;
+    const hasAnalysis = isValidAnalysis(a);
+
+    const warnBar = document.getElementById('aion2WarnBar');
+    if (!hasAnalysis && cnt > 0) warnBar.classList.add('on');
+    else warnBar.classList.remove('on');
+
+    document.getElementById('aion2IssueText').textContent = (hasAnalysis && a.todayIssue) ||
+      (cnt > 0
+        ? `공식 ${officialPosts.length}개 · DC인사이드 ${dcPosts.length}개 · 인벤 ${invenPosts.length}개 수집됨 (AI 분석 대기)`
+        : '데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.');
+
+    const t = data.lastUpdated ? timeAgo(data.lastUpdated) : '—';
+    ['aion2OfficialTime', 'aion2DcTime', 'aion2InvenTime'].forEach(id =>
+      document.getElementById(id).textContent = t
+    );
+
+    document.getElementById('aion2OfficialPanel').innerHTML = renderOfficial(hasAnalysis ? a : null, officialPosts);
+    document.getElementById('aion2DcPanel').innerHTML       = renderCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('aion2InvenPanel').innerHTML    = renderCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('aion2SeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
+    document.getElementById('aion2YtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
+    document.getElementById('aion2PushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
+
+    if (cnt > 0) {
+      document.getElementById('aion2FooterStatus').textContent =
+        hasAnalysis ? `총 ${cnt}개 게시글 AI 분석 완료 · 6시간마다 자동 수집`
+                    : `총 ${cnt}개 게시글 수집됨 · AI 분석 대기 중 · 6시간마다 자동 수집`;
+    }
+
+    aion2Loaded = true;
+  } catch(e) {
+    console.error('[아이온2 데이터 로드 오류]', e);
+  }
+}
+
 /* ── 게임 선택 ── */
 function selectGame(game) {
   document.querySelectorAll('.sidebar-menu-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
-  const isLineage = game === 'lineage';
-  document.getElementById('lineageContent').style.display = isLineage ? '' : 'none';
-  document.getElementById('comingSoonPanel').style.display = isLineage ? 'none' : '';
+  document.getElementById('lineageContent').style.display  = game === 'lineage' ? '' : 'none';
+  document.getElementById('aion2Content').style.display    = game === 'aion2'   ? '' : 'none';
+  document.getElementById('comingSoonPanel').style.display = game === 'maple'   ? '' : 'none';
+
+  if (game === 'aion2' && !aion2Loaded) loadAion2Results();
 }
 
 /* ── 초기화 ── */
