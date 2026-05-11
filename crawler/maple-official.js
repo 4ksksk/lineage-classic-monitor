@@ -46,22 +46,12 @@ async function fetchArticle(url) {
     const { data } = await axios.get(url, { headers: HEADERS, timeout: 12000 });
     const $ = cheerio.load(data);
 
-    // 날짜 추출 — 지정 셀렉터 순서로 시도
-    let date = '';
-    const dateSelectors = ['.date', '.info_date', '.view_date', 'dd.date', 'span.date'];
-    for (const sel of dateSelectors) {
-      const el = $(sel).first();
-      if (!el.length) continue;
-      const raw = (el.attr('datetime') || el.text()).replace(/\s+/g, ' ').trim();
-      if (raw) { date = raw; break; }
-    }
-
-    // 셀렉터 실패 시 전체 텍스트에서 날짜 패턴 추출
-    if (!date) {
-      const bodyText = $('body').text();
-      const m = bodyText.match(/\d{4}\.\d{2}\.\d{2}/) || bodyText.match(/\d{4}-\d{2}-\d{2}/);
-      if (m) date = m[0];
-    }
+    // 본문 텍스트에서 "YYYY년 M월 D일" 패턴으로 날짜 추출
+    const bodyText = $('body').text();
+    const dateMatch = bodyText.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+    const date = dateMatch
+      ? `${dateMatch[1]}년 ${dateMatch[2]}월 ${dateMatch[3]}일`
+      : '';
 
     console.log(`[메이플 공식] URL: ${url} / 날짜: ${date || '(추출 실패)'}`);
 
