@@ -914,6 +914,26 @@
 
     <footer id="aion2FooterStatus">아이온2 모니터 · 6시간마다 자동 수집</footer>
 
+    <!-- ── 아이온2 지난 기록 ── -->
+    <section class="history-section">
+      <div class="history-heading">지난 기록 보기</div>
+
+      <div class="history-controls">
+        <select id="aion2PeriodType" class="history-select" onchange="buildAion2PeriodOptions()">
+          <option value="daily">일별</option>
+          <option value="weekly">주간</option>
+          <option value="monthly">월간</option>
+        </select>
+        <select id="aion2PeriodValue" class="history-select">
+          <option>기간을 선택하세요</option>
+        </select>
+        <button class="history-btn history-btn-query" id="aion2HistoryQueryBtn" onclick="queryAion2History()">조회</button>
+        <button class="history-btn history-btn-close" id="aion2HistoryCloseBtn" onclick="closeAion2History()" style="display:none">닫기</button>
+      </div>
+
+      <div id="aion2HistoryPanel" class="history-panel"></div>
+    </section>
+
   </div><!-- /aion2Content -->
 
   <!-- ── 메이플스토리 준비중 ── -->
@@ -1400,6 +1420,96 @@ function renderHistoryPanel(datasets, period, filenames) {
   return html;
 }
 
+/* ── 아이온2 히스토리 ── */
+const GITHUB_CONTENTS_API_AION2 = 'https://api.github.com/repos/4ksksk/lineage-classic-monitor/contents/data/aion2-history';
+const HISTORY_RAW_BASE_AION2    = 'https://raw.githubusercontent.com/4ksksk/lineage-classic-monitor/main/data/aion2-history';
+
+let aion2HistoryFiles = [];
+
+async function loadAion2HistoryIndex() {
+  try {
+    if (IS_LOCAL) {
+      const res = await fetch('/api/aion2-history');
+      aion2HistoryFiles = (await res.json()).sort().reverse();
+    } else {
+      const res = await fetch(GITHUB_CONTENTS_API_AION2);
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      const items = await res.json();
+      aion2HistoryFiles = items
+        .filter(f => f.type === 'file' && /^\d{4}-\d{2}-\d{2}-\d{2}\.json$/.test(f.name))
+        .map(f => f.name)
+        .sort()
+        .reverse();
+    }
+    buildAion2PeriodOptions();
+  } catch(e) {
+    console.error('[아이온2 historyIndex 로드 실패]', e.message);
+    document.getElementById('aion2PeriodValue').innerHTML =
+      `<option value="">로드 실패: ${esc(e.message)}</option>`;
+  }
+}
+
+function buildAion2PeriodOptions() {
+  const type   = document.getElementById('aion2PeriodType').value;
+  const select = document.getElementById('aion2PeriodValue');
+  const seen   = new Set();
+  const options = [];
+
+  for (const f of aion2HistoryFiles) {
+    const key = parsePeriodKey(f, type);
+    if (key && !seen.has(key)) { seen.add(key); options.push(key); }
+  }
+
+  select.innerHTML = options.length
+    ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
+    : '<option value="">데이터 없음</option>';
+
+  closeAion2History();
+}
+
+function queryAion2History() {
+  const period = document.getElementById('aion2PeriodValue').value;
+  if (!period || period === '데이터 없음') return;
+  const panel = document.getElementById('aion2HistoryPanel');
+  panel.classList.add('open');
+  document.getElementById('aion2HistoryCloseBtn').style.display = '';
+  loadAion2HistoryData(period);
+}
+
+function closeAion2History() {
+  const panel = document.getElementById('aion2HistoryPanel');
+  panel.classList.remove('open');
+  panel.innerHTML = '';
+  document.getElementById('aion2HistoryCloseBtn').style.display = 'none';
+}
+
+async function loadAion2HistoryData(period) {
+  if (!period) return;
+  const type  = document.getElementById('aion2PeriodType').value;
+  const panel = document.getElementById('aion2HistoryPanel');
+  panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
+
+  const matching = aion2HistoryFiles.filter(f => parsePeriodKey(f, type) === period);
+  if (!matching.length) {
+    panel.innerHTML = emptyBox('📂', '해당 기간의 데이터가 없습니다.');
+    return;
+  }
+
+  const settled = await Promise.allSettled(matching.map(f => {
+    const url = IS_LOCAL
+      ? `/api/aion2-history/${f}`
+      : `${HISTORY_RAW_BASE_AION2}/${f}`;
+    return fetch(url).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
+  }));
+  const datasets = settled.filter(r => r.status === 'fulfilled').map(r => r.value);
+
+  if (!datasets.length) {
+    panel.innerHTML = emptyBox('📂', '데이터를 불러올 수 없습니다.');
+    return;
+  }
+  panel.innerHTML = renderHistoryPanel(datasets, period, matching);
+}
+
 /* ── 아이온2 데이터 로드 ── */
 let aion2Loaded = false;
 
@@ -1461,6 +1571,14 @@ function selectGame(game) {
   document.getElementById('comingSoonPanel').style.display = game === 'maple'   ? '' : 'none';
 
   if (game === 'aion2' && !aion2Loaded) loadAion2Results();
+
+  if (game === 'lineage') {
+    closeAion2History();
+    loadHistoryIndex();
+  } else if (game === 'aion2') {
+    closeHistory();
+    loadAion2HistoryIndex();
+  }
 }
 
 /* ── 초기화 ── */
