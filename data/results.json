@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-11T07:04:16.617Z",
+  "lastUpdated": "2026-05-11T07:41:06.864Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
@@ -10,6 +10,10 @@
     }
   ],
   "dcPosts": [
+    {
+      "title": "여자들이 이쁘네요 비록 AI이지만..음악도 좋네요.엔씨야 잘하자",
+      "content": "https://www.youtube.com/watch?v=24jX3gYFJDo Raise the Ring, Ignite the Sky | Epic Symphonic Metal | Chaos Angelring: Dark Rift OST⚔+ RAISE THE RING, IGNITE THE SKYThe opening anthem of Chaos Angelring: Dark Rift — an epic symphonic metal journey through a fractured realm where ten guard...www.youtube.com"
+    },
     {
       "title": "이 버프 이름이 뭔지 아는분 ?? 첨 보는 버프인데",
       "content": "이게 무슨버프임 ?"
@@ -77,13 +81,13 @@
     {
       "title": "요검, 용제, 침착맨 닉네임 얼마정도 할거같냐",
       "content": "알려줭"
-    },
-    {
-      "title": "피시방에서 하는 사람 있음?",
-      "content": "자폐아도 아니고 디코하면 헤드셋 쳐 껴라피시방 쩌렁쩌렁 울리게 스피커로 디코 하지말고소리좀 줄여달라니까 띠겁다는 듯이 쳐다보네보면 어쩔건데"
     }
   ],
   "invenPosts": [
+    {
+      "title": "9일도 구매 어때?",
+      "content": "현재 우리섭 기준 1200~1300 아덴정도하는데싸울이 아직까지 안나오는것보니까..쉽게 가격이 떨어지진 않을것같은데지금 구매해도 괜찮을까? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14534\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14534\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document"
+    },
     {
       "title": "몹들이 쌔진거 맞음?",
       "content": "7검4셋일때도 사냥이나 타락 무리없었는데8검5셋되고 2주전부터 사던4층 너무아픔..타락은 패치되고 몹도 많아졌지만 기본적으로 데미지 너무 잘들어오는듯.피방이라 -3방버프 받고 활기탕먹고 -62방 8검인데. 샤르나 힘업 인챈트 써주고 1시간30분이면 빨물 사라짐타락패치전에는 3시간돌려도 물약 20개쓸까말까였는데 ㅠㅠ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14532\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14532\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blan"
@@ -159,111 +163,99 @@
     {
       "title": "논피 말구 통제 없는 서버 있나요?",
       "content": "있으면 ㄷㄱ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14500\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14500\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit(); "
-    },
-    {
-      "title": "필드 템 드랍률 머지 진짜 ㅋㅋ",
-      "content": "옛날리니지와 다르게 필드에서 템이 너무 안나오게 설정해둠이거 딱 느낀게 어릴때 노가다하던 장소가서 6검4셋으로 노가다하는데 골드말곤 나오는게 없음ㅋㅋ본던도 가보고 하이네 기란 여기저기 가봤는데 몇시간사냥해도 돈이 안모이네 ..그냥 과금해서 템업글하고 과금해서 물약상자사서 ats사냥하고 과금해서 템업글하고 지르고 이거밖에 안됨 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14499\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14499\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('abou"
     }
   ],
   "analysis": {
-    "todayIssue": "5월 6일 업데이트로 타락한 축복의 땅이 확장되었으며, 새로운 PC방 전용 아이템과 투명 상태 액션 규칙 개선이 이루어졌습니다.",
+    "todayIssue": "타락한 축복의 땅 확장과 투명 상태 액션 규칙 개선이 주된 업데이트 이슈로 다뤄지고 있습니다.",
     "official": {
-      "summary": "• 타락한 축복의 땅 확장\n• PC방 전용 아이템 추가\n• 투명 상태 액션 규칙 개선",
+      "summary": "• 타락한 축복의 땅이 계절별로 나뉘어 확장\n• PC방 전용 판매 상품 추가\n• 투명 상태 해제 후 공격 딜레이 조정",
       "date": "2026. 5. 6.",
       "keywords": [
         "타락한 축복의 땅",
-        "PC방 전용 아이템",
-        "투명 상태 액션",
+        "PC방",
+        "투명 상태",
         "버그 수정",
-        "안정화 작업"
+        "전투 규칙"
       ],
       "marketingTips": [
-        "업데이트 기념 특별 이벤트 진행",
-        "신규 아이템 소개 및 프로모션"
+        "타락한 축복의 땅을 활용한 새로운 아이템 판매 캠페인",
+        "PC방 전용 아이템의 한정 판매 프로모션"
       ],
-      "priceImpact": "타락한 축복의 땅 확장으로 신규 사냥터에 대한 수요 증가가 예상되며, 관련 아이템 시세에도 긍정적인 영향이 있을 것으로 보입니다."
+      "priceImpact": "이번 업데이트로 인해 타락한 축복의 땅의 사냥 환경이 개선되면서 관련 아이템 가격이 오를 것으로 예상됩니다."
     },
     "dcinside": {
       "keywords": [
         {
-          "word": "자동작업장",
+          "word": "하이네",
+          "count": 5
+        },
+        {
+          "word": "자동",
           "count": 4
         },
         {
-          "word": "시세",
-          "count": 3
+          "word": "타락",
+          "count": 2
         },
         {
-          "word": "헤이샵",
-          "count": 1
-        },
-        {
-          "word": "서버명",
-          "count": 4
-        },
-        {
-          "word": "법사",
+          "word": "아덴",
           "count": 2
         }
       ],
-      "summary": "디시인사이드에서는 자동작업장의 문제와 서버 내 시세 이슈가 여러 번 언급되었습니다. 유저들 사이에선 시세 불안정과 게임의 운영에 대한 불만이 커지고 있습니다.",
+      "summary": "디시인사이드에서는 자동 사냥과 유저 간의 갈등이 주요 이슈로 다뤄지고 있습니다. 하이네 서버에서의 자동 플레이와 관련된 불만이 많아 보입니다.",
       "marketingTips": [
-        "자동작업장 관련 콘텐츠 제작",
-        "서버별 시세 변동성을 분석하는 정보 제공"
+        "자동 사냥과 관련된 아이템 거래 촉진 이벤트",
+        "하이네 서버 유저를 겨냥한 특별 프로모션"
       ],
-      "priceImpact": "자동작업장 문제로 인해 특정 아이템의 시세가 불안정해질 것으로 예상됩니다. 유저들은 이제 시세 확인이 더욱 중요해질 것입니다."
+      "priceImpact": "자동 사냥 관련 아이템의 수요 증가로 인해 시세가 오를 가능성이 있는 상황입니다."
     },
     "inven": {
       "keywords": [
         {
-          "word": "엔트열매",
-          "count": 1
-        },
-        {
           "word": "수호셋",
-          "count": 2
+          "count": 3
         },
         {
-          "word": "작업장",
+          "word": "자동",
           "count": 3
         },
         {
           "word": "시세",
-          "count": 1
+          "count": 2
         },
         {
-          "word": "드랍율",
+          "word": "애드온",
           "count": 1
         }
       ],
-      "summary": "인벤 게시판에서는 엔트열매와 수호셋의 시세에 대한 질문과 작업장 문제에 대한 불만이 주로 논의되었습니다. 유저들은 드랍율 저하를 걱정하고 있습니다.",
+      "summary": "인벤에서는 수호셋과 기타 아이템의 거래 시세에 대한 논의가 활발합니다. 특히 자동 플레이와 유저 간의 긴장감이 주요 이슈로 떠오르고 있습니다.",
       "marketingTips": [
-        "엔트열매 및 수호셋 관련 거래 강조",
-        "작업장에 대한 대안 제시"
+        "수호셋 관련 시세 정보 제공 콘텐츠",
+        "자동 플레이 아이템을 거래하는 유저를 위한 혜택 제공"
       ],
-      "priceImpact": "엔트열매 시세가 300원으로 언급되었으며, 시세 관련 정보가 유저들 사이에서 큰 관심을 받고 있습니다."
+      "priceImpact": "수호셋의 시세 안정성이 떨어질 것으로 보이며, 이에 따른 거래 활성화가 예상됩니다."
     },
     "seo": [
-      "리니지클래식 업데이트 소식",
-      "타락한 축복의 땅 확장",
-      "리니지클래식 시세 변화",
-      "업데이트 이벤트 정보",
-      "게임 캐릭터 성장 팁"
+      "타락한 축복의 땅 업데이트",
+      "리니지클래식 아이템 시세",
+      "PC방 판매 상품",
+      "게임 내 전투 개선",
+      "리니지클래식 커뮤니티 이슈"
     ],
     "youtube": [
-      "타락한 축복의 땅 사냥 전략",
-      "PC방 전용 상품 리뷰 영상",
-      "리니지클래식 시세 분석",
-      "투명 상태 액션 규칙 변화 설명"
+      "타락한 축복의 땅의 변화 알아보기",
+      "PC방 전용 아이템 사용법",
+      "투명 상태 규칙 변화 안내",
+      "리니지클래식 사냥 팁"
     ],
     "push": [
       {
-        "title": "(광고) 리니지클래식 시세 정보 확인!",
-        "content": "(광고) 지금 바로 인기 아이템 시세를 확인해보세요!"
+        "title": "(광고) 가격 오를 아이템 확인하세요!",
+        "content": "(광고) 이번 업데이트로 수요 증가 예상!"
       },
       {
-        "title": "(광고) 타락한 축복의 땅 확장!",
-        "content": "(광고) 새로운 사냥터에서 쾌적한 사냥을 즐기세요!"
+        "title": "(광고) 수호셋 시세 궁금하시죠?",
+        "content": "(광고) 지금 바로 시세 확인하고 거래하세요!"
       }
     ]
   }
