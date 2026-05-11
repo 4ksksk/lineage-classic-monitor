@@ -159,6 +159,7 @@
     .card.official,
     .card.dc,
     .card.inven,
+    .card.insight,
     .card.seo,
     .card.youtube,
     .card.push { border-left-color: var(--accent); }
@@ -186,6 +187,7 @@
     .icon-official,
     .icon-dc,
     .icon-inven,
+    .icon-insight,
     .icon-seo,
     .icon-yt,
     .icon-push { background: var(--accent); }
@@ -991,6 +993,18 @@
       </div>
     </div>
 
+    <div class="card insight">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-insight">시</div>
+          <span class="card-title">시장 인사이트</span>
+        </div>
+      </div>
+      <div class="card-body" id="mapleInsightPanel">
+        <div class="empty"><div class="empty-icon">📊</div>수집 후 표시됩니다.</div>
+      </div>
+    </div>
+
     <div class="grid-content">
       <div class="card seo">
         <div class="card-head">
@@ -1210,6 +1224,116 @@ function renderCommunity(data, tagCls, rawPosts) {
   </div>
   ${items}
   ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
+}
+
+/* ── 렌더: 메이플 공식 (시장 인사이트 블록 제외) ── */
+function renderMapleOfficial(a, rawPosts) {
+  if (a?.official) {
+    const o = a.official;
+    let html = '';
+    if (o.date) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 날짜</div>
+        <span class="update-date">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${esc(o.date)}
+        </span>
+      </div>`;
+    }
+    if (o.keywords?.length) {
+      const chips = o.keywords.map(k => `<span class="tag official">${esc(k)}</span>`).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+    if (o.summary) {
+      html += `<div class="block">
+        <div class="sec-label">업데이트 요약</div>
+        <div class="summary-text">${esc(o.summary)}</div>
+      </div>`;
+    }
+    return html || emptyBox('📋', '분석 데이터 없음');
+  }
+  if (!rawPosts?.length) return emptyBox('📋', '수집된 공식 공지 없음');
+  return rawPosts.map(p => `
+    <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+      ${p.date ? `<div style="margin-bottom:8px"><span class="update-date">${esc(p.date)}</span></div>` : ''}
+      <div style="font-size:15px;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:8px">${esc(p.title || '제목 없음')}</div>
+      ${p.content ? `<div class="summary-text">${esc(p.content.slice(0, 400))}${p.content.length > 400 ? '…' : ''}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+/* ── 렌더: 메이플 커뮤니티 (시장 인사이트 블록 제외) ── */
+function renderMapleCommunity(data, tagCls, rawPosts) {
+  if (data) {
+    let html = '';
+    if (data.keywords?.length) {
+      const chips = data.keywords.map(k => {
+        const word  = k.word  ?? k;
+        const count = k.count ?? '';
+        return `<span class="tag ${tagCls}">${esc(word)}${count ? `<span class="badge-count">${count}</span>` : ''}</span>`;
+      }).join('');
+      html += `<div class="block">
+        <div class="sec-label">핵심 키워드</div>
+        <div class="tags">${chips}</div>
+      </div>`;
+    }
+    if (data.summary) {
+      html += `<div class="block">
+        <div class="sec-label">상황 요약</div>
+        <div class="summary-text">${esc(data.summary)}</div>
+      </div>`;
+    }
+    return html || emptyBox('💬', '분석 데이터 없음');
+  }
+  if (!rawPosts?.length) return emptyBox('💬', '수집된 게시글 없음');
+  const cleanContent = (s) => {
+    if (!s) return '';
+    const cut = s.search(/noKidnap|function\s+\w+\s*\(|INVEN\.|window\.open|document\./);
+    return (cut > 0 ? s.slice(0, cut) : s).trim().slice(0, 200);
+  };
+  const items = rawPosts.slice(0, 8).map(p => {
+    const body = cleanContent(p.content);
+    return `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:${body ? '5px' : '0'}">${esc(p.title || '(제목 없음)')}</div>
+      ${body ? `<div class="summary-text" style="font-size:13px">${esc(body)}${p.content && p.content.length > 200 ? '…' : ''}</div>` : ''}
+    </div>`;
+  }).join('');
+  const extra = rawPosts.length - Math.min(rawPosts.length, 8);
+  return `<div class="block" style="margin-bottom:10px">
+    <div class="sec-label">수집된 게시글 · AI 분석 대기 중</div>
+  </div>
+  ${items}
+  ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
+}
+
+/* ── 렌더: 메이플 시장 인사이트 (공식+DC+인벤 통합) ── */
+function renderMapleInsight(a) {
+  if (!a) return emptyBox('📊', '분석 데이터 없음');
+  const sources = [
+    { label: '공식', data: a.official },
+    { label: 'DC',   data: a.dcinside },
+    { label: '인벤', data: a.inven },
+  ];
+  let html = '';
+  for (const { label, data } of sources) {
+    if (!data || (!data.priceImpact && !data.marketingTips?.length)) continue;
+    html += `<div class="block">
+      <div class="sec-label sec-label-price">${esc(label)}</div>`;
+    if (data.priceImpact) {
+      html += `<div class="price-box"${data.marketingTips?.length ? ' style="margin-bottom:12px"' : ''}>${esc(data.priceImpact)}</div>`;
+    }
+    if (data.marketingTips?.length) {
+      const tips = data.marketingTips.map(t =>
+        `<li class="tip-item"><div class="tip-dot"></div><span>${esc(t)}</span></li>`
+      ).join('');
+      html += `<div class="tip-list-wrap"><ul class="tip-list">${tips}</ul></div>`;
+    }
+    html += `</div>`;
+  }
+  return html || emptyBox('📊', '분석 데이터 없음');
 }
 
 /* ── 렌더: SEO ── */
@@ -1655,9 +1779,10 @@ async function loadMapleResults() {
       document.getElementById(id).textContent = t
     );
 
-    document.getElementById('mapleOfficialPanel').innerHTML = renderOfficial(hasAnalysis ? a : null, officialPosts);
-    document.getElementById('mapleDcPanel').innerHTML       = renderCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
-    document.getElementById('mapleInvenPanel').innerHTML    = renderCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('mapleOfficialPanel').innerHTML = renderMapleOfficial(hasAnalysis ? a : null, officialPosts);
+    document.getElementById('mapleDcPanel').innerHTML       = renderMapleCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
+    document.getElementById('mapleInvenPanel').innerHTML    = renderMapleCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
+    document.getElementById('mapleInsightPanel').innerHTML  = renderMapleInsight(hasAnalysis ? a : null);
     document.getElementById('mapleSeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
     document.getElementById('mapleYtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
     document.getElementById('maplePushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
