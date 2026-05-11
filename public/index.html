@@ -738,6 +738,86 @@
       .site-header { flex-direction: column; align-items: flex-start; padding: 18px 20px; }
       .header-right { width: 100%; justify-content: space-between; }
     }
+
+    /* ── 전체보기 ── */
+    .game-issue-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .game-issue-row:last-child { border-bottom: none; }
+    .game-label-pill {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid rgba(37,99,235,0.2);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .game-issue-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .mtable-wrap {
+      overflow-x: auto;
+      margin-bottom: 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .mtable {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      min-width: 860px;
+    }
+    .mtable th {
+      background: var(--header-bg);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 11px 14px;
+      text-align: left;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .mtable th:first-child { color: #fff; }
+    .mtable th:last-child  { border-right: none; }
+    .mtable td {
+      padding: 12px 14px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+    .mtable td:last-child { border-right: none; }
+    .mtable tr:last-child td { border-bottom: none; }
+    .mtable .td-game {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      background: #f8fafc;
+    }
+    .mtable .td-push-title {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .mtable .td-push-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
+    .mtable .td-empty { color: var(--text3); font-size: 12px; }
   </style>
 </head>
 <body>
@@ -763,12 +843,51 @@
 <div class="layout-outer">
   <aside class="sidebar">
     <div class="sidebar-title">게임 선택</div>
-    <div class="sidebar-menu-item active" data-game="lineage" onclick="selectGame('lineage')">⚔ 리니지클래식</div>
+    <div class="sidebar-menu-item active" data-game="all" onclick="selectGame('all')">▣ 전체보기</div>
+    <div class="sidebar-menu-item" data-game="lineage" onclick="selectGame('lineage')">⚔ 리니지클래식</div>
     <div class="sidebar-menu-item" data-game="aion2" onclick="selectGame('aion2')">✦ 아이온2</div>
     <div class="sidebar-menu-item" data-game="maple" onclick="selectGame('maple')">🍁 메이플스토리</div>
   </aside>
   <main class="main-content">
-  <div id="lineageContent">
+
+  <!-- ── 전체보기 ── -->
+  <div id="allContent">
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-icon icon-insight">▣</div>
+          <span class="card-title">오늘의 통합 이슈</span>
+        </div>
+        <span class="card-time" id="allLastUpdated">—</span>
+      </div>
+      <div class="card-body" id="allIssuePanel">
+        <div class="empty"><div class="empty-icon">📋</div>불러오는 중...</div>
+      </div>
+    </div>
+
+    <div class="mtable-wrap">
+      <table class="mtable">
+        <thead>
+          <tr>
+            <th>게임</th>
+            <th>SEO ①</th>
+            <th>SEO ②</th>
+            <th>유튜브 ①</th>
+            <th>유튜브 ②</th>
+            <th>푸시 ①</th>
+            <th>푸시 ②</th>
+          </tr>
+        </thead>
+        <tbody id="mtableBody">
+          <tr><td colspan="7" class="td-empty" style="text-align:center;padding:28px">불러오는 중...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /allContent -->
+
+  <div id="lineageContent" style="display:none">
 
   <!-- ── AI WARN ── -->
   <div class="warn-bar" id="warnBar">
@@ -2350,30 +2469,102 @@ async function loadAion2Results() {
   }
 }
 
+/* ── 전체보기: 데이터 로드 ── */
+async function loadAllResults() {
+  try {
+    const [lineageRes, aion2Res, mapleRes] = await Promise.allSettled([
+      fetch(IS_LOCAL ? DATA_URL        : `${DATA_URL}?t=${Date.now()}`).then(r => r.json()),
+      fetch(IS_LOCAL ? AION2_DATA_URL  : `${AION2_DATA_URL}?t=${Date.now()}`).then(r => r.json()),
+      fetch(IS_LOCAL ? MAPLE_DATA_URL  : `${MAPLE_DATA_URL}?t=${Date.now()}`).then(r => r.json()),
+    ]);
+    const lineage = lineageRes.status === 'fulfilled' ? lineageRes.value : null;
+    const aion2   = aion2Res.status   === 'fulfilled' ? aion2Res.value   : null;
+    const maple   = mapleRes.status   === 'fulfilled' ? mapleRes.value   : null;
+
+    renderAllIssue(lineage, aion2, maple);
+    renderMaterialTable(lineage, aion2, maple);
+
+    const times = [lineage?.lastUpdated, aion2?.lastUpdated, maple?.lastUpdated].filter(Boolean);
+    if (times.length) {
+      const latest = [...times].sort().reverse()[0];
+      document.getElementById('allLastUpdated').textContent = timeAgo(latest);
+    }
+  } catch(e) {
+    console.error('[전체보기 로드 오류]', e);
+  }
+}
+
+function renderAllIssue(lineage, aion2, maple) {
+  const games = [
+    { label: '⚔ 리니지클래식', data: lineage },
+    { label: '✦ 아이온2',      data: aion2 },
+    { label: '🍁 메이플스토리', data: maple },
+  ];
+  const rows = games.map(g => {
+    const issue = g.data?.analysis?.todayIssue;
+    return `<div class="game-issue-row">
+      <span class="game-label-pill">${esc(g.label)}</span>
+      <span class="game-issue-text">${issue ? esc(issue) : '<span style="color:var(--text3)">—</span>'}</span>
+    </div>`;
+  }).join('');
+  document.getElementById('allIssuePanel').innerHTML = `<div style="padding:4px 0">${rows}</div>`;
+}
+
+function renderMaterialTable(lineage, aion2, maple) {
+  const games = [
+    { label: '⚔ 리니지클래식', data: lineage },
+    { label: '✦ 아이온2',      data: aion2 },
+    { label: '🍁 메이플스토리', data: maple },
+  ];
+  const emptyCell = () => `<span class="td-empty">—</span>`;
+  const pushCell = (p) => {
+    if (!p) return emptyCell();
+    const title = (p.title   || '').replace(/^\(광고\)\s*/, '');
+    const body  = (p.content || '').replace(/^\(광고\)\s*/, '');
+    return (title ? `<div class="td-push-title">${esc(title)}</div>` : '') +
+           (body  ? `<div class="td-push-body">${esc(body)}</div>`   : emptyCell());
+  };
+
+  const rows = games.map(g => {
+    const a    = g.data?.analysis;
+    const seo  = a?.seo     ?? [];
+    const yt   = a?.youtube ?? [];
+    const push = a?.push    ?? [];
+    return `<tr>
+      <td class="td-game">${esc(g.label)}</td>
+      <td>${seo[0]  ? esc(seo[0])  : emptyCell()}</td>
+      <td>${seo[1]  ? esc(seo[1])  : emptyCell()}</td>
+      <td>${yt[0]   ? esc(yt[0])   : emptyCell()}</td>
+      <td>${yt[1]   ? esc(yt[1])   : emptyCell()}</td>
+      <td>${pushCell(push[0])}</td>
+      <td>${pushCell(push[1])}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('mtableBody').innerHTML = rows;
+}
+
 /* ── 게임 선택 ── */
 function selectGame(game) {
   document.querySelectorAll('.sidebar-menu-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
+  document.getElementById('allContent').style.display     = game === 'all'     ? '' : 'none';
   document.getElementById('lineageContent').style.display = game === 'lineage' ? '' : 'none';
   document.getElementById('aion2Content').style.display   = game === 'aion2'   ? '' : 'none';
   document.getElementById('mapleContent').style.display   = game === 'maple'   ? '' : 'none';
 
-  if (game === 'aion2' && !aion2Loaded) loadAion2Results();
-  if (game === 'maple' && !mapleLoaded) loadMapleResults();
+  if (game === 'all')                        loadAllResults();
+  if (game === 'aion2' && !aion2Loaded)      loadAion2Results();
+  if (game === 'maple' && !mapleLoaded)      loadMapleResults();
 
-  if (game === 'lineage') {
-    closeAion2History();
-    closeMapleHistory();
-    loadHistoryIndex();
+  if (game === 'all') {
+    closeHistory(); closeAion2History(); closeMapleHistory();
+  } else if (game === 'lineage') {
+    closeAion2History(); closeMapleHistory(); loadHistoryIndex();
   } else if (game === 'aion2') {
-    closeHistory();
-    closeMapleHistory();
-    loadAion2HistoryIndex();
+    closeHistory(); closeMapleHistory(); loadAion2HistoryIndex();
   } else if (game === 'maple') {
-    closeHistory();
-    closeAion2History();
-    loadMapleHistoryIndex();
+    closeHistory(); closeAion2History(); loadMapleHistoryIndex();
   }
 }
 
@@ -2386,8 +2577,8 @@ function selectGame(game) {
   }
 })();
 
+selectGame('all');
 loadResults();
-loadHistoryIndex();
 setInterval(loadResults, 5 * 60 * 1000);
 setInterval(() => {
   if (lastUpdatedISO) {
