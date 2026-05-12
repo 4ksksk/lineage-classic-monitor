@@ -910,6 +910,26 @@
     <span id="warnText">AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
   </div>
 
+  <!-- ── 지난 기록 ── -->
+  <section class="history-section">
+    <div class="history-heading">지난 기록 보기</div>
+
+    <div class="history-controls">
+      <select id="periodType" class="history-select" onchange="buildPeriodOptions()">
+        <option value="daily">일별</option>
+        <option value="weekly">주간</option>
+        <option value="monthly">월간</option>
+      </select>
+      <select id="periodValue" class="history-select">
+        <option>기간을 선택하세요</option>
+      </select>
+      <button class="history-btn history-btn-query" id="historyQueryBtn" onclick="queryHistory()">조회</button>
+      <button class="history-btn history-btn-close" id="historyCloseBtn" onclick="closeHistory()" style="display:none">닫기</button>
+    </div>
+
+    <div id="historyPanel" class="history-panel"></div>
+  </section>
+
   <!-- ── ISSUE BANNER ── -->
   <div class="issue-banner">
     <div class="issue-badge"><div class="pulse"></div> TODAY</div>
@@ -1024,26 +1044,6 @@
 
   <footer id="footerStatus">리니지클래식 모니터 · 6시간마다 자동 수집</footer>
 
-  <!-- ── 지난 기록 ── -->
-  <section class="history-section">
-    <div class="history-heading">지난 기록 보기</div>
-
-    <div class="history-controls">
-      <select id="periodType" class="history-select" onchange="buildPeriodOptions()">
-        <option value="daily">일별</option>
-        <option value="weekly">주간</option>
-        <option value="monthly">월간</option>
-      </select>
-      <select id="periodValue" class="history-select">
-        <option>기간을 선택하세요</option>
-      </select>
-      <button class="history-btn history-btn-query" id="historyQueryBtn" onclick="queryHistory()">조회</button>
-      <button class="history-btn history-btn-close" id="historyCloseBtn" onclick="closeHistory()" style="display:none">닫기</button>
-    </div>
-
-    <div id="historyPanel" class="history-panel"></div>
-  </section>
-
   </div><!-- /lineageContent -->
 
   <!-- ── 아이온2 콘텐츠 ── -->
@@ -1053,6 +1053,26 @@
       <span class="warn-icon">WARN</span>
       <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
     </div>
+
+    <!-- ── 아이온2 지난 기록 ── -->
+    <section class="history-section">
+      <div class="history-heading">지난 기록 보기</div>
+
+      <div class="history-controls">
+        <select id="aion2PeriodType" class="history-select" onchange="buildAion2PeriodOptions()">
+          <option value="daily">일별</option>
+          <option value="weekly">주간</option>
+          <option value="monthly">월간</option>
+        </select>
+        <select id="aion2PeriodValue" class="history-select">
+          <option>기간을 선택하세요</option>
+        </select>
+        <button class="history-btn history-btn-query" id="aion2HistoryQueryBtn" onclick="queryAion2History()">조회</button>
+        <button class="history-btn history-btn-close" id="aion2HistoryCloseBtn" onclick="closeAion2History()" style="display:none">닫기</button>
+      </div>
+
+      <div id="aion2HistoryPanel" class="history-panel"></div>
+    </section>
 
     <div class="issue-banner">
       <div class="issue-badge"><div class="pulse"></div> TODAY</div>
@@ -1156,26 +1176,6 @@
 
     <footer id="aion2FooterStatus">아이온2 모니터 · 6시간마다 자동 수집</footer>
 
-    <!-- ── 아이온2 지난 기록 ── -->
-    <section class="history-section">
-      <div class="history-heading">지난 기록 보기</div>
-
-      <div class="history-controls">
-        <select id="aion2PeriodType" class="history-select" onchange="buildAion2PeriodOptions()">
-          <option value="daily">일별</option>
-          <option value="weekly">주간</option>
-          <option value="monthly">월간</option>
-        </select>
-        <select id="aion2PeriodValue" class="history-select">
-          <option>기간을 선택하세요</option>
-        </select>
-        <button class="history-btn history-btn-query" id="aion2HistoryQueryBtn" onclick="queryAion2History()">조회</button>
-        <button class="history-btn history-btn-close" id="aion2HistoryCloseBtn" onclick="closeAion2History()" style="display:none">닫기</button>
-      </div>
-
-      <div id="aion2HistoryPanel" class="history-panel"></div>
-    </section>
-
   </div><!-- /aion2Content -->
 
   <!-- ── 메이플스토리 콘텐츠 ── -->
@@ -1185,6 +1185,26 @@
       <span class="warn-icon">WARN</span>
       <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
     </div>
+
+    <!-- ── 메이플스토리 지난 기록 ── -->
+    <section class="history-section">
+      <div class="history-heading">지난 기록 보기</div>
+
+      <div class="history-controls">
+        <select id="maplePeriodType" class="history-select" onchange="buildMaplePeriodOptions()">
+          <option value="daily">일별</option>
+          <option value="weekly">주간</option>
+          <option value="monthly">월간</option>
+        </select>
+        <select id="maplePeriodValue" class="history-select">
+          <option>기간을 선택하세요</option>
+        </select>
+        <button class="history-btn history-btn-query" id="mapleHistoryQueryBtn" onclick="queryMapleHistory()">조회</button>
+        <button class="history-btn history-btn-close" id="mapleHistoryCloseBtn" onclick="closeMapleHistory()" style="display:none">닫기</button>
+      </div>
+
+      <div id="mapleHistoryPanel" class="history-panel"></div>
+    </section>
 
     <div class="issue-banner">
       <div class="issue-badge"><div class="pulse"></div> TODAY</div>
@@ -1287,26 +1307,6 @@
     </div>
 
     <footer id="mapleFooterStatus">메이플스토리 모니터 · 6시간마다 자동 수집</footer>
-
-    <!-- ── 메이플스토리 지난 기록 ── -->
-    <section class="history-section">
-      <div class="history-heading">지난 기록 보기</div>
-
-      <div class="history-controls">
-        <select id="maplePeriodType" class="history-select" onchange="buildMaplePeriodOptions()">
-          <option value="daily">일별</option>
-          <option value="weekly">주간</option>
-          <option value="monthly">월간</option>
-        </select>
-        <select id="maplePeriodValue" class="history-select">
-          <option>기간을 선택하세요</option>
-        </select>
-        <button class="history-btn history-btn-query" id="mapleHistoryQueryBtn" onclick="queryMapleHistory()">조회</button>
-        <button class="history-btn history-btn-close" id="mapleHistoryCloseBtn" onclick="closeMapleHistory()" style="display:none">닫기</button>
-      </div>
-
-      <div id="mapleHistoryPanel" class="history-panel"></div>
-    </section>
 
   </div><!-- /mapleContent -->
   </main>
