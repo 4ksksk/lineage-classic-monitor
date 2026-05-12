@@ -632,13 +632,15 @@
     /* 로고+햄버거 바 */
     .sidebar-logo-bar {
       position: relative; display: flex; align-items: center;
-      height: 56px; padding: 0 14px;
-      border-bottom: 1px solid #e0e0e0; flex-shrink: 0;
+      height: 56px; padding: 0 14px; flex-shrink: 0;
     }
-    .sidebar-logo { display: flex; align-items: center; gap: 8px; overflow: hidden; }
-    .sidebar-logo-icon { font-size: 1.15rem; flex-shrink: 0; }
+    .sidebar-logo {
+      display: flex; align-items: center; gap: 8px; overflow: hidden;
+      cursor: pointer; user-select: none;
+    }
+    .sidebar-logo-icon { flex-shrink: 0; display: flex; align-items: center; }
     .sidebar-logo-text {
-      font-size: 0.85rem; font-weight: 700; color: #1a1f2e;
+      font-size: 15px; font-weight: 700; color: #1a1f2e;
       white-space: nowrap; transition: opacity 0.2s;
     }
     body.sidebar-collapsed .sidebar-logo-text { opacity: 0; pointer-events: none; }
@@ -646,22 +648,27 @@
     /* 게임별현황 부모 아이템 */
     .sidebar-parent-item {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 14px; cursor: pointer; user-select: none;
+      padding: 12px 14px; margin-top: 16px; cursor: pointer; user-select: none;
       transition: background 0.12s; white-space: nowrap;
     }
     .sidebar-parent-item:hover { background: #f3f4f6; }
-    .sidebar-parent-left { display: flex; align-items: center; gap: 8px; }
-    .sidebar-parent-icon { font-size: 1rem; flex-shrink: 0; opacity: 0.4; }
+    .sidebar-parent-item.active { background: #e8f0fe; }
+    .sidebar-parent-item.active:hover { background: #dce8fd; }
+    .sidebar-parent-item.active .sidebar-parent-text { color: #3b5bdb; }
+    .sidebar-parent-item.active .sidebar-arrow svg { stroke: #3b5bdb; }
+    .sidebar-parent-left { display: flex; align-items: center; gap: 8px; flex: 1; }
+    .sidebar-parent-icon { flex-shrink: 0; display: flex; align-items: center; }
     .sidebar-parent-text {
       font-size: 15px; font-weight: 600; color: #1a1f2e;
       transition: opacity 0.2s;
     }
     body.sidebar-collapsed .sidebar-parent-text { opacity: 0; pointer-events: none; }
-    .sidebar-parent-left { cursor: pointer; flex: 1; }
     .sidebar-arrow {
-      font-size: 0.75rem; color: #999; transition: opacity 0.2s;
-      cursor: pointer; padding: 4px 6px; margin-right: -6px;
+      display: flex; align-items: center;
+      padding: 4px 6px; margin-right: -6px; transition: opacity 0.2s;
     }
+    .sidebar-arrow svg { display: block; transition: transform 0.25s ease; }
+    .sidebar-arrow.arrow-collapsed svg { transform: rotate(180deg); }
     body.sidebar-collapsed .sidebar-arrow { opacity: 0; pointer-events: none; }
 
     /* 서브메뉴 */
@@ -812,9 +819,9 @@
 
 <aside class="sidebar">
   <div class="sidebar-logo-bar">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo" onclick="selectGame('all')">
       <span class="sidebar-logo-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </span>
@@ -822,16 +829,20 @@
     </div>
     <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="메뉴">☰</button>
   </div>
-  <div class="sidebar-parent-item">
-    <div class="sidebar-parent-left" onclick="selectGame('all')">
+  <div class="sidebar-parent-item" onclick="onClickParent()">
+    <div class="sidebar-parent-left">
       <span class="sidebar-parent-icon">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
         </svg>
       </span>
       <span class="sidebar-parent-text">게임별현황</span>
     </div>
-    <span class="sidebar-arrow" id="gameMenuArrow" onclick="toggleGameMenu()">▾</span>
+    <span class="sidebar-arrow" id="gameMenuArrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </span>
   </div>
   <div class="sidebar-sub-menu" id="gameSubMenu">
     <div class="sidebar-sub-item" data-game="lineage" onclick="selectGame('lineage')">리니지클래식</div>
@@ -2559,7 +2570,13 @@ function toggleGameMenu() {
   const subMenu = document.getElementById('gameSubMenu');
   const arrow = document.getElementById('gameMenuArrow');
   subMenu.classList.toggle('sub-collapsed');
-  if (arrow) arrow.textContent = subMenu.classList.contains('sub-collapsed') ? '▸' : '▾';
+  if (arrow) arrow.classList.toggle('arrow-collapsed', subMenu.classList.contains('sub-collapsed'));
+}
+
+/* ── 게임별현황 전체 클릭: 전체보기 + 서브메뉴 토글 ── */
+function onClickParent() {
+  selectGame('all');
+  toggleGameMenu();
 }
 
 /* ── 게임 선택 ── */
@@ -2567,6 +2584,8 @@ function selectGame(game) {
   document.querySelectorAll('.sidebar-sub-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
+  const parentItem = document.querySelector('.sidebar-parent-item');
+  if (parentItem) parentItem.classList.toggle('active', game === 'all');
   document.getElementById('allContent').style.display     = game === 'all'     ? '' : 'none';
   document.getElementById('lineageContent').style.display = game === 'lineage' ? '' : 'none';
   document.getElementById('aion2Content').style.display   = game === 'aion2'   ? '' : 'none';
