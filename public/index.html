@@ -515,6 +515,47 @@
       line-height: 1.65;
     }
 
+    /* ── COMMUNITY GROUP (공식/DC/인벤 통합) ── */
+    .community-group {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      border-left: 4px solid var(--accent);
+      overflow: hidden;
+    }
+    .community-group-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 32px 20px;
+    }
+    .community-group-icons {
+      display: flex;
+      gap: 5px;
+      margin-right: 4px;
+    }
+    .community-group-body {
+      border-top: 1px solid var(--border);
+    }
+    .community-sub {
+      border-bottom: 1px solid var(--border);
+    }
+    .community-sub:last-child { border-bottom: none; }
+    .community-sub-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px 12px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .community-sub-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
     /* ── HISTORY SECTION ── */
     .history-section {
       margin-top: 16px;
@@ -959,57 +1000,53 @@
     <div id="lineageInsightContent"></div>
   </div>
 
-  <!-- ── 공식 업데이트 카드 ── -->
-  <div class="card official">
-    <div class="card-head">
+  <!-- ── 공식/DC인사이드/인벤 통합 ── -->
+  <div class="community-group">
+    <div class="community-group-head">
       <div class="card-head-left">
-        <div class="card-icon icon-official">공</div>
-        <span class="card-title">공식 업데이트</span>
-        <span class="card-preview" id="lineageOfficialPreview"></span>
+        <div class="community-group-icons">
+          <div class="card-icon icon-official" style="width:28px;height:28px;font-size:0.72rem">공</div>
+          <div class="card-icon icon-dc"       style="width:28px;height:28px;font-size:0.72rem">디</div>
+          <div class="card-icon icon-inven"    style="width:28px;height:28px;font-size:0.72rem">인</div>
+        </div>
+        <span class="card-title">수집 현황</span>
       </div>
       <div class="card-head-right">
         <span class="card-time" id="officialTime">—</span>
-        <button class="more-btn" id="lineageOfficialMoreBtn" onclick="toggleMapleCard('officialPanel','lineageOfficialMoreBtn')" style="display:none">더보기</button>
+        <button class="more-btn" id="lineageCommunityToggleBtn" onclick="toggleCommunityGroup('lineage')" style="display:none">더보기</button>
       </div>
     </div>
-    <div class="card-body" id="officialPanel">
-      <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
-    </div>
-  </div>
-
-  <!-- ── DC인사이드 카드 ── -->
-  <div class="card dc">
-    <div class="card-head">
-      <div class="card-head-left">
-        <div class="card-icon icon-dc">디</div>
-        <span class="card-title">DC인사이드</span>
-        <span class="card-preview" id="lineageDcPreview"></span>
+    <div class="community-group-body" id="lineageCommunityBody" style="display:none">
+      <div class="community-sub">
+        <div class="community-sub-head">
+          <div class="card-icon icon-official" style="width:26px;height:26px;font-size:0.7rem">공</div>
+          <span class="community-sub-title">공식 업데이트</span>
+          <span class="card-preview" id="lineageOfficialPreview"></span>
+        </div>
+        <div class="card-body" id="officialPanel">
+          <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
+        </div>
       </div>
-      <div class="card-head-right">
-        <span class="card-time" id="dcTime">—</span>
-        <button class="more-btn" id="lineageDcMoreBtn" onclick="toggleMapleCard('dcPanel','lineageDcMoreBtn')" style="display:none">더보기</button>
+      <div class="community-sub">
+        <div class="community-sub-head">
+          <div class="card-icon icon-dc" style="width:26px;height:26px;font-size:0.7rem">디</div>
+          <span class="community-sub-title">DC인사이드</span>
+          <span class="card-preview" id="lineageDcPreview"></span>
+        </div>
+        <div class="card-body" id="dcPanel">
+          <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+        </div>
       </div>
-    </div>
-    <div class="card-body" id="dcPanel">
-      <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
-    </div>
-  </div>
-
-  <!-- ── 인벤 카드 ── -->
-  <div class="card inven">
-    <div class="card-head">
-      <div class="card-head-left">
-        <div class="card-icon icon-inven">인</div>
-        <span class="card-title">인벤</span>
-        <span class="card-preview" id="lineageInvenPreview"></span>
+      <div class="community-sub">
+        <div class="community-sub-head">
+          <div class="card-icon icon-inven" style="width:26px;height:26px;font-size:0.7rem">인</div>
+          <span class="community-sub-title">인벤</span>
+          <span class="card-preview" id="lineageInvenPreview"></span>
+        </div>
+        <div class="card-body" id="invenPanel">
+          <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+        </div>
       </div>
-      <div class="card-head-right">
-        <span class="card-time" id="invenTime">—</span>
-        <button class="more-btn" id="lineageInvenMoreBtn" onclick="toggleMapleCard('invenPanel','lineageInvenMoreBtn')" style="display:none">더보기</button>
-      </div>
-    </div>
-    <div class="card-body" id="invenPanel">
-      <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
     </div>
   </div>
 
@@ -1102,54 +1139,53 @@
       <div id="aion2InsightContent"></div>
     </div>
 
-    <div class="card official">
-      <div class="card-head">
+    <!-- ── 아이온2 공식/DC/인벤 통합 ── -->
+    <div class="community-group">
+      <div class="community-group-head">
         <div class="card-head-left">
-          <div class="card-icon icon-official">공</div>
-          <span class="card-title">공식 업데이트</span>
-          <span class="card-preview" id="aion2OfficialPreview"></span>
+          <div class="community-group-icons">
+            <div class="card-icon icon-official" style="width:28px;height:28px;font-size:0.72rem">공</div>
+            <div class="card-icon icon-dc"       style="width:28px;height:28px;font-size:0.72rem">디</div>
+            <div class="card-icon icon-inven"    style="width:28px;height:28px;font-size:0.72rem">인</div>
+          </div>
+          <span class="card-title">수집 현황</span>
         </div>
         <div class="card-head-right">
           <span class="card-time" id="aion2OfficialTime">—</span>
-          <button class="more-btn" id="aion2OfficialMoreBtn" onclick="toggleMapleCard('aion2OfficialPanel','aion2OfficialMoreBtn')" style="display:none">더보기</button>
+          <button class="more-btn" id="aion2CommunityToggleBtn" onclick="toggleCommunityGroup('aion2')" style="display:none">더보기</button>
         </div>
       </div>
-      <div class="card-body" id="aion2OfficialPanel">
-        <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
-      </div>
-    </div>
-
-    <div class="card dc">
-      <div class="card-head">
-        <div class="card-head-left">
-          <div class="card-icon icon-dc">디</div>
-          <span class="card-title">DC인사이드</span>
-          <span class="card-preview" id="aion2DcPreview"></span>
+      <div class="community-group-body" id="aion2CommunityBody" style="display:none">
+        <div class="community-sub">
+          <div class="community-sub-head">
+            <div class="card-icon icon-official" style="width:26px;height:26px;font-size:0.7rem">공</div>
+            <span class="community-sub-title">공식 업데이트</span>
+            <span class="card-preview" id="aion2OfficialPreview"></span>
+          </div>
+          <div class="card-body" id="aion2OfficialPanel">
+            <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
+          </div>
         </div>
-        <div class="card-head-right">
-          <span class="card-time" id="aion2DcTime">—</span>
-          <button class="more-btn" id="aion2DcMoreBtn" onclick="toggleMapleCard('aion2DcPanel','aion2DcMoreBtn')" style="display:none">더보기</button>
+        <div class="community-sub">
+          <div class="community-sub-head">
+            <div class="card-icon icon-dc" style="width:26px;height:26px;font-size:0.7rem">디</div>
+            <span class="community-sub-title">DC인사이드</span>
+            <span class="card-preview" id="aion2DcPreview"></span>
+          </div>
+          <div class="card-body" id="aion2DcPanel">
+            <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+          </div>
         </div>
-      </div>
-      <div class="card-body" id="aion2DcPanel">
-        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
-      </div>
-    </div>
-
-    <div class="card inven">
-      <div class="card-head">
-        <div class="card-head-left">
-          <div class="card-icon icon-inven">인</div>
-          <span class="card-title">인벤</span>
-          <span class="card-preview" id="aion2InvenPreview"></span>
+        <div class="community-sub">
+          <div class="community-sub-head">
+            <div class="card-icon icon-inven" style="width:26px;height:26px;font-size:0.7rem">인</div>
+            <span class="community-sub-title">인벤</span>
+            <span class="card-preview" id="aion2InvenPreview"></span>
+          </div>
+          <div class="card-body" id="aion2InvenPanel">
+            <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+          </div>
         </div>
-        <div class="card-head-right">
-          <span class="card-time" id="aion2InvenTime">—</span>
-          <button class="more-btn" id="aion2InvenMoreBtn" onclick="toggleMapleCard('aion2InvenPanel','aion2InvenMoreBtn')" style="display:none">더보기</button>
-        </div>
-      </div>
-      <div class="card-body" id="aion2InvenPanel">
-        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
       </div>
     </div>
 
@@ -1234,54 +1270,53 @@
       <div id="mapleInsightContent"></div>
     </div>
 
-    <div class="card official">
-      <div class="card-head">
+    <!-- ── 메이플 공식/DC/인벤 통합 ── -->
+    <div class="community-group">
+      <div class="community-group-head">
         <div class="card-head-left">
-          <div class="card-icon icon-official">공</div>
-          <span class="card-title">공식 업데이트</span>
-          <span class="card-preview" id="mapleOfficialPreview"></span>
+          <div class="community-group-icons">
+            <div class="card-icon icon-official" style="width:28px;height:28px;font-size:0.72rem">공</div>
+            <div class="card-icon icon-dc"       style="width:28px;height:28px;font-size:0.72rem">디</div>
+            <div class="card-icon icon-inven"    style="width:28px;height:28px;font-size:0.72rem">인</div>
+          </div>
+          <span class="card-title">수집 현황</span>
         </div>
         <div class="card-head-right">
           <span class="card-time" id="mapleOfficialTime">—</span>
-          <button class="more-btn" id="mapleOfficialMoreBtn" onclick="toggleMapleCard('mapleOfficialPanel','mapleOfficialMoreBtn')" style="display:none">더보기</button>
+          <button class="more-btn" id="mapleCommunityToggleBtn" onclick="toggleCommunityGroup('maple')" style="display:none">더보기</button>
         </div>
       </div>
-      <div class="card-body" id="mapleOfficialPanel">
-        <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
-      </div>
-    </div>
-
-    <div class="card dc">
-      <div class="card-head">
-        <div class="card-head-left">
-          <div class="card-icon icon-dc">디</div>
-          <span class="card-title">DC인사이드</span>
-          <span class="card-preview" id="mapleDcPreview"></span>
+      <div class="community-group-body" id="mapleCommunityBody" style="display:none">
+        <div class="community-sub">
+          <div class="community-sub-head">
+            <div class="card-icon icon-official" style="width:26px;height:26px;font-size:0.7rem">공</div>
+            <span class="community-sub-title">공식 업데이트</span>
+            <span class="card-preview" id="mapleOfficialPreview"></span>
+          </div>
+          <div class="card-body" id="mapleOfficialPanel">
+            <div class="empty"><div class="empty-icon">📋</div>수집 대기 중...</div>
+          </div>
         </div>
-        <div class="card-head-right">
-          <span class="card-time" id="mapleDcTime">—</span>
-          <button class="more-btn" id="mapleDcMoreBtn" onclick="toggleMapleCard('mapleDcPanel','mapleDcMoreBtn')" style="display:none">더보기</button>
+        <div class="community-sub">
+          <div class="community-sub-head">
+            <div class="card-icon icon-dc" style="width:26px;height:26px;font-size:0.7rem">디</div>
+            <span class="community-sub-title">DC인사이드</span>
+            <span class="card-preview" id="mapleDcPreview"></span>
+          </div>
+          <div class="card-body" id="mapleDcPanel">
+            <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+          </div>
         </div>
-      </div>
-      <div class="card-body" id="mapleDcPanel">
-        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
-      </div>
-    </div>
-
-    <div class="card inven">
-      <div class="card-head">
-        <div class="card-head-left">
-          <div class="card-icon icon-inven">인</div>
-          <span class="card-title">인벤</span>
-          <span class="card-preview" id="mapleInvenPreview"></span>
+        <div class="community-sub">
+          <div class="community-sub-head">
+            <div class="card-icon icon-inven" style="width:26px;height:26px;font-size:0.7rem">인</div>
+            <span class="community-sub-title">인벤</span>
+            <span class="card-preview" id="mapleInvenPreview"></span>
+          </div>
+          <div class="card-body" id="mapleInvenPanel">
+            <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
+          </div>
         </div>
-        <div class="card-head-right">
-          <span class="card-time" id="mapleInvenTime">—</span>
-          <button class="more-btn" id="mapleInvenMoreBtn" onclick="toggleMapleCard('mapleInvenPanel','mapleInvenMoreBtn')" style="display:none">더보기</button>
-        </div>
-      </div>
-      <div class="card-body" id="mapleInvenPanel">
-        <div class="empty"><div class="empty-icon">💬</div>수집 대기 중...</div>
       </div>
     </div>
 
@@ -1484,6 +1519,19 @@ function renderCommunity(data, tagCls, rawPosts) {
   </div>
   ${items}
   ${extra > 0 ? `<div style="font-size:12px;color:var(--text3);text-align:right;margin-top:8px">외 ${extra}개 더</div>` : ''}`;
+}
+
+function toggleCommunityGroup(prefix) {
+  const body = document.getElementById(prefix + 'CommunityBody');
+  const btn  = document.getElementById(prefix + 'CommunityToggleBtn');
+  if (!body || !btn) return;
+  const isHidden = body.style.display === 'none';
+  body.style.display = isHidden ? '' : 'none';
+  if (isHidden) {
+    body.classList.add('panel-opening');
+    setTimeout(() => body.classList.remove('panel-opening'), 250);
+  }
+  btn.textContent = isHidden ? '접기' : '더보기';
 }
 
 function toggleMapleCard(panelId, btnId) {
@@ -1947,14 +1995,9 @@ async function loadResults() {
       data.lastUpdated ? `마지막 수집: ${timeAgo(data.lastUpdated)}` : '마지막 수집: —';
 
     const t = data.lastUpdated ? timeAgo(data.lastUpdated) : '—';
-    ['officialTime','dcTime','invenTime'].forEach(id =>
-      document.getElementById(id).textContent = t
-    );
+    const officialTimeEl = document.getElementById('officialTime');
+    if (officialTimeEl) officialTimeEl.textContent = t;
 
-    // analysis가 있으면 분석 결과를, 없으면 원본 데이터를 렌더
-    ['officialPanel', 'dcPanel', 'invenPanel'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.style.display = 'none';
-    });
     document.getElementById('officialPanel').innerHTML = renderLineageOfficial(hasAnalysis ? a : null, officialPosts);
     document.getElementById('dcPanel').innerHTML       = renderLineageCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
     document.getElementById('invenPanel').innerHTML    = renderLineageCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
@@ -1962,12 +2005,8 @@ async function loadResults() {
     document.getElementById('lineageDcPreview').textContent       = hasAnalysis ? (a?.dcinside?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
     document.getElementById('lineageInvenPreview').textContent    = hasAnalysis ? (a?.inven?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
     const showLineageMoreBtn = cnt > 0 || hasAnalysis;
-    ['lineageOfficialMoreBtn', 'lineageDcMoreBtn', 'lineageInvenMoreBtn'].forEach(id => {
-      const btn = document.getElementById(id);
-      if (!btn) return;
-      btn.textContent = '더보기';
-      btn.style.display = showLineageMoreBtn ? '' : 'none';
-    });
+    const lineageToggleBtn = document.getElementById('lineageCommunityToggleBtn');
+    if (lineageToggleBtn) lineageToggleBtn.style.display = showLineageMoreBtn ? '' : 'none';
     const lineageInsightHtml = renderLineageInsight(hasAnalysis ? a : null);
     document.getElementById('lineageInsightContent').innerHTML = lineageInsightHtml || '';
     document.getElementById('lineageInsightBlock').style.display = lineageInsightHtml ? '' : 'none';
@@ -2308,14 +2347,9 @@ async function loadMapleResults() {
         : '데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.');
 
     const t = data.lastUpdated ? timeAgo(data.lastUpdated) : '—';
-    ['mapleOfficialTime', 'mapleDcTime', 'mapleInvenTime'].forEach(id =>
-      document.getElementById(id).textContent = t
-    );
+    const mapleOfficialTimeEl = document.getElementById('mapleOfficialTime');
+    if (mapleOfficialTimeEl) mapleOfficialTimeEl.textContent = t;
 
-    ['mapleOfficialPanel', 'mapleDcPanel', 'mapleInvenPanel'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
-    });
     document.getElementById('mapleOfficialPanel').innerHTML = renderMapleOfficial(hasAnalysis ? a : null, officialPosts);
     document.getElementById('mapleDcPanel').innerHTML       = renderMapleCommunity(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
     document.getElementById('mapleInvenPanel').innerHTML    = renderMapleCommunity(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
@@ -2323,12 +2357,8 @@ async function loadMapleResults() {
     document.getElementById('mapleDcPreview').textContent       = hasAnalysis ? (a?.dcinside?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
     document.getElementById('mapleInvenPreview').textContent    = hasAnalysis ? (a?.inven?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
     const showMoreBtn = cnt > 0 || hasAnalysis;
-    ['mapleOfficialMoreBtn', 'mapleDcMoreBtn', 'mapleInvenMoreBtn'].forEach(id => {
-      const btn = document.getElementById(id);
-      if (!btn) return;
-      btn.textContent = '더보기';
-      btn.style.display = showMoreBtn ? '' : 'none';
-    });
+    const mapleToggleBtn = document.getElementById('mapleCommunityToggleBtn');
+    if (mapleToggleBtn) mapleToggleBtn.style.display = showMoreBtn ? '' : 'none';
     const insightHtml = renderMapleInsight(hasAnalysis ? a : null);
     document.getElementById('mapleInsightContent').innerHTML = insightHtml || '';
     document.getElementById('mapleInsightBlock').style.display = insightHtml ? '' : 'none';
@@ -2466,13 +2496,9 @@ async function loadAion2Results() {
         : '데이터를 수집하면 오늘의 주요 이슈가 표시됩니다.');
 
     const t = data.lastUpdated ? timeAgo(data.lastUpdated) : '—';
-    ['aion2OfficialTime', 'aion2DcTime', 'aion2InvenTime'].forEach(id =>
-      document.getElementById(id).textContent = t
-    );
+    const aion2OfficialTimeEl = document.getElementById('aion2OfficialTime');
+    if (aion2OfficialTimeEl) aion2OfficialTimeEl.textContent = t;
 
-    ['aion2OfficialPanel', 'aion2DcPanel', 'aion2InvenPanel'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.style.display = 'none';
-    });
     document.getElementById('aion2OfficialPanel').innerHTML = renderAion2Official(hasAnalysis ? a : null, officialPosts);
     document.getElementById('aion2DcPanel').innerHTML       = renderAion2Community(hasAnalysis ? a?.dcinside : null, 'dc',    dcPosts);
     document.getElementById('aion2InvenPanel').innerHTML    = renderAion2Community(hasAnalysis ? a?.inven    : null, 'inven', invenPosts);
@@ -2480,12 +2506,8 @@ async function loadAion2Results() {
     document.getElementById('aion2DcPreview').textContent       = hasAnalysis ? (a?.dcinside?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
     document.getElementById('aion2InvenPreview').textContent    = hasAnalysis ? (a?.inven?.keywords ?? []).slice(0, 3).map(k => k.word ?? k).join(' · ') : '';
     const showAion2MoreBtn = cnt > 0 || hasAnalysis;
-    ['aion2OfficialMoreBtn', 'aion2DcMoreBtn', 'aion2InvenMoreBtn'].forEach(id => {
-      const btn = document.getElementById(id);
-      if (!btn) return;
-      btn.textContent = '더보기';
-      btn.style.display = showAion2MoreBtn ? '' : 'none';
-    });
+    const aion2ToggleBtn = document.getElementById('aion2CommunityToggleBtn');
+    if (aion2ToggleBtn) aion2ToggleBtn.style.display = showAion2MoreBtn ? '' : 'none';
     const aion2InsightHtml = renderAion2Insight(hasAnalysis ? a : null);
     document.getElementById('aion2InsightContent').innerHTML = aion2InsightHtml || '';
     document.getElementById('aion2InsightBlock').style.display = aion2InsightHtml ? '' : 'none';
