@@ -650,14 +650,16 @@
     }
     .sidebar-parent-item:hover { background: #f3f4f6; }
     .sidebar-parent-left { display: flex; align-items: center; gap: 8px; }
-    .sidebar-parent-icon { font-size: 1rem; flex-shrink: 0; }
+    .sidebar-parent-icon { font-size: 1rem; flex-shrink: 0; opacity: 0.4; }
     .sidebar-parent-text {
       font-size: 0.9rem; font-weight: 600; color: #1a1f2e;
       transition: opacity 0.2s;
     }
     body.sidebar-collapsed .sidebar-parent-text { opacity: 0; pointer-events: none; }
+    .sidebar-parent-left { cursor: pointer; flex: 1; }
     .sidebar-arrow {
       font-size: 0.75rem; color: #999; transition: opacity 0.2s;
+      cursor: pointer; padding: 4px 6px; margin-right: -6px;
     }
     body.sidebar-collapsed .sidebar-arrow { opacity: 0; pointer-events: none; }
 
@@ -810,17 +812,16 @@
 <aside class="sidebar">
   <div class="sidebar-logo-bar">
     <div class="sidebar-logo">
-      <span class="sidebar-logo-icon">⚔</span>
       <span class="sidebar-logo-text">게임 모니터</span>
     </div>
     <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="메뉴">☰</button>
   </div>
-  <div class="sidebar-parent-item" onclick="toggleGameMenu()">
-    <div class="sidebar-parent-left">
+  <div class="sidebar-parent-item">
+    <div class="sidebar-parent-left" onclick="selectGame('all')">
       <span class="sidebar-parent-icon">📢</span>
       <span class="sidebar-parent-text">게임별현황</span>
     </div>
-    <span class="sidebar-arrow" id="gameMenuArrow">▾</span>
+    <span class="sidebar-arrow" id="gameMenuArrow" onclick="toggleGameMenu()">▾</span>
   </div>
   <div class="sidebar-sub-menu" id="gameSubMenu">
     <div class="sidebar-sub-item" data-game="lineage" onclick="selectGame('lineage')">리니지클래식</div>
