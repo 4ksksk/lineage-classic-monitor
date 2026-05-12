@@ -830,7 +830,7 @@
 
 <aside class="sidebar">
   <div class="sidebar-logo-bar">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo" onclick="selectGame('all')" style="cursor:pointer">
       <span class="sidebar-logo-icon">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -2634,7 +2634,7 @@ function toggleSidebar() {
   }
 })();
 
-selectGame('lineage');
+selectGame('all');
 loadResults();
 setInterval(loadResults, 5 * 60 * 1000);
 setInterval(() => {
