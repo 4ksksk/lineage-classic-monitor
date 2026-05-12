@@ -517,9 +517,9 @@
 
     /* ── HISTORY SECTION ── */
     .history-section {
-      margin-top: 56px;
-      padding-top: 40px;
-      border-top: 2px solid var(--border);
+      margin-top: 16px;
+      padding-top: 0;
+      margin-bottom: 28px;
     }
     .history-heading {
       font-size: 20px;
@@ -586,6 +586,24 @@
     }
     .history-select:focus { border-color: var(--official); }
     .history-panel { display: flex; flex-direction: column; gap: 0; }
+    .history-result-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 20px 20px 12px;
+      margin-top: 16px;
+      border: 1px solid var(--border);
+    }
+    .history-result-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text3);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.02em;
+    }
     .history-period-label {
       display: inline-block;
       font-size: 0.75rem;
@@ -2153,20 +2171,23 @@ function renderHistoryCard(accentCls, iconCls, iconChar, title, datasets, aKey, 
 function renderHistoryPanel(datasets, period, filenames) {
   const issues = datasets.map(d => d.analysis?.todayIssue).filter(Boolean);
 
-  let html = `<div class="history-period-label">${esc(period)} · ${datasets.length}개 데이터</div>`;
+  let inner = `<div class="history-period-label">${esc(period)} · ${datasets.length}개 데이터</div>`;
 
   if (issues.length) {
-    html += `<div class="block" style="margin-bottom:16px">
+    inner += `<div class="block" style="margin-bottom:16px">
       <div class="sec-label">주요 이슈</div>
       ${issues.map(t => `<div class="history-issue-item">${esc(t)}</div>`).join('')}
     </div>`;
   }
 
-  html += renderHistoryCard('official', 'icon-official', '공', '공식 업데이트', datasets, 'official',  'official');
-  html += renderHistoryCard('dc',       'icon-dc',       '디', 'DC인사이드',    datasets, 'dcinside',  'dc');
-  html += renderHistoryCard('inven',    'icon-inven',    '인', '인벤',          datasets, 'inven',     'inven');
+  inner += renderHistoryCard('official', 'icon-official', '공', '공식 업데이트', datasets, 'official',  'official');
+  inner += renderHistoryCard('dc',       'icon-dc',       '디', 'DC인사이드',    datasets, 'dcinside',  'dc');
+  inner += renderHistoryCard('inven',    'icon-inven',    '인', '인벤',          datasets, 'inven',     'inven');
 
-  return html;
+  return `<div class="history-result-card">
+    <div class="history-result-label">📅 조회 결과</div>
+    ${inner}
+  </div>`;
 }
 
 /* ── 메이플스토리 히스토리 ── */
