@@ -705,6 +705,7 @@
       user-select: none;
     }
     .sidebar-menu-item:hover { background: var(--bg); color: var(--text); }
+    .sidebar-divider { height: 1px; background: var(--border); margin: 6px 0; }
     .sidebar-menu-item.active {
       background: var(--accent-bg);
       color: var(--accent);
@@ -843,10 +844,11 @@
 <div class="layout-outer">
   <aside class="sidebar">
     <div class="sidebar-title">게임 선택</div>
-    <div class="sidebar-menu-item active" data-game="all" onclick="selectGame('all')">▣ 전체보기</div>
-    <div class="sidebar-menu-item" data-game="lineage" onclick="selectGame('lineage')">⚔ 리니지클래식</div>
-    <div class="sidebar-menu-item" data-game="aion2" onclick="selectGame('aion2')">✦ 아이온2</div>
-    <div class="sidebar-menu-item" data-game="maple" onclick="selectGame('maple')">🍁 메이플스토리</div>
+    <div class="sidebar-menu-item active" data-game="all" onclick="selectGame('all')">전체보기</div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-menu-item" data-game="lineage" onclick="selectGame('lineage')">리니지클래식</div>
+    <div class="sidebar-menu-item" data-game="aion2" onclick="selectGame('aion2')">아이온2</div>
+    <div class="sidebar-menu-item" data-game="maple" onclick="selectGame('maple')">메이플스토리</div>
   </aside>
   <main class="main-content">
 
