@@ -751,6 +751,8 @@
     .game-issue-row:last-child { border-bottom: none; }
     .game-label-pill {
       flex-shrink: 0;
+      width: 100px;
+      text-align: center;
       font-size: 0.7rem;
       font-weight: 700;
       padding: 3px 10px;
@@ -2498,9 +2500,9 @@ async function loadAllResults() {
 
 function renderAllIssue(lineage, aion2, maple) {
   const games = [
-    { label: '⚔ 리니지클래식', data: lineage },
-    { label: '✦ 아이온2',      data: aion2 },
-    { label: '🍁 메이플스토리', data: maple },
+    { label: '리니지클래식', data: lineage },
+    { label: '아이온2',      data: aion2 },
+    { label: '메이플스토리', data: maple },
   ];
   const rows = games.map(g => {
     const issue = g.data?.analysis?.todayIssue;
@@ -2514,9 +2516,9 @@ function renderAllIssue(lineage, aion2, maple) {
 
 function renderMaterialTable(lineage, aion2, maple) {
   const games = [
-    { label: '⚔ 리니지클래식', data: lineage },
-    { label: '✦ 아이온2',      data: aion2 },
-    { label: '🍁 메이플스토리', data: maple },
+    { label: '리니지클래식', data: lineage },
+    { label: '아이온2',      data: aion2 },
+    { label: '메이플스토리', data: maple },
   ];
   const emptyCell = () => `<span class="td-empty">—</span>`;
   const pushCell = (p) => {
