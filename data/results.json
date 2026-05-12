@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-12T04:29:52.452Z",
+  "lastUpdated": "2026-05-12T04:47:24.430Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
@@ -85,6 +85,10 @@
   ],
   "invenPosts": [
     {
+      "title": "오픈때부터 3개월 결제하고 오늘 기간 만료된 형들~",
+      "content": "다들 지금 상황은 어떰? 그냥 구독으로 연장했어? 아니면 내일 업뎃 내용보고 결정? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14567\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14567\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\")"
+    },
+    {
       "title": "오랜만이다",
       "content": "난 궁금한게 있는데 일반유저들은 시간죽여가면서 이걸 왜 하고 있는거야??시간 안아까움? 남는게뭐지 ㅋㅋ 지들이 방송수익이 있어?끽해야.뎅팔아야 되는데 그게 도움이 돼?감가는 심해져서 장비도 못올리고 시간대비 티끌만 주워파는게 뭔 재미람 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14566\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14566\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,wi"
     },
@@ -159,111 +163,107 @@
     {
       "title": "와 단골피시방에서 전문적으로 불법오토를 돌리고있네요",
       "content": "항상 구석자리 광고판으로 예약석이라고 입구막아두고 있는곳이 있거든요?오늘따라 제가 리니지 사람 많이 줄었구나 하면서 둘러보는데 그쪽을 슬쩍보니 한 15대로 본던 오토를 돌리고있네요...?진짜 너무 토나오고 내가 뭐하는건가 싶고8검 사려고 진짜 잠 줄여가며 모아둔 350만 아덴 그 자리에서 다 팔고 나왔네요그냥 이제 피시방에서도 대놓고 돌리는데 가망이 없어보여서요... 입고있는 7검 5셋은 그냥 팔기도 귀찮고 ats만 돌려야겠습니다...에휴 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14546\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14546\"; INVEN.Links.spamArticle(params);"
-    },
-    {
-      "title": "버베 왜 쌔졌지?",
-      "content": "버베 잡는데 왜 빨약 먹죠?이러지 않았는데ㅠㅠ ㅅㅂㅅㅂㅅㅂ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14545\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14545\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = "
     }
   ],
   "analysis": {
-    "todayIssue": "5월 6일 업데이트로 타락한 축복의 땅이 계절별로 확장되었으며, 투명 상태 액션 규칙이 개선되었습니다.",
+    "todayIssue": "5월 6일 업데이트로 타락한 축복의 땅이 사계절로 확장되어 새로운 사냥 경험을 제공하며, 투명 상태 액션 규칙이 개선되어 보다 자연스러운 전투가 가능해졌다.",
     "official": {
-      "summary": "• 타락한 축복의 땅 확장\n• PC방 전용 판매 상품 추가\n• 투명 상태 액션 규칙 개선",
+      "summary": "• 타락한 축복의 땅 확장\n• PC방 전용 상품 추가\n• 투명 상태 액션 규칙 개선",
       "date": "2026. 5. 6.",
       "keywords": [
         "타락한 축복의 땅",
         "PC방 전용 상품",
         "투명 상태 액션",
         "버그 수정",
-        "가정의 달"
+        "캐릭터 생성"
       ],
       "marketingTips": [
-        "타락한 축복의 땅에서의 사냥 이벤트를 강조하세요.",
-        "PC방 전용 상품들을 홍보하여 유저 유입을 늘리세요."
+        "타락한 축복의 땅에서 여름 시즌 아이템을 판매하고, 참여를 유도하여 신규 유저를 확보하세요.",
+        "투명 상태 액션 개선을 강조하여 PVP 콘텐츠를 홍보하세요."
       ],
-      "priceImpact": "업데이트로 인해 타락한 축복의 땅에서의 사냥 수요 증가가 예상되며, 관련 아이템의 시세 상승이 예상됩니다."
+      "priceImpact": "이번 업데이트로 인해 타락한 축복의 땅에서의 사냥 효율이 높아져 관련 아이템의 수요가 증가할 것으로 예상된다."
     },
     "dcinside": {
       "keywords": [
         {
           "word": "발라카스",
-          "count": 6
+          "count": 4
         },
         {
-          "word": "버프",
-          "count": 2
+          "word": "자동사냥",
+          "count": 3
         },
         {
-          "word": "거래",
+          "word": "PC방",
           "count": 2
         },
         {
           "word": "작업장",
-          "count": 3
+          "count": 2
         },
         {
           "word": "법사",
           "count": 2
         }
       ],
-      "summary": "디시에서 발라카스 서버의 대기 시간 문제와 버프 관련 질문이 활발하며, 작업장 문제도 제기되고 있습니다.",
+      "summary": "디시인사이드에서는 발라카스 서버 대기 문제와 자동사냥 및 작업장 관련 이슈가 주를 이루고 있으며, 유저들이 현재 불만을 토로하고 있다.",
       "marketingTips": [
-        "발라카스 서버의 문제를 해결할 수 있는 전략 아이템을 할인 판매하세요.",
-        "작업장에 피해를 받는 유저를 위한 안전한 거래 정보를 제공하세요."
+        "발라카스 서버 유저들을 겨냥한 최적의 거래 아이템을 제안하여 유입을 노려보세요.",
+        "자동사냥을 활용한 유저들에게 관련 아이템 판매를 적극 어필하세요."
       ],
-      "priceImpact": "발라카스 서버에서의 대기 문제로 인해 아이템 거래가 원활하지 않아 시세에 부정적 영향을 미치고 있습니다."
+      "priceImpact": "발라카스 서버의 혼잡으로 인해 거래 아이템의 시세가 불안정할 수 있으며, 자동사냥으로 인한 아이템 물량 증가가 예상된다."
     },
     "inven": {
       "keywords": [
         {
-          "word": "리니지 클래식",
-          "count": 5
-        },
-        {
           "word": "계정 거래",
-          "count": 2
+          "count": 4
         },
         {
-          "word": "피방",
+          "word": "발라카스",
           "count": 3
         },
         {
-          "word": "각인",
+          "word": "자동사냥",
           "count": 2
         },
         {
-          "word": "세바스찬",
-          "count": 1
+          "word": "법사",
+          "count": 2
+        },
+        {
+          "word": "구글",
+          "count": 2
         }
       ],
-      "summary": "인벤 커뮤니티에서는 리니지 클래식 계정 거래와 서버 상태에 대한 걱정이 많아, 피방에서의 게임 이용도 이슈가 되고 있습니다.",
+      "summary": "인벤에서는 계정 거래와 관련된 안전성 문제와 발라카스 서버의 대기 문제에 대한 논의가 활발히 이루어지고 있으며, 유저들이 불만을 표시하고 있다.",
       "marketingTips": [
-        "계정 거래 시 주의사항을 강조하여 유저들의 신규 거래 유도하세요.",
-        "세바스찬 서버의 특성을 활용한 최적의 아이템 거래 가이드를 제공합니다."
+        "안전한 계정 거래를 위한 가이드라인을 제공하여 유저의 신뢰를 확보하세요.",
+        "발라카스 서버를 겨냥한 전용 아이템 이벤트 진행을 고려해보세요."
       ],
-      "priceImpact": "계정 거래 관련 정보가 활발하게 논의되고 있어 이에 따른 아이템 시세 불안정 현상이 발생하고 있습니다."
+      "priceImpact": "계정 거래 이슈로 인해 game 내 아이템의 거래 빈도가 줄어들 것으로 보이며, 관련 시세가 하락할 가능성이 있다."
     },
     "seo": [
-      "리니지클래식 업데이트 소식",
-      "타락한 축복의 땅 확장",
-      "리니지클래식 거래 시세",
-      "법사 캐릭터 주요 정보",
-      "PC방 신상품 구매 방법"
+      "리니지클래식 신규 패치 정보",
+      "리니지클래식 아이템 거래 시세",
+      "리니지클래식 발라카스 서버 상황",
+      "리니지클래식 자동사냥 전략",
+      "리니지클래식 계정 거래 안전성"
     ],
     "youtube": [
-      "리니지클래식 타락한 땅 탐험기",
-      "PC방 최신 상품 소개하기",
-      "리니지클래식 유저 인터뷰",
-      "투명 상태 액션 규칙 변경 설명"
+      "타락한 축복의 땅 스팟 소개",
+      "리니지클래식 투명 상태 액션 개선",
+      "발라카스 서버 대기 문제 토론",
+      "리니지클래식 PvP 전략 강좌"
     ],
     "push": [
       {
-        "title": "(광고) 리니지클래식 거래 시세가 변동 중!",
-        "content": "(광고) 지금 시세 확인하고 좋은 거래 놓치지 마세요!"
+        "title": "(광고) 리니지클래식 시세 상승 중!",
+        "content": "(광고) 타락한 축복의 땅 꼭 확인하세요!🌟"
       },
       {
-        "title": "(광고) 리니지클래식 피방 대기 시간 단축 꿀팁",
-        "content": "(광고) 피방 유저들에게 맞춤형 아이템 거래를 추천합니다!"
+        "title": "(광고) 리니지클래식 거래 찬스!",
+        "content": "(광고) 발라카스 아이템 가격 급등!🔥"
       }
     ]
   }
