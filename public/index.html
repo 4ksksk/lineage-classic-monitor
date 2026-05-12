@@ -51,10 +51,11 @@
       display: flex; align-items: center; justify-content: center;
       width: 32px; height: 32px; background: none; border: none;
       color: var(--text2); font-size: 1.2rem; line-height: 1;
-      cursor: pointer; border-radius: 6px; transition: background 0.15s;
+      cursor: pointer; border-radius: 6px; transition: background 0.15s, left 0.25s, right 0.25s;
       position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
     }
     .hamburger-btn:hover { background: rgba(0,0,0,0.06); }
+    body.sidebar-collapsed .hamburger-btn { right: auto; left: 50%; transform: translate(-50%, -50%); }
 
     /* ── ISSUE BANNER ── */
     .issue-banner {
@@ -663,14 +664,16 @@
       font-size: 15px; font-weight: 600; color: #1a1f2e;
       transition: opacity 0.2s;
     }
-    body.sidebar-collapsed .sidebar-parent-text { opacity: 0; pointer-events: none; }
+    body.sidebar-collapsed .sidebar-parent-text { opacity: 0; pointer-events: none; width: 0; overflow: hidden; }
     .sidebar-arrow {
       display: flex; align-items: center;
       padding: 4px 6px; margin-right: -6px; transition: opacity 0.2s;
     }
     .sidebar-arrow svg { display: block; transition: transform 0.25s ease; }
     .sidebar-arrow.arrow-collapsed svg { transform: rotate(180deg); }
-    body.sidebar-collapsed .sidebar-arrow { opacity: 0; pointer-events: none; }
+    body.sidebar-collapsed .sidebar-arrow { opacity: 0; pointer-events: none; width: 0; overflow: hidden; padding: 0; margin: 0; }
+    body.sidebar-collapsed .sidebar-parent-item { justify-content: center; padding-left: 0; padding-right: 0; }
+    body.sidebar-collapsed .sidebar-parent-left { flex: 0 0 auto; }
 
     /* 서브메뉴 */
     .sidebar-sub-menu {
@@ -820,7 +823,7 @@
 
 <aside class="sidebar">
   <div class="sidebar-logo-bar">
-    <div class="sidebar-logo" onclick="selectGame('all')">
+    <div class="sidebar-logo">
       <span class="sidebar-logo-icon">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -2574,9 +2577,8 @@ function toggleGameMenu() {
   if (arrow) arrow.classList.toggle('arrow-collapsed', subMenu.classList.contains('sub-collapsed'));
 }
 
-/* ── 게임별현황 전체 클릭: 전체보기 + 서브메뉴 토글 ── */
+/* ── 게임별현황 클릭: 서브메뉴 펼침/접힘만 ── */
 function onClickParent() {
-  selectGame('all');
   toggleGameMenu();
 }
 
@@ -2585,8 +2587,6 @@ function selectGame(game) {
   document.querySelectorAll('.sidebar-sub-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
-  const parentItem = document.querySelector('.sidebar-parent-item');
-  if (parentItem) parentItem.classList.toggle('active', game === 'all');
   document.getElementById('allContent').style.display     = game === 'all'     ? '' : 'none';
   document.getElementById('lineageContent').style.display = game === 'lineage' ? '' : 'none';
   document.getElementById('aion2Content').style.display   = game === 'aion2'   ? '' : 'none';
@@ -2625,7 +2625,7 @@ function toggleSidebar() {
   }
 })();
 
-selectGame('all');
+selectGame('lineage');
 loadResults();
 setInterval(loadResults, 5 * 60 * 1000);
 setInterval(() => {
