@@ -21,7 +21,8 @@
       --border:    #e2e8f0;
       --radius:    12px;
       --shadow:    0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
-      --sidebar-w: 200px;
+      --sidebar-w:    200px;
+      --sidebar-mini: 56px;
       /* 하위 호환 */
       --official: var(--accent);
       --dc:       var(--accent);
@@ -47,19 +48,11 @@
     }
 
     .hamburger-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px; height: 32px;
-      background: none;
-      border: none;
-      color: var(--text2);
-      font-size: 1.2rem;
-      line-height: 1;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background 0.15s;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; background: none; border: none;
+      color: var(--text2); font-size: 1.2rem; line-height: 1;
+      cursor: pointer; border-radius: 6px; transition: background 0.15s;
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
     }
     .hamburger-btn:hover { background: rgba(0,0,0,0.06); }
 
@@ -627,56 +620,73 @@
 
     /* ── SIDEBAR LAYOUT ── */
     .sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      width: var(--sidebar-w);
-      height: 100vh;
-      background: #ffffff;
-      border-right: 1px solid #e0e0e0;
-      z-index: 100;
-      overflow-y: auto;
-      transition: transform 0.25s ease;
+      position: fixed; top: 0; left: 0;
+      width: var(--sidebar-w); height: 100vh;
+      background: #ffffff; border-right: 1px solid #e0e0e0;
+      z-index: 100; overflow: hidden;
+      transition: width 0.25s ease;
     }
-    body.sidebar-collapsed .sidebar { transform: translateX(calc(-1 * var(--sidebar-w))); }
-    .sidebar-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 14px 14px;
-      border-bottom: 1px solid #e0e0e0;
+    body.sidebar-collapsed .sidebar { width: var(--sidebar-mini); }
+
+    /* 로고+햄버거 바 */
+    .sidebar-logo-bar {
+      position: relative; display: flex; align-items: center;
+      height: 56px; padding: 0 14px;
+      border-bottom: 1px solid #e0e0e0; flex-shrink: 0;
     }
-    .sidebar-title {
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #999;
+    .sidebar-logo { display: flex; align-items: center; gap: 8px; overflow: hidden; }
+    .sidebar-logo-icon { font-size: 1.15rem; flex-shrink: 0; }
+    .sidebar-logo-text {
+      font-size: 0.85rem; font-weight: 700; color: #1a1f2e;
+      white-space: nowrap; transition: opacity 0.2s;
     }
-    .sidebar-menu-item {
-      display: block;
-      padding: 12px 18px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #444;
-      cursor: pointer;
+    body.sidebar-collapsed .sidebar-logo-text { opacity: 0; pointer-events: none; }
+
+    /* 게임별현황 부모 아이템 */
+    .sidebar-parent-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 14px; cursor: pointer; user-select: none;
+      transition: background 0.12s; white-space: nowrap;
+    }
+    .sidebar-parent-item:hover { background: #f3f4f6; }
+    .sidebar-parent-left { display: flex; align-items: center; gap: 8px; }
+    .sidebar-parent-icon { font-size: 1rem; flex-shrink: 0; }
+    .sidebar-parent-text {
+      font-size: 0.9rem; font-weight: 600; color: #1a1f2e;
+      transition: opacity 0.2s;
+    }
+    body.sidebar-collapsed .sidebar-parent-text { opacity: 0; pointer-events: none; }
+    .sidebar-arrow {
+      font-size: 0.75rem; color: #999; transition: opacity 0.2s;
+    }
+    body.sidebar-collapsed .sidebar-arrow { opacity: 0; pointer-events: none; }
+
+    /* 서브메뉴 */
+    .sidebar-sub-menu {
+      overflow: hidden; max-height: 200px;
+      transition: max-height 0.25s ease;
+    }
+    .sidebar-sub-menu.sub-collapsed { max-height: 0; }
+    .sidebar-sub-item {
+      display: block; padding: 9px 14px 9px 36px;
+      font-size: 0.88rem; font-weight: 500; color: #555;
+      cursor: pointer; white-space: nowrap;
       transition: background 0.12s, color 0.12s;
-      border-left: 3px solid transparent;
-      user-select: none;
+      border-left: 3px solid transparent; user-select: none;
     }
-    .sidebar-menu-item:hover { background: #f3f4f6; color: #1a1f2e; }
-    .sidebar-divider { height: 1px; background: #e0e0e0; margin: 6px 0; }
-    .sidebar-menu-item.active {
-      background: var(--accent-bg);
-      color: var(--accent);
-      font-weight: 700;
-      border-left-color: var(--accent);
+    .sidebar-sub-item:hover { background: #f3f4f6; color: #1a1f2e; }
+    .sidebar-sub-item.active {
+      background: var(--accent-bg); color: var(--accent);
+      font-weight: 700; border-left-color: var(--accent);
     }
+    body.sidebar-collapsed .sidebar-sub-item { opacity: 0; pointer-events: none; }
+
     .layout-outer {
       margin-left: var(--sidebar-w);
       padding: 32px 40px 0;
       transition: margin-left 0.25s ease;
     }
-    body.sidebar-collapsed .layout-outer { margin-left: 0; }
+    body.sidebar-collapsed .layout-outer { margin-left: var(--sidebar-mini); }
     .main-content { padding-bottom: 100px; }
     .coming-soon { text-align: center; padding: 80px 20px; }
     .coming-soon-icon { font-size: 2.5rem; margin-bottom: 20px; }
@@ -798,15 +808,25 @@
 <body>
 
 <aside class="sidebar">
-  <div class="sidebar-header">
+  <div class="sidebar-logo-bar">
+    <div class="sidebar-logo">
+      <span class="sidebar-logo-icon">⚔</span>
+      <span class="sidebar-logo-text">게임 모니터</span>
+    </div>
     <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="메뉴">☰</button>
-    <span class="sidebar-title">게임 선택</span>
   </div>
-  <div class="sidebar-menu-item active" data-game="all" onclick="selectGame('all')">전체보기</div>
-  <div class="sidebar-divider"></div>
-  <div class="sidebar-menu-item" data-game="lineage" onclick="selectGame('lineage')">리니지클래식</div>
-  <div class="sidebar-menu-item" data-game="aion2" onclick="selectGame('aion2')">아이온2</div>
-  <div class="sidebar-menu-item" data-game="maple" onclick="selectGame('maple')">메이플스토리</div>
+  <div class="sidebar-parent-item" onclick="toggleGameMenu()">
+    <div class="sidebar-parent-left">
+      <span class="sidebar-parent-icon">📢</span>
+      <span class="sidebar-parent-text">게임별현황</span>
+    </div>
+    <span class="sidebar-arrow" id="gameMenuArrow">▾</span>
+  </div>
+  <div class="sidebar-sub-menu" id="gameSubMenu">
+    <div class="sidebar-sub-item" data-game="lineage" onclick="selectGame('lineage')">리니지클래식</div>
+    <div class="sidebar-sub-item" data-game="aion2" onclick="selectGame('aion2')">아이온2</div>
+    <div class="sidebar-sub-item" data-game="maple" onclick="selectGame('maple')">메이플스토리</div>
+  </div>
   <!-- JS 참조용 -->
   <span id="clock" style="display:none"></span>
   <span id="lastUpdated" style="display:none"></span>
@@ -2523,9 +2543,17 @@ function renderMaterialTable(lineage, aion2, maple) {
   document.getElementById('materialGrid').innerHTML = html;
 }
 
+/* ── 게임별현황 서브메뉴 토글 ── */
+function toggleGameMenu() {
+  const subMenu = document.getElementById('gameSubMenu');
+  const arrow = document.getElementById('gameMenuArrow');
+  subMenu.classList.toggle('sub-collapsed');
+  if (arrow) arrow.textContent = subMenu.classList.contains('sub-collapsed') ? '▸' : '▾';
+}
+
 /* ── 게임 선택 ── */
 function selectGame(game) {
-  document.querySelectorAll('.sidebar-menu-item').forEach(el => {
+  document.querySelectorAll('.sidebar-sub-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
   document.getElementById('allContent').style.display     = game === 'all'     ? '' : 'none';
@@ -2566,7 +2594,7 @@ function toggleSidebar() {
   }
 })();
 
-selectGame('all');
+selectGame('lineage');
 loadResults();
 setInterval(loadResults, 5 * 60 * 1000);
 setInterval(() => {
