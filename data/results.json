@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-12T11:43:02.337Z",
+  "lastUpdated": "2026-05-12T11:45:45.984Z",
   "officialPosts": [
     {
       "title": "5/6(수) 업데이트 (타락한 축복의 땅 확장 / 투명 상태 액션 규칙 개선 등)",
@@ -85,6 +85,10 @@
   ],
   "invenPosts": [
     {
+      "title": "손이 근질거릴땐 린클 강화시뮬레이션",
+      "content": "홍보아니고 내돈내면서 호스팅 사서 만든거고~본장비 지르고 접는 혈원들 만아서 만들어봤음.자꾸 러쉬병 돋을때 들어와서 비지엠 켜놓고 해보셈. 모든데이터 공식데이터 넣어서 만듬.채팅되고 랭킹되고 재미남.https://myc2102-hue.github.io/omock/ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14595\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14595\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top"
+    },
+    {
       "title": "캐릭터가 겪을 가장 완벽한 성장을 함께합니다",
       "content": "noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14594\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14594\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit(); scrapWi"
     },
@@ -159,111 +163,91 @@
     {
       "title": "인챈트 강화시뮬레이션 배포해용",
       "content": "하두 본장비들 러쉬많이하셔서실시간 채팅도하고 비지엠들으몀서 최대하누실제랑 가깝게 구현했습니다https://myc2102-hue.github.io/omock/드래그 드랍도 구현해놨으니 동서남북 따닥따구도 가능하시고요.반응 괜찮으면 이것저것 업뎃해볼게용확률은 공식사이트ㅜ공개본 그대로 옮겨놨습니다 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14571\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14571\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_ad"
-    },
-    {
-      "title": "장궁 크로 비교에서 사냥 크로가 좋다는애들은 뭐임??",
-      "content": "걍 아예 스왑으로 무기도안써보고 뇌피셜로 말하네32렙만되도 장궁으로 ats30렙몹 본던7층 킹버그정도까지는 크로랑 빗방똑같음 직접 무기 2개 스왑해가며 실험해봄 원조 리니지랑 다르게 린클은 1렙당 명중이1씩오르고 강화때도 1씩 올라서 명중3이라는수치가 사냥에선 크게 의미가없음 30렙중반정도만되도 렙빨명중만으로도 이미 명중+35라 장궁낀 땅요정도 이미 왠만한 사냥터에서는 과명중상태임 뭐 5렙당 명중1주고 강화도 2강당 명중 1주던 기존리니지랑 비교하면안됨 린클은 명중수치를 다른데서 엄청퍼줌 추타올리기가 어렵지 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14570\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=1"
     }
   ],
   "analysis": {
-    "todayIssue": "5월 6일 업데이트로 타락한 축복의 땅 확장과 투명 상태 액션 규칙 개선이 시행되었습니다. 게임 환경 개선과 새로운 아이템 판매가 눈길을 끌고 있습니다.",
+    "todayIssue": "최근 리니지클래식 업데이트로 타락한 축복의 땅이 확장되며, 새로운 사냥터가 등장했습니다. 유저들 사이에서는 신규 아이템 시세와 거래에 대한 관심이 높아지고 있습니다.",
     "official": {
-      "summary": "• 타락한 축복의 땅이 사계절로 확장\n• PC방 전용 아이템 추가 및 판매\n• 투명 상태 해제 시 공격 딜레이 개선",
+      "summary": "• 타락한 축복의 땅 확장\n• PC방 전용 아이템 추가\n• 투명 상태 액션 규칙 개선",
       "date": "2026. 5. 6.",
       "keywords": [
         "타락한 축복의 땅",
-        "PC방 전용 판매",
-        "투명 상태 액션 규칙",
-        "아이템 구매",
-        "버그 수정"
+        "PC방",
+        "투명 상태",
+        "악마의 피",
+        "용기의 물약"
       ],
       "marketingTips": [
-        "타락한 축복의 땅을 활용한 보상 이벤트 진행 가능",
-        "PC방 전용 아이템 구매 시 특별 보너스 제공 마케팅"
+        "타락한 축복의 땅의 사냥 경험 강조하기",
+        "PC방 아이템 출시 소식 활용하기"
       ],
-      "priceImpact": "타락한 축복의 땅의 확장으로 관련 아이템의 수요 증가가 예상되며, 새로운 PC방 전용 아이템의 출시가 시세 변화에 영향을 줄 것입니다."
+      "priceImpact": "타락한 축복의 땅 확장으로 새로운 사냥터가 열려 관련 아이템의 수요가 증가할 것으로 예상되며, 신규 아이템의 시세가 변동할 수 있습니다."
     },
     "dcinside": {
       "keywords": [
         {
+          "word": "타락한 축복의 땅",
+          "count": 2
+        },
+        {
+          "word": "PC방",
+          "count": 2
+        },
+        {
           "word": "자동사냥",
-          "count": 9
-        },
-        {
-          "word": "리니지클래식",
-          "count": 7
-        },
-        {
-          "word": "케이",
-          "count": 3
-        },
-        {
-          "word": "망지단",
-          "count": 2
-        },
-        {
-          "word": "작업장",
-          "count": 2
+          "count": 4
         }
       ],
-      "summary": "디시인사이드 리니지클래식 갤러리에서는 작업장 및 자동사냥에 대한 논의가 활발하게 이루어졌습니다. 특정 캐릭터에 대한 불만과 커뮤니티 내 갈등도 보입니다.",
+      "summary": "디시 게시글에서는 리니지클래식의 자동사냥과 타락한 축복의 땅 확장에 관한 논의가 활발합니다. 유저들 사이에서는 안정적인 자동사냥 사용에 대한 정보 공유가 이루어지고 있습니다.",
       "marketingTips": [
-        "자동사냥과 관련된 가이드를 콘텐츠로 제공하여 커뮤니티 연결 강화",
-        "유저가 선호하는 캐릭터와 장비에 대한 통계 공유로 흥미 유도"
+        "자동사냥 관련 정보 일부를 공략으로 제공하기",
+        "타락한 축복의 땅과 관련된 콘텐츠를 강조하기"
       ],
-      "priceImpact": "자동사냥 및 작업장 이슈로 인해 일부 아이템의 시세가 불확실해 질 수 있으며, 롱텀 거래 패턴에 변동이 예상됩니다."
+      "priceImpact": "자동사냥에 대한 관심과 함께, 아이템 시세에 대한 논의도 이어지며 특정 아이템의 거래량이 증가하고 있습니다."
     },
     "inven": {
       "keywords": [
         {
           "word": "자동사냥",
-          "count": 10
+          "count": 6
         },
         {
           "word": "리니지클래식",
           "count": 5
         },
         {
-          "word": "투명 상태",
-          "count": 1
-        },
-        {
-          "word": "PC방",
-          "count": 1
-        },
-        {
-          "word": "신규 캐릭터",
-          "count": 1
+          "word": "법사",
+          "count": 2
         }
       ],
-      "summary": "인벤에서는 자동사냥에 대한 요청과 논의가 많았습니다. 구체적인 효과적이고 안전한 자동사냥 방법을 공유하며 유저들의 관심을 모으고 있습니다.",
+      "summary": "인벤 게시글에서는 자동사냥을 통한 효율적 플레이가 주된 화제로, 유저들이 이에 대한 팁과 정보 공유에 집중하고 있습니다. 법사 캐릭터의 조작 방식에 대한 질문도 발견됩니다.",
       "marketingTips": [
-        "자동사냥 팁 공유를 통해 유저 활동 증진",
-        "리니지클래식 경험담을 통해 신규 유저 유치"
+        "자동사냥의 효율을 높이는 방법에 대한 가이드 제공하기",
+        "법사 캐릭터의 성장 관련 콘텐츠를 강화하기"
       ],
-      "priceImpact": "자동사냥 관련 아이템의 시세가 안정될 가능성이 있으며, 특정 캐릭터 아이템의 거래량이 증가할 것입니다."
+      "priceImpact": "자동사냥과 관련된 아이템의 거래량이 증가하고 있으며, 유저들 간의 거래가 활발해지는 상황입니다."
     },
     "seo": [
-      "리니지클래식 자동사냥",
-      "타락한 축복의 땅",
-      "리니지클래식 아이템 거래",
-      "리니지클래식 새로운 업데이트",
-      "PC방 전용 리니지클래식 아이템"
+      "타락한 축복의 땅 확장 정보",
+      "리니지클래식 자동사냥 팁",
+      "PC방 전용 아이템 출시 소식",
+      "법사 캐릭터 성장 가이드",
+      "리니지클래식 아이템 거래 시세"
     ],
     "youtube": [
-      "리니지클래식 PC방 아이템 리뷰하기",
-      "타락한 축복의 땅 사냥법 공개!",
-      "리니지클래식 투명 상태 액션 설명",
-      "리니지클래식 자동사냥 튜토리얼"
+      "타락한 축복의 땅 탐험하기",
+      "자동사냥으로 레벨 업하기",
+      "PC방 전용 아이템 리뷰",
+      "법사로 사냥하는 꿀팁"
     ],
     "push": [
       {
-        "title": "(광고) 리니지클래식 아이템 시세 확인 💸",
-        "content": "(광고) 주요 아이템 시세를 체크하세요!"
+        "title": "(광고) 리니지클래식 아이템 시세 확인하세요!",
+        "content": "(광고) 요즘 시세가 급등하고 있어요! 🔥"
       },
       {
-        "title": "(광고) 리니지클래식 거래를 놓치지 마세요 🔍",
-        "content": "(광고) 지금 시세를 확인하고 거래하세요!"
+        "title": "(광고) 리니지클래식 거래 놓치지 마세요!",
+        "content": "(광고) 새로운 아이템 거래처 확인하세요! 📈"
       }
     ]
   }
