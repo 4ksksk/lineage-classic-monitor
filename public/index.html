@@ -51,11 +51,13 @@
       display: flex; align-items: center; justify-content: center;
       width: 32px; height: 32px; background: none; border: none;
       color: var(--text2); font-size: 1.2rem; line-height: 1;
-      cursor: pointer; border-radius: 6px; transition: background 0.15s, left 0.25s, right 0.25s;
+      cursor: pointer; border-radius: 6px; transition: background 0.15s;
       position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      flex-shrink: 0;
     }
     .hamburger-btn:hover { background: rgba(0,0,0,0.06); }
-    body.sidebar-collapsed .hamburger-btn { right: auto; left: 50%; transform: translate(-50%, -50%); }
+    body.sidebar-collapsed .sidebar-logo-bar { padding: 0; justify-content: center; }
+    body.sidebar-collapsed .hamburger-btn { position: static; transform: none; }
 
     /* ── ISSUE BANNER ── */
     .issue-banner {
@@ -672,8 +674,13 @@
     .sidebar-arrow svg { display: block; transition: transform 0.25s ease; }
     .sidebar-arrow.arrow-collapsed svg { transform: rotate(180deg); }
     body.sidebar-collapsed .sidebar-arrow { opacity: 0; pointer-events: none; width: 0; overflow: hidden; padding: 0; margin: 0; }
-    body.sidebar-collapsed .sidebar-parent-item { justify-content: center; padding-left: 0; padding-right: 0; }
+    body.sidebar-collapsed .sidebar-parent-item {
+      width: 100%; display: flex; justify-content: center; align-items: center;
+      padding-left: 0; padding-right: 0;
+    }
     body.sidebar-collapsed .sidebar-parent-left { flex: 0 0 auto; }
+    body.sidebar-collapsed .sidebar-parent-item.has-active-child { background: #e8f0fe; }
+    body.sidebar-collapsed .sidebar-parent-item.has-active-child .sidebar-parent-icon svg { stroke: #3b5bdb; }
 
     /* 서브메뉴 */
     .sidebar-sub-menu {
@@ -2587,6 +2594,8 @@ function selectGame(game) {
   document.querySelectorAll('.sidebar-sub-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
+  const parentItem = document.querySelector('.sidebar-parent-item');
+  if (parentItem) parentItem.classList.toggle('has-active-child', game !== 'all');
   document.getElementById('allContent').style.display     = game === 'all'     ? '' : 'none';
   document.getElementById('lineageContent').style.display = game === 'lineage' ? '' : 'none';
   document.getElementById('aion2Content').style.display   = game === 'aion2'   ? '' : 'none';
