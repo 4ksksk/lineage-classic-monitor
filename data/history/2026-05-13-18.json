@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-13T09:22:38.061Z",
+  "lastUpdated": "2026-05-13T09:25:12.873Z",
   "officialPosts": [
     {
       "title": "5/13(수) 업데이트 (런칭 100일 기념 이벤트/투명 망토 착용 규칙 개선 등)",
@@ -85,6 +85,10 @@
   ],
   "invenPosts": [
     {
+      "title": "엔씨 영업이익 2.070퍼 초과달성",
+      "content": "26년 1분기 기준입니다엔씨 장사잘하네요 증권가에서는 20퍼 정도로 봐는데 2.000퍼면 100배 ㄷㄷ엔씨 수십만명의 충성고객에 무보수 홍보 BJ들이 수백명이라대충 게임 만들어도 돈을 쓸어담네요다음나오는 리니지라이크 시리즈도 대박예정인듯순서대로면 리니지2 클래식 나올듯함솔직히 기대되네요자동작업장이 욕은 다먹고 엔씨는 돈만벌고 이보다 좋을순없는 ㄷㄷ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14682\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14682\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = wind"
+    },
+    {
       "title": "정개철 보면 ㅉㅉ",
       "content": "템 욕심 많아 분란 일으키고 (자기 유리한거만 말함)리니지 가이드 서비스비 밑장빼기 하다 걸리고방송 재미도 없고 민심 나락가서 유튜버 구독 시청자수 떡락하고게임에서는 열심히 쳐 맞으면서 정신승리나 하고 있고일부 개철장군빠들이 개철이 열심히 한다고 하지만현실은 리니지말곤 할수 있는게 아무고토 없는 늙고 욕심만 많은돈없는 동내 게임백수 아저씨 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14681\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14681\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.op"
     },
@@ -159,76 +163,72 @@
     {
       "title": "오렌 나오네요 6월 4일",
       "content": "오렌 나오네요대기열 또 장난 아니겠지만ㅋㅋㅋ혹시 하실 분들은 커뮤에서 소통해요오렌 커뮤니티 https://open.kakao.com/o/pcAPtIui오렌 장사방 https://open.kakao.com/o/gM0nvIui noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14657\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14657\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,"
-    },
-    {
-      "title": "아시타지오재 매입 적정가격",
-      "content": "얼마나 될까요? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14656\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14656\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit()"
     }
   ],
   "analysis": {
-    "todayIssue": "공식 업데이트에서는 100일 기념 이벤트와 투명 망토 착용 규칙 개선이 주요 이슈로 떠오르고 있습니다. 커뮤니티에서는 이와 관련해 시세와 아이템에 대한 논의가 활발하게 이루어지고 있습니다.",
+    "todayIssue": "5/13 업데이트와 함께 100일 기념 이벤트가 진행되며, 새로운 콘텐츠와 개선 사항이 추가되었습니다.",
     "official": {
-      "summary": "• 100일 기념 이벤트 진행\n• 투명 망토 착용 규칙 개선\n• 새로운 마법 방어 장비 추가\n• 드랍률 상향 조정 및 버그 수정",
+      "summary": "• 런칭 100일 기념 이벤트 진행\n• 투명 망토 착용 규칙 개선\n• 마법 방어 능력을 강화할 수 있는 장비 추가",
       "date": "2026. 5. 13.",
       "keywords": [
-        "100일 기념 이벤트",
         "투명 망토",
-        "마법 방어",
-        "아시타지오의 재",
-        "드랍률 상향"
+        "100일 기념 이벤트",
+        "마법 방어 장비",
+        "PC방 상품",
+        "시민 사절단"
       ],
       "marketingTips": [
-        "100일 기념 이벤트를 강조한 홍보 캠페인 진행",
-        "투명 망토 착용 규칙 개선 관련 소식 전파"
+        "100일 기념 이벤트 참여 독려",
+        "신규 장비 홍보 및 프로모션"
       ],
-      "priceImpact": "이번 업데이트로 인해 투명 망토의 시세가 상승할 것으로 예상되며, 마법 방어 장비의 거래량도 증가할 전망입니다."
+      "priceImpact": "이번 업데이트로 인해 신규 장비의 판매가 증가할 가능성이 있으며, 투명 망토 관련 거래가 활성화될 것으로 보입니다."
     },
     "dcinside": {
       "keywords": [
         {
-          "word": "돌산대교",
+          "word": "작업장",
+          "count": 3
+        },
+        {
+          "word": "유튜브",
           "count": 1
         },
         {
-          "word": "케이",
+          "word": "캐릭 육성",
           "count": 1
         },
         {
-          "word": "부자",
+          "word": "자동작업장",
           "count": 1
         },
         {
-          "word": "망지단",
-          "count": 1
-        },
-        {
-          "word": "자동이 필수",
+          "word": "시청자",
           "count": 1
         }
       ],
-      "summary": "디시 게시글에서는 '돌산대교'와 관련된 최근 이슈와 함께 케이라는 캐릭터가 빈번히 언급되었습니다. 게임 내 시세와 거래 문제에 대한 논의가 활발히 이루어지고 있습니다.",
+      "summary": "디시인사이드에서는 작업장과 자동작업장에 대한 논의가 활발하며, 유튜버 관련 이슈도 언급되고 있습니다. 유저들 간의 의견 충돌과 분란이 존재합니다.",
       "marketingTips": [
-        "최근 논란을 활용한 유저 참여형 이벤트 기획",
-        "케이 캐릭터 관련 콘텐츠 확대"
+        "작업장 이슈 해결을 위한 커뮤니티 의견 수렴",
+        "유튜버와 협업한 콘텐츠 제작"
       ],
-      "priceImpact": "디시에서 논의된 내용들로 인해 특정 아이템의 시세가 불안정할 수 있습니다."
+      "priceImpact": "작업장 관련 이슈가 시세에 영향을 미칠 가능성이 있으며, 특정 아이템의 거래량이 감소할 수 있습니다."
     },
     "inven": {
       "keywords": [
         {
-          "word": "ATS",
+          "word": "충성고객",
           "count": 1
         },
         {
-          "word": "상아탑",
+          "word": "자동작업장",
           "count": 1
         },
         {
-          "word": "공성전",
+          "word": "드랍율",
           "count": 1
         },
         {
-          "word": "현질",
+          "word": "아이템 시세",
           "count": 1
         },
         {
@@ -236,31 +236,37 @@
           "count": 1
         }
       ],
-      "summary": "인벤 게시글에서는 ATS 몹 개체수 감소 및 상아탑 업데이트에 대한 활발한 논의가 있었습니다. 특히, 공성전과 마법서 관련 아이템의 필요성이 부각되고 있습니다.",
+      "summary": "인벤에서는 엔씨의 영업이익 관련 이야기가 나오고 있고, 자동작업장과 시세 및 드랍율 문제도 논의되고 있습니다. 유저 간의 불만도 제기되고 있습니다.",
       "marketingTips": [
-        "상아탑 업데이트에 맞춘 새로운 전투 가이드 제공",
-        "현질 관련 논의를 활용한 인게임 아이템 세일 띄우기"
+        "자동작업장 관련 유저 의견 수렴 및 대책 마련",
+        "드랍율 개선 안내 및 시세 분석 제공"
       ],
-      "priceImpact": "상아탑 업데이트로 인해 해당 지역 아이템의 시세가 변동할 가능성이 큽니다."
+      "priceImpact": "드랍율 조정과 상품 추가에 따라 특정 아이템의 시세 변동이 예상됩니다."
     },
     "seoSns": {
       "materials": [
-        "끝없는 드랍률 상승, 아시타지오의 재 시세 확인 필수",
-        "투명 망토 케이스에서 오는 새로운 전투 전략 기대",
-        "오렌 업데이트에 따른 상아탑 추가 정보 빠르게 확인해보세요!"
+        "투명 망토 착용 규칙이 개선되며 새로운 플레이 스타일을 즐겨보세요.",
+        "100일 기념 이벤트를 통해 다양한 보상을 획득할 기회를 놓치지 마세요!",
+        "이번 업데이트로 추가된 마법 방어 장비를 확인하고 강화하세요!"
       ]
     },
     "youtubeAd": {
-      "youtubers": []
+      "youtubers": [
+        {
+          "name": "케이",
+          "issue": "작업장 이슈에 대한 언급",
+          "adIdea": "작업장 문제 해결을 위한 커뮤니티 행동 촉구 모션 광고"
+        }
+      ]
     },
     "crm": [
       {
-        "title": "(광고) 드랍률 높은 아시타지오 재 이젠 거래하기!",
-        "content": "(광고) 지금 아시타지오 재 시세를 확인해보세요!"
+        "title": "(광고) 투명 망토로 특별한 순간을!",
+        "content": "(광고) 리니지클래식 100일 기념 이벤트 참여하세요!"
       },
       {
-        "title": "(광고) 투명 망토로 전투 준비 완료!",
-        "content": "(광고) 투명 망토 시세 눌러보세요!"
+        "title": "(광고) 마법 방어 장비로 방어력을 높이세요!",
+        "content": "(광고) 리니지클래식에서 새로운 장비를 확인하세요!"
       }
     ]
   }
