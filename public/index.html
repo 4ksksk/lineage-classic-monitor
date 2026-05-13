@@ -1070,14 +1070,7 @@
     <div class="history-heading">지난 기록 보기</div>
 
     <div class="history-controls">
-      <select id="periodType" class="history-select" onchange="buildPeriodOptions()">
-        <option value="daily">일별</option>
-        <option value="weekly">주간</option>
-        <option value="monthly">월간</option>
-      </select>
-      <select id="periodValue" class="history-select">
-        <option>기간을 선택하세요</option>
-      </select>
+      <input type="date" id="historyDate" class="filter-date">
       <button class="history-btn history-btn-query" id="historyQueryBtn" onclick="queryHistory()">조회</button>
       <button class="history-btn history-btn-close" id="historyCloseBtn" onclick="closeHistory()" style="display:none">닫기</button>
     </div>
@@ -1166,14 +1159,7 @@
       <div class="history-heading">지난 기록 보기</div>
 
       <div class="history-controls">
-        <select id="aion2PeriodType" class="history-select" onchange="buildAion2PeriodOptions()">
-          <option value="daily">일별</option>
-          <option value="weekly">주간</option>
-          <option value="monthly">월간</option>
-        </select>
-        <select id="aion2PeriodValue" class="history-select">
-          <option>기간을 선택하세요</option>
-        </select>
+        <input type="date" id="aion2HistoryDate" class="filter-date">
         <button class="history-btn history-btn-query" id="aion2HistoryQueryBtn" onclick="queryAion2History()">조회</button>
         <button class="history-btn history-btn-close" id="aion2HistoryCloseBtn" onclick="closeAion2History()" style="display:none">닫기</button>
       </div>
@@ -1260,14 +1246,7 @@
       <div class="history-heading">지난 기록 보기</div>
 
       <div class="history-controls">
-        <select id="maplePeriodType" class="history-select" onchange="buildMaplePeriodOptions()">
-          <option value="daily">일별</option>
-          <option value="weekly">주간</option>
-          <option value="monthly">월간</option>
-        </select>
-        <select id="maplePeriodValue" class="history-select">
-          <option>기간을 선택하세요</option>
-        </select>
+        <input type="date" id="mapleHistoryDate" class="filter-date">
         <button class="history-btn history-btn-query" id="mapleHistoryQueryBtn" onclick="queryMapleHistory()">조회</button>
         <button class="history-btn history-btn-close" id="mapleHistoryCloseBtn" onclick="closeMapleHistory()" style="display:none">닫기</button>
       </div>
@@ -2105,55 +2084,19 @@ async function loadHistoryIndex() {
         .sort()
         .reverse();
     }
-    buildPeriodOptions();
   } catch(e) {
     console.error('[historyIndex 로드 실패]', e.message);
-    document.getElementById('periodValue').innerHTML =
-      `<option value="">로드 실패: ${esc(e.message)}</option>`;
   }
-}
-
-function getWeekNum(dateStr) {
-  const day = parseInt(dateStr.split('-')[2], 10);
-  return Math.ceil(day / 7);
-}
-
-function parsePeriodKey(filename, type) {
-  const m = filename.match(/^(\d{4})-(\d{2})-(\d{2})-\d{2}\.json$/);
-  if (!m) return null;
-  const [, y, mo, d] = m;
-  if (type === 'daily')   return `${y}-${mo}-${d}`;
-  if (type === 'weekly')  return `${y}-${mo} ${getWeekNum(`${y}-${mo}-${d}`)}주차`;
-  if (type === 'monthly') return `${y}-${mo}`;
-  return null;
-}
-
-function buildPeriodOptions() {
-  const type   = document.getElementById('periodType').value;
-  const select = document.getElementById('periodValue');
-  const seen   = new Set();
-  const options = [];
-
-  for (const f of historyFiles) {
-    const key = parsePeriodKey(f, type);
-    if (key && !seen.has(key)) { seen.add(key); options.push(key); }
-  }
-
-  select.innerHTML = options.length
-    ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
-    : '<option value="">데이터 없음</option>';
-
-  closeHistory();
 }
 
 function queryHistory() {
-  const period = document.getElementById('periodValue').value;
-  if (!period || period === '데이터 없음') return;
+  const date = document.getElementById('historyDate').value;
+  if (!date) return;
   const panel = document.getElementById('historyPanel');
   panel.classList.add('open');
   document.getElementById('historyCloseBtn').style.display = '';
   document.getElementById('lineageMainData').style.display = 'none';
-  loadHistoryData(period);
+  loadHistoryData(date);
 }
 
 function closeHistory() {
@@ -2164,15 +2107,14 @@ function closeHistory() {
   document.getElementById('lineageMainData').style.display = '';
 }
 
-async function loadHistoryData(period) {
-  if (!period) return;
-  const type  = document.getElementById('periodType').value;
+async function loadHistoryData(dateStr) {
+  if (!dateStr) return;
   const panel = document.getElementById('historyPanel');
   panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
 
-  const matching = historyFiles.filter(f => parsePeriodKey(f, type) === period);
+  const matching = historyFiles.filter(f => f.startsWith(dateStr));
   if (!matching.length) {
-    panel.innerHTML = emptyBox('📂', '해당 기간의 데이터가 없습니다.');
+    panel.innerHTML = emptyBox('📂', '해당 날짜 데이터가 없습니다.');
     return;
   }
 
@@ -2188,7 +2130,7 @@ async function loadHistoryData(period) {
     panel.innerHTML = emptyBox('📂', '데이터를 불러올 수 없습니다.');
     return;
   }
-  panel.innerHTML = renderHistoryPanel(datasets, period, matching);
+  panel.innerHTML = renderHistoryPanel(datasets, dateStr, matching);
 }
 
 function mergeKws(datasets, field) {
@@ -2289,40 +2231,19 @@ async function loadMapleHistoryIndex() {
         .sort()
         .reverse();
     }
-    buildMaplePeriodOptions();
   } catch(e) {
     console.error('[메이플 historyIndex 로드 실패]', e.message);
-    document.getElementById('maplePeriodValue').innerHTML =
-      `<option value="">로드 실패: ${esc(e.message)}</option>`;
   }
-}
-
-function buildMaplePeriodOptions() {
-  const type   = document.getElementById('maplePeriodType').value;
-  const select = document.getElementById('maplePeriodValue');
-  const seen   = new Set();
-  const options = [];
-
-  for (const f of mapleHistoryFiles) {
-    const key = parsePeriodKey(f, type);
-    if (key && !seen.has(key)) { seen.add(key); options.push(key); }
-  }
-
-  select.innerHTML = options.length
-    ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
-    : '<option value="">데이터 없음</option>';
-
-  closeMapleHistory();
 }
 
 function queryMapleHistory() {
-  const period = document.getElementById('maplePeriodValue').value;
-  if (!period || period === '데이터 없음') return;
+  const date = document.getElementById('mapleHistoryDate').value;
+  if (!date) return;
   const panel = document.getElementById('mapleHistoryPanel');
   panel.classList.add('open');
   document.getElementById('mapleHistoryCloseBtn').style.display = '';
   document.getElementById('mapleMainData').style.display = 'none';
-  loadMapleHistoryData(period);
+  loadMapleHistoryData(date);
 }
 
 function closeMapleHistory() {
@@ -2333,15 +2254,14 @@ function closeMapleHistory() {
   document.getElementById('mapleMainData').style.display = '';
 }
 
-async function loadMapleHistoryData(period) {
-  if (!period) return;
-  const type  = document.getElementById('maplePeriodType').value;
+async function loadMapleHistoryData(dateStr) {
+  if (!dateStr) return;
   const panel = document.getElementById('mapleHistoryPanel');
   panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
 
-  const matching = mapleHistoryFiles.filter(f => parsePeriodKey(f, type) === period);
+  const matching = mapleHistoryFiles.filter(f => f.startsWith(dateStr));
   if (!matching.length) {
-    panel.innerHTML = emptyBox('📂', '해당 기간의 데이터가 없습니다.');
+    panel.innerHTML = emptyBox('📂', '해당 날짜 데이터가 없습니다.');
     return;
   }
 
@@ -2357,7 +2277,7 @@ async function loadMapleHistoryData(period) {
     panel.innerHTML = emptyBox('📂', '데이터를 불러올 수 없습니다.');
     return;
   }
-  panel.innerHTML = renderHistoryPanel(datasets, period, matching);
+  panel.innerHTML = renderHistoryPanel(datasets, dateStr, matching);
 }
 
 /* ── 메이플스토리 데이터 로드 ── */
@@ -2435,40 +2355,19 @@ async function loadAion2HistoryIndex() {
         .sort()
         .reverse();
     }
-    buildAion2PeriodOptions();
   } catch(e) {
     console.error('[아이온2 historyIndex 로드 실패]', e.message);
-    document.getElementById('aion2PeriodValue').innerHTML =
-      `<option value="">로드 실패: ${esc(e.message)}</option>`;
   }
-}
-
-function buildAion2PeriodOptions() {
-  const type   = document.getElementById('aion2PeriodType').value;
-  const select = document.getElementById('aion2PeriodValue');
-  const seen   = new Set();
-  const options = [];
-
-  for (const f of aion2HistoryFiles) {
-    const key = parsePeriodKey(f, type);
-    if (key && !seen.has(key)) { seen.add(key); options.push(key); }
-  }
-
-  select.innerHTML = options.length
-    ? options.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')
-    : '<option value="">데이터 없음</option>';
-
-  closeAion2History();
 }
 
 function queryAion2History() {
-  const period = document.getElementById('aion2PeriodValue').value;
-  if (!period || period === '데이터 없음') return;
+  const date = document.getElementById('aion2HistoryDate').value;
+  if (!date) return;
   const panel = document.getElementById('aion2HistoryPanel');
   panel.classList.add('open');
   document.getElementById('aion2HistoryCloseBtn').style.display = '';
   document.getElementById('aion2MainData').style.display = 'none';
-  loadAion2HistoryData(period);
+  loadAion2HistoryData(date);
 }
 
 function closeAion2History() {
@@ -2479,15 +2378,14 @@ function closeAion2History() {
   document.getElementById('aion2MainData').style.display = '';
 }
 
-async function loadAion2HistoryData(period) {
-  if (!period) return;
-  const type  = document.getElementById('aion2PeriodType').value;
+async function loadAion2HistoryData(dateStr) {
+  if (!dateStr) return;
   const panel = document.getElementById('aion2HistoryPanel');
   panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
 
-  const matching = aion2HistoryFiles.filter(f => parsePeriodKey(f, type) === period);
+  const matching = aion2HistoryFiles.filter(f => f.startsWith(dateStr));
   if (!matching.length) {
-    panel.innerHTML = emptyBox('📂', '해당 기간의 데이터가 없습니다.');
+    panel.innerHTML = emptyBox('📂', '해당 날짜 데이터가 없습니다.');
     return;
   }
 
@@ -2503,7 +2401,7 @@ async function loadAion2HistoryData(period) {
     panel.innerHTML = emptyBox('📂', '데이터를 불러올 수 없습니다.');
     return;
   }
-  panel.innerHTML = renderHistoryPanel(datasets, period, matching);
+  panel.innerHTML = renderHistoryPanel(datasets, dateStr, matching);
 }
 
 /* ── 아이온2 데이터 로드 ── */
