@@ -19,9 +19,9 @@ const EMPTY_ANALYSIS = {
   official: { summary: null, date: null, keywords: [], marketingTips: [], priceImpact: null },
   dcinside: { keywords: [], summary: null, marketingTips: [], priceImpact: null },
   inven:    { keywords: [], summary: null, marketingTips: [], priceImpact: null },
-  seo: [],
-  youtube: [],
-  push: [],
+  seoSns: { keywords: [], snsMaterials: [] },
+  youtubeAd: { youtubers: [] },
+  crm: [],
 };
 
 function extractJson(text) {
@@ -99,15 +99,33 @@ ${invenSection}
     "marketingTips": ["인벤 이슈 기반 마케팅 제안 2개"],
     "priceImpact": "인벤에서 언급된 시세·아이템 관련 동향"
   },
-  "seo": ["SEO 소재 문장 5개 (15자 이내, 검색 유입형)"],
-  "youtube": ["유튜브 영상 기획 소재 4개 (25자 이내, 클릭 유도형)"],
-  "push": [
+  "seoSns": {
+    "keywords": ["검색 광고에 활용할 핵심 키워드 3~5개 (짧고 명확하게)"],
+    "snsMaterials": ["SNS 콘텐츠 소재 한 줄 문장 2~3개"]
+  },
+  "youtubeAd": {
+    "youtubers": [
+      {"name": "유튜버 채널명 또는 닉네임", "issue": "현재 이슈 한 줄 요약", "adIdea": "광고 아이디어 1~2개"}
+    ]
+  },
+  "crm": [
     {"title": "(광고) 제목 (35자 이내, 없으면 null)", "content": "(광고) 본문 (35자 이내, 필수)"},
     {"title": "(광고) 제목 (35자 이내, 없으면 null)", "content": "(광고) 본문 (35자 이내, 필수)"}
   ]
 }
 
-push 작성 규칙:
+seoSns 작성 규칙:
+- 수집된 게시글에서 검색 광고(키워드 광고)에 활용할 핵심 키워드 3~5개와 SNS 콘텐츠 소재 2~3개를 함께 추출
+- 키워드는 짧고 명확하게, SNS 소재는 한 줄 문장으로
+- 실제 수집 데이터에 존재하는 내용만 사용
+
+youtubeAd 작성 규칙:
+- 수집된 디시인사이드/인벤 게시글에서 언급된 유튜버 채널명 또는 유튜버 닉네임을 추출
+- 해당 유튜버의 현재 이슈(인기, 논란, 파급력 등)를 한 줄로 요약
+- 아이템매니아와 연계하거나 해당 유튜버와 배너 광고 외에 진행할 수 있는 광고 아이디어를 1~2개 제안 (예: 쿠폰코드 제공, 영상 내 자연스러운 언급, 이벤트 연계 등)
+- 유튜버가 언급되지 않은 경우 빈 배열 반환 (억지로 생성하지 말 것)
+
+crm 작성 규칙:
 - 아이템매니아는 아이온2 유저들이 게임 내 아이템을 사고팔 수 있는 중개 거래 플랫폼이다. 아이템을 직접 제조·판매·유통하지 않으며, 판매자와 구매자를 연결해주는 역할만 한다. 이 푸시는 아이템매니아가 아이온2 유저에게 발송하는 광고 알림이다.
 - 푸시의 목적은 아이온2 유저가 지금 아이템매니아에 접속해서 시세를 확인하거나 아이템 거래를 하도록 유도하는 것이다.
 - 반드시 이번에 수집된 데이터에 실제로 존재하는 이슈·업데이트·아이템명·시세 내용을 기반으로 작성할 것

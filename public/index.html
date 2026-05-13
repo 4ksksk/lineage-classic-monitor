@@ -1053,12 +1053,12 @@
   <!-- ── SEO / 유튜브 / 푸시 3열 ── -->
   <div class="grid-content">
 
-    <!-- SEO 소재 -->
+    <!-- SEO·SNS -->
     <div class="card seo">
       <div class="card-head">
         <div class="card-head-left">
           <div class="card-icon icon-seo">S</div>
-          <span class="card-title">SEO 소재</span>
+          <span class="card-title">SEO·SNS</span>
         </div>
         <span class="card-time">검색 최적화</span>
       </div>
@@ -1067,26 +1067,26 @@
       </div>
     </div>
 
-    <!-- 유튜브 소재 -->
+    <!-- 유튜브 광고 -->
     <div class="card youtube">
       <div class="card-head">
         <div class="card-head-left">
           <div class="card-icon icon-yt">Y</div>
-          <span class="card-title">유튜브 소재</span>
+          <span class="card-title">유튜브 광고</span>
         </div>
-        <span class="card-time">영상 기획</span>
+        <span class="card-time">유튜버 연계</span>
       </div>
       <div class="card-body" id="ytCard">
         <div class="empty"><div class="empty-icon">🎬</div>수집 후 표시됩니다.</div>
       </div>
     </div>
 
-    <!-- 푸시 알림 소재 -->
+    <!-- CRM -->
     <div class="card push">
       <div class="card-head">
         <div class="card-head-left">
           <div class="card-icon icon-push">P</div>
-          <span class="card-title">푸시 알림 소재</span>
+          <span class="card-title">CRM</span>
         </div>
         <span class="card-time">광고 소재</span>
       </div>
@@ -1194,7 +1194,7 @@
         <div class="card-head">
           <div class="card-head-left">
             <div class="card-icon icon-seo">S</div>
-            <span class="card-title">SEO 소재</span>
+            <span class="card-title">SEO·SNS</span>
           </div>
           <span class="card-time">검색 최적화</span>
         </div>
@@ -1206,9 +1206,9 @@
         <div class="card-head">
           <div class="card-head-left">
             <div class="card-icon icon-yt">Y</div>
-            <span class="card-title">유튜브 소재</span>
+            <span class="card-title">유튜브 광고</span>
           </div>
-          <span class="card-time">영상 기획</span>
+          <span class="card-time">유튜버 연계</span>
         </div>
         <div class="card-body" id="aion2YtCard">
           <div class="empty"><div class="empty-icon">🎬</div>수집 후 표시됩니다.</div>
@@ -1218,7 +1218,7 @@
         <div class="card-head">
           <div class="card-head-left">
             <div class="card-icon icon-push">P</div>
-            <span class="card-title">푸시 알림 소재</span>
+            <span class="card-title">CRM</span>
           </div>
           <span class="card-time">광고 소재</span>
         </div>
@@ -1325,7 +1325,7 @@
         <div class="card-head">
           <div class="card-head-left">
             <div class="card-icon icon-seo">S</div>
-            <span class="card-title">SEO 소재</span>
+            <span class="card-title">SEO·SNS</span>
           </div>
           <span class="card-time">검색 최적화</span>
         </div>
@@ -1337,9 +1337,9 @@
         <div class="card-head">
           <div class="card-head-left">
             <div class="card-icon icon-yt">Y</div>
-            <span class="card-title">유튜브 소재</span>
+            <span class="card-title">유튜브 광고</span>
           </div>
-          <span class="card-time">영상 기획</span>
+          <span class="card-time">유튜버 연계</span>
         </div>
         <div class="card-body" id="mapleYtCard">
           <div class="empty"><div class="empty-icon">🎬</div>수집 후 표시됩니다.</div>
@@ -1349,7 +1349,7 @@
         <div class="card-head">
           <div class="card-head-left">
             <div class="card-icon icon-push">P</div>
-            <span class="card-title">푸시 알림 소재</span>
+            <span class="card-title">CRM</span>
           </div>
           <span class="card-time">광고 소재</span>
         </div>
@@ -1899,20 +1899,29 @@ function renderAion2Insight(a) {
 }
 
 /* ── 렌더: SEO ── */
-function renderSEO(seo) {
-  if (!seo?.length) return emptyBox('🔍', 'AI 분석 대기 중');
-  const items = seo.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
-  return `<div class="content-num-list">${items}</div>`;
+function renderSEO(seoSns) {
+  if (!seoSns) return emptyBox('🔍', 'AI 분석 대기 중');
+  const keywords = seoSns.keywords ?? [];
+  const snsMaterials = seoSns.snsMaterials ?? [];
+  if (!keywords.length && !snsMaterials.length) return emptyBox('🔍', 'AI 분석 대기 중');
+  const kwItems = keywords.map((s, i) => `<div class="content-num-item">${i + 1}. ${esc(s)}</div>`).join('');
+  const snsItems = snsMaterials.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
+  return `<div class="content-num-list">${kwItems}</div>`
+    + (snsItems ? `<hr style="border:none;border-top:1px solid var(--border);margin:8px 0"><div class="content-num-list">${snsItems}</div>` : '');
 }
 
-/* ── 렌더: 유튜브 ── */
-function renderYoutube(yt) {
-  if (!yt?.length) return emptyBox('🎬', 'AI 분석 대기 중');
-  const items = yt.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
-  return `<div class="content-num-list">${items}</div>`;
+/* ── 렌더: 유튜브 광고 ── */
+function renderYoutube(youtubeAd) {
+  const youtubers = youtubeAd?.youtubers ?? [];
+  if (!youtubers.length) return emptyBox('🎬', '이번 수집에서 유튜버 언급 없음');
+  return youtubers.map(y => `<div class="push-item">
+    <div class="push-label">채널</div><div class="push-title-text">${esc(y.name ?? '')}</div>
+    <div class="push-label" style="margin-top:8px">이슈</div><div class="push-body-text">${esc(y.issue ?? '')}</div>
+    <div class="push-label" style="margin-top:8px">광고 아이디어</div><div class="push-body-text">${esc(y.adIdea ?? '')}</div>
+  </div>`).join('');
 }
 
-/* ── 렌더: 푸시 ── */
+/* ── 렌더: CRM ── */
 function renderPush(list) {
   if (!list?.length) return emptyBox('🔔', 'AI 분석 대기 중');
   return list.map(p => {
@@ -2011,9 +2020,9 @@ async function loadResults() {
     document.getElementById('lineageInsightContent').innerHTML = lineageInsightHtml || '';
     document.getElementById('lineageInsightBlock').style.display = lineageInsightHtml ? '' : 'none';
 
-    document.getElementById('seoCard').innerHTML  = renderSEO(hasAnalysis ? a?.seo     : null);
-    document.getElementById('ytCard').innerHTML   = renderYoutube(hasAnalysis ? a?.youtube : null);
-    document.getElementById('pushCard').innerHTML = renderPush(hasAnalysis ? a?.push    : null);
+    document.getElementById('seoCard').innerHTML  = renderSEO(hasAnalysis ? a?.seoSns     : null);
+    document.getElementById('ytCard').innerHTML   = renderYoutube(hasAnalysis ? a?.youtubeAd : null);
+    document.getElementById('pushCard').innerHTML = renderPush(hasAnalysis ? a?.crm    : null);
 
     if (cnt > 0) {
       document.getElementById('footerStatus').textContent =
@@ -2362,9 +2371,9 @@ async function loadMapleResults() {
     const insightHtml = renderMapleInsight(hasAnalysis ? a : null);
     document.getElementById('mapleInsightContent').innerHTML = insightHtml || '';
     document.getElementById('mapleInsightBlock').style.display = insightHtml ? '' : 'none';
-    document.getElementById('mapleSeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
-    document.getElementById('mapleYtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
-    document.getElementById('maplePushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
+    document.getElementById('mapleSeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seoSns     : null);
+    document.getElementById('mapleYtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtubeAd : null);
+    document.getElementById('maplePushCard').innerHTML      = renderPush(hasAnalysis ? a?.crm    : null);
 
     if (cnt > 0) {
       document.getElementById('mapleFooterStatus').textContent =
@@ -2511,9 +2520,9 @@ async function loadAion2Results() {
     const aion2InsightHtml = renderAion2Insight(hasAnalysis ? a : null);
     document.getElementById('aion2InsightContent').innerHTML = aion2InsightHtml || '';
     document.getElementById('aion2InsightBlock').style.display = aion2InsightHtml ? '' : 'none';
-    document.getElementById('aion2SeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seo     : null);
-    document.getElementById('aion2YtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtube : null);
-    document.getElementById('aion2PushCard').innerHTML      = renderPush(hasAnalysis ? a?.push    : null);
+    document.getElementById('aion2SeoCard').innerHTML       = renderSEO(hasAnalysis ? a?.seoSns     : null);
+    document.getElementById('aion2YtCard').innerHTML        = renderYoutube(hasAnalysis ? a?.youtubeAd : null);
+    document.getElementById('aion2PushCard').innerHTML      = renderPush(hasAnalysis ? a?.crm    : null);
 
     if (cnt > 0) {
       document.getElementById('aion2FooterStatus').textContent =
@@ -2591,7 +2600,12 @@ function renderMaterialTable(lineage, aion2, maple) {
 
   const gd = games.map(g => {
     const a = g.data?.analysis;
-    return { label: g.label, seo: a?.seo ?? [], yt: a?.youtube ?? [], push: a?.push ?? [] };
+    return {
+      label: g.label,
+      seo: a?.seoSns?.keywords ?? [],
+      yt: (a?.youtubeAd?.youtubers ?? []).map(y => y.name ? `${y.name} — ${y.adIdea ?? ''}` : ''),
+      push: a?.crm ?? [],
+    };
   });
 
   const html = `<table class="mgrid">
@@ -2603,7 +2617,7 @@ function renderMaterialTable(lineage, aion2, maple) {
     </thead>
     <tbody>
       <tr>
-        <td class="mgrid-row-label"><span>SEO</span></td>
+        <td class="mgrid-row-label"><span>SEO·SNS</span></td>
         ${gd.map(g => `<td class="mgrid-cell">${numItem(g.seo[0], 1)}${numItem(g.seo[1], 2)}</td>`).join('')}
       </tr>
       <tr>
@@ -2611,7 +2625,7 @@ function renderMaterialTable(lineage, aion2, maple) {
         ${gd.map(g => `<td class="mgrid-cell">${numItem(g.yt[0], 1)}${numItem(g.yt[1], 2)}</td>`).join('')}
       </tr>
       <tr>
-        <td class="mgrid-row-label"><span>푸시</span></td>
+        <td class="mgrid-row-label"><span>CRM</span></td>
         ${gd.map(g => `<td class="mgrid-cell">${pushSet(g.push[0])}${pushSet(g.push[1])}</td>`).join('')}
       </tr>
     </tbody>
