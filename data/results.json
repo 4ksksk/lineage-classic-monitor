@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-13T08:34:51.913Z",
+  "lastUpdated": "2026-05-13T08:48:01.259Z",
   "officialPosts": [
     {
       "title": "5/13(수) 업데이트 (런칭 100일 기념 이벤트/투명 망토 착용 규칙 개선 등)",
@@ -85,6 +85,10 @@
   ],
   "invenPosts": [
     {
+      "title": "두루마리상자 결제가 안돼요",
+      "content": "결제비밀번호 입력하랬는데 신한은행 비번으로 했는데 비번이 안먹혀요 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14679\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14679\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.targe"
+    },
+    {
       "title": "구글 계정 구매 후",
       "content": "구글 계정 친구가 줬는데,퍼플 인증 및 결제 할 때 내 핸드폰으로 인증하게 하고 싶은데어떻게 해요?? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14678\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14678\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAd"
     },
@@ -159,127 +163,98 @@
     {
       "title": "오렌 업데이트 진짜였구나",
       "content": "공홈 가니까 배너 뜨네요6월4일 오렌 업데이트 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14654\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14654\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_"
-    },
-    {
-      "title": "큐브가 별이 네개",
-      "content": "투컴으로 4계정이니부계정 3개는 물약 가속 큐브 빼고 18만 본케는 다사야하니 12만그래도 한달에 계정비 포함 100만이면 알차게 놀수있네요술값 한두번이면 저정도 나오니 가볍게 취미생활로 쓰는돈 치곤 적당한듯하네요아이템 사고팔고 하지않다보니 큐브가 큰도움이 되네요이정도 BM만 나와도 진짜 평생할건데이번엔 외형BM 안나와서 아쉽네요나름 해골 라이칸 불타는시리즈 점점 업글되서 좋아는데드슬이 외형으로 나옴 딱인데 기다리다보면 나오겠죠 ㄷㄷ noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14653\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14653\"; INVEN.Links.spamArticle(params); } "
     }
   ],
   "analysis": {
-    "todayIssue": "리니지클래식의 런칭 100일 기념 업데이트와 이벤트가 화제입니다. 유저들 사이에서 투명 망토 착용 규칙 수정과 신규 아이템 추가에 대한 반응이 뜨겁습니다.",
+    "todayIssue": "리니지클래식이 100일 기념 업데이트를 통해 다양한 이벤트와 개선 사항을 발표하며 유저들의 관심을 끌고 있습니다.",
     "official": {
-      "summary": "• 100일 기념 이벤트 시행\n• 투명 망토 착용 규칙 개선\n• 마법 방어 장비 추가 및 가격 조정",
+      "summary": "• 100일 기념 이벤트 소식\n• 투명 망토 착용 규칙 개선\n• 마법 방어 장비 추가\n• 아시타지오의 재 드랍률 상향",
       "date": "2026. 5. 13.",
       "keywords": [
         "투명 망토",
+        "아시타지오",
         "100일 기념 이벤트",
-        "마법 방어 장비",
-        "업데이트",
-        "아시타지오 재"
+        "마법 방어",
+        "PC방 전용 상품"
       ],
       "marketingTips": [
-        "100일 기념 이벤트에 맞춘 특별 할인 프로모션",
-        "신규 아이템 소개 영상을 통한 유입 증가"
+        "100일 기념 이벤트 안내를 통해 플레이어 참여를 유도",
+        "신규 아이템 및 세트 효과 사용법을 홍보"
       ],
-      "priceImpact": "이번 업데이트로 신규 마법 방어 장비가 추가되어 수요 증가가 예상되며, 시세에 긍정적인 영향을 미칠 것으로 보입니다."
+      "priceImpact": "이번 업데이트로 투명 망토와 아시타지오 아이템의 가치가 상승할 것으로 예상되며, 신규 방어 장비 도입은 마법 방어 시장에 긍정적인 영향을 미칠 것입니다."
     },
     "dcinside": {
       "keywords": [
         {
-          "word": "법사",
+          "word": "강호연합",
           "count": 1
         },
         {
-          "word": "캐릭육성",
+          "word": "변신",
           "count": 1
         },
         {
-          "word": "오토작업장",
+          "word": "자동오토",
           "count": 1
         },
         {
           "word": "작업장",
           "count": 2
-        },
-        {
-          "word": "강호연합",
-          "count": 1
         }
       ],
-      "summary": "디시인사이드에서는 게임 내 자동화 및 캐릭터 육성에 대한 다양한 의견이 오가고 있으며, 여러 유저들이 운영하는 작업장과 관련된 논의가 뜨겁습니다.",
+      "summary": "최근 디시인사이드 리니지 갤러리에서는 같은 서버 내 작업장과 자동 오토 플레이에 대한 우려와 비판이 주를 이루고 있습니다. 사용자들은 온라인 경험의 질과 게임 변수가 줄어드는 문제에 대해 이야기하고 있습니다.",
       "marketingTips": [
-        "작업장 관련 유저들의 대척점 생길 수 있는 프로모션 기획",
-        "유저들이 사랑하는 캐릭터 육성 방법 관련 가이드 콘텐츠 제작"
+        "플랫폼의 안전성과 공정성을 강조하며 유저의 신뢰를 구축",
+        "게임 내 이슈에 대한 사용자 피드백을 수렴하는 캠페인 진행"
       ],
-      "priceImpact": "작업장 관련 논의가 온라인 거래 시세에 영향을 미치고 있으며, 아이템 공급의 불안정성이 우려됩니다."
+      "priceImpact": "자동 오토 플레이와 작업장 관련 이슈로 인해 특정 아이템의 시세 변화가 있을 것으로 보이며, 고객들 사이의 인식이 거래량에 영향을 미칠 수 있습니다."
     },
     "inven": {
       "keywords": [
         {
-          "word": "상아탑",
+          "word": "오렌",
           "count": 2
         },
         {
-          "word": "마법서",
-          "count": 1
-        },
-        {
-          "word": "오렌",
+          "word": "상아탑",
           "count": 3
         },
         {
-          "word": "시세",
-          "count": 1
-        },
-        {
-          "word": "아이템",
+          "word": "드랍율",
           "count": 1
         }
       ],
-      "summary": "인벤에서는 오렌 업데이트와 함께 상아탑 등 새로운 지역에 대한 기대감이 커지고 있으며, 그로 인한 아이템 시세에 대한 관심도 높아지고 있습니다.",
+      "summary": "인벤 게시판에서는 오렌 업데이트 관련 소식과 함께 새로운 상아탑 및 드랍율에 대한 토론이 활발히 이루어지고 있습니다. 유저들은 새로운 콘텐츠에 기대감을 표시하고 있습니다.",
       "marketingTips": [
-        "상아탑 관련 신규 아이템 프로모션 마케팅",
-        "오렌 업데이트를 기념한 이벤트 기획"
+        "오렌 업데이트 관련 가이드 콘텐츠 제작",
+        "상아탑에서의 새로운 아이템 및 드랍율에 대한 예측을 통해 거래를 자극"
       ],
-      "priceImpact": "상아탑 등 신규 콘텐츠에 따라 아이템 공급 증가가 예상되며, 시세에 긍정적인 영향을 미칠 것입니다."
+      "priceImpact": "오렌 업데이트가 임박함에 따라 상아탑에서의 아이템 드랍율이 영향을 미치고, 앙증스러운 거래는 유도할 것으로 예상됩니다."
     },
     "seoSns": {
-      "keywords": [
-        {
-          "keyword": "리니지클래식",
-          "adCopy": "리니지클래식의 최신 업데이트 소식, 지금 확인해보세요!"
-        },
-        {
-          "keyword": "상아탑",
-          "adCopy": "상아탑, 새로운 모험의 시작입니다! 여러분의 도전이 필요해요."
-        },
-        {
-          "keyword": "투명 망토",
-          "adCopy": "투명 망토 착용 규칙 개선! 더 재미있는 플레이가 시작됩니다."
-        }
-      ],
-      "snsMaterials": [
-        "이번 업데이트, 당신의 아이템 시세는 어떻게 변화할까요?",
-        "100일 기념 이벤트 놓치지 마세요!"
+      "materials": [
+        "투명 망토를 도입하며 새로운 룰을 경험하세요!",
+        "오렌 업데이트로 화려한 상아탑 탐험이 기다립니다.",
+        "자동 오토 플레이의 이슈로 거래 상황이 변화하고 있습니다."
       ]
     },
     "youtubeAd": {
       "youtubers": [
         {
           "name": "내가최고",
-          "issue": "게임 내 핫이슈를 다루고 있습니다.",
-          "adIdea": "영상 내 특별 이벤트 홍보, 구독자 대상 아이템 경품 제공"
+          "issue": "최근 인기 스트리머가 전투 관련 논란을 일으켰습니다.",
+          "adIdea": "관련 방송에서 게임 아이템을 자연스럽게 언급하거나 쿠폰 코드를 제공하여 유입 증대"
         }
       ]
     },
     "crm": [
       {
-        "title": "(광고) 리니지클래식 특별 소식!",
-        "content": "(광고) 새로운 업데이트로 아이템 시세 변동은 없어질까요?"
+        "title": "(광고) 새로운 오렌 지역이 열립니다!",
+        "content": "(광고) 상아탑과 함께 새로운 아이템을 만나보세요! 🌟"
       },
       {
-        "title": "(광고) 당신의 리니지클래식 경험을 즐겨보세요!",
-        "content": "(광고) 상아탑 업데이트가 다가옵니다! 놓치지 마세요!"
+        "title": "(광고) 투명 망토 착용 규칙이 바뀌었어요!",
+        "content": "(광고) 신규 규칙으로 더욱 즐거운 플레이를 경험하세요! 🎮"
       }
     ]
   }
