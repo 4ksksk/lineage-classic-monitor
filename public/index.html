@@ -883,6 +883,86 @@
     }
     .mgrid-push-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
     .mgrid-empty-cell { color: var(--text3); font-size: 12px; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+      background: var(--card-bg); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 16px 24px; margin-bottom: 28px;
+    }
+    .filter-bar-left, .filter-bar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .filter-select {
+      padding: 8px 32px 8px 12px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23868e96' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 10px center;
+      font-size: 0.88rem; font-family: inherit; font-weight: 500; color: var(--text);
+      appearance: none; -webkit-appearance: none; outline: none; cursor: pointer;
+    }
+    .filter-date {
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg); font-size: 0.88rem; font-family: inherit; color: var(--text); outline: none;
+    }
+    .filter-btn {
+      padding: 8px 18px; background: var(--accent); color: #fff; border: none;
+      border-radius: 8px; font-size: 0.88rem; font-family: inherit; font-weight: 600;
+      cursor: pointer; transition: opacity 0.15s;
+    }
+    .filter-btn:hover { opacity: 0.85; }
+
+    /* ── MARKETING PAGE ── */
+    .mkt-page-title {
+      font-size: 20px; font-weight: 700; color: var(--text);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .mkt-page-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .mkt-game-section { margin-bottom: 32px; }
+    .mkt-game-section:last-child { margin-bottom: 0; }
+    .mkt-game-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--accent); background: var(--accent-bg); border: 1px solid rgba(37,99,235,0.2);
+      border-radius: 6px; padding: 3px 12px; display: inline-block; margin-bottom: 14px;
+    }
+    .mkt-data-box {
+      background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent); padding: 20px 24px;
+    }
+
+    /* ── CRM COPY BUTTON ── */
+    .crm-card {
+      background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent); padding: 20px 24px;
+      margin-bottom: 14px; position: relative;
+    }
+    .crm-card:last-child { margin-bottom: 0; }
+    .crm-copy-btn {
+      position: absolute; top: 14px; right: 16px;
+      font-size: 0.72rem; color: var(--text3); background: var(--bg);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 3px 10px; cursor: pointer; font-family: inherit; font-weight: 600;
+      transition: background 0.12s, color 0.12s;
+    }
+    .crm-copy-btn:hover { background: var(--accent-bg); color: var(--accent); border-color: rgba(37,99,235,0.3); }
+
+    /* ── YOUTUBE AD CARD ── */
+    .yt-ad-card {
+      background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent); padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .yt-ad-card:last-child { margin-bottom: 0; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1e293b; color: #fff; font-size: 0.85rem; font-weight: 500;
+      padding: 10px 22px; border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 9999; white-space: nowrap;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
@@ -899,7 +979,7 @@
     </div>
     <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="메뉴">☰</button>
   </div>
-  <div class="sidebar-parent-item" onclick="onClickParent()">
+  <div class="sidebar-parent-item" id="gameParentItem" onclick="onClickParent()">
     <div class="sidebar-parent-left">
       <span class="sidebar-parent-icon">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -918,6 +998,26 @@
     <div class="sidebar-sub-item" data-game="lineage" onclick="selectGame('lineage')">리니지클래식</div>
     <div class="sidebar-sub-item" data-game="aion2" onclick="selectGame('aion2')">아이온2</div>
     <div class="sidebar-sub-item" data-game="maple" onclick="selectGame('maple')">메이플스토리</div>
+  </div>
+  <div class="sidebar-parent-item" id="mktParentItem" onclick="onClickMarketingParent()">
+    <div class="sidebar-parent-left">
+      <span class="sidebar-parent-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </span>
+      <span class="sidebar-parent-text">마케팅 실무</span>
+    </div>
+    <span class="sidebar-arrow" id="mktMenuArrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </span>
+  </div>
+  <div class="sidebar-sub-menu sub-collapsed" id="mktSubMenu">
+    <div class="sidebar-sub-item" data-game="mkt-seo" onclick="selectGame('mkt-seo')">SEO·SNS</div>
+    <div class="sidebar-sub-item" data-game="mkt-yt" onclick="selectGame('mkt-yt')">유튜브 광고</div>
+    <div class="sidebar-sub-item" data-game="mkt-crm" onclick="selectGame('mkt-crm')">CRM</div>
   </div>
   <!-- JS 참조용 -->
   <span id="clock" style="display:none"></span>
@@ -1362,8 +1462,77 @@
     <footer id="mapleFooterStatus">메이플스토리 모니터 · 6시간마다 자동 수집</footer>
 
   </div><!-- /mapleContent -->
+
+  <!-- ── SEO·SNS 마케팅 실무 ── -->
+  <div id="mktSeoContent" style="display:none">
+    <div class="mkt-page-title">SEO·SNS</div>
+    <div class="filter-bar">
+      <div class="filter-bar-left">
+        <select id="mktSeoGameFilter" class="filter-select">
+          <option value="all">전체 게임</option>
+          <option value="lineage">리니지클래식</option>
+          <option value="aion2">아이온2</option>
+          <option value="maple">메이플스토리</option>
+        </select>
+      </div>
+      <div class="filter-bar-right">
+        <input type="date" id="mktSeoDate" class="filter-date">
+        <button class="filter-btn" onclick="queryMktSeo()">조회</button>
+      </div>
+    </div>
+    <div id="mktSeoPanel">
+      <div class="empty"><div class="empty-icon">🔍</div>불러오는 중...</div>
+    </div>
+  </div><!-- /mktSeoContent -->
+
+  <!-- ── 유튜브 광고 마케팅 실무 ── -->
+  <div id="mktYtContent" style="display:none">
+    <div class="mkt-page-title">유튜브 광고</div>
+    <div class="filter-bar">
+      <div class="filter-bar-left">
+        <select id="mktYtGameFilter" class="filter-select">
+          <option value="all">전체 게임</option>
+          <option value="lineage">리니지클래식</option>
+          <option value="aion2">아이온2</option>
+          <option value="maple">메이플스토리</option>
+        </select>
+      </div>
+      <div class="filter-bar-right">
+        <input type="date" id="mktYtDate" class="filter-date">
+        <button class="filter-btn" onclick="queryMktYt()">조회</button>
+      </div>
+    </div>
+    <div id="mktYtPanel">
+      <div class="empty"><div class="empty-icon">🎬</div>불러오는 중...</div>
+    </div>
+  </div><!-- /mktYtContent -->
+
+  <!-- ── CRM 마케팅 실무 ── -->
+  <div id="mktCrmContent" style="display:none">
+    <div class="mkt-page-title">CRM</div>
+    <div class="filter-bar">
+      <div class="filter-bar-left">
+        <select id="mktCrmGameFilter" class="filter-select">
+          <option value="all">전체 게임</option>
+          <option value="lineage">리니지클래식</option>
+          <option value="aion2">아이온2</option>
+          <option value="maple">메이플스토리</option>
+        </select>
+      </div>
+      <div class="filter-bar-right">
+        <input type="date" id="mktCrmDate" class="filter-date">
+        <button class="filter-btn" onclick="queryMktCrm()">조회</button>
+      </div>
+    </div>
+    <div id="mktCrmPanel">
+      <div class="empty"><div class="empty-icon">🔔</div>불러오는 중...</div>
+    </div>
+  </div><!-- /mktCrmContent -->
+
   </main>
 </div><!-- /layout-outer -->
+
+<div id="toast"></div>
 
 <div id="overlay">
   <div class="loader"></div>
@@ -1956,6 +2125,9 @@ const MAPLE_DATA_URL = IS_LOCAL
 
 /* ── 데이터 로드 ── */
 let lastUpdatedISO = null;
+let lineageCachedData = null;
+let aion2CachedData   = null;
+let mapleCachedData   = null;
 
 async function loadResults() {
   try {
@@ -1963,6 +2135,7 @@ async function loadResults() {
     const res  = await fetch(url);
     const data = await res.json();
     lastUpdatedISO = data.lastUpdated;
+    lineageCachedData = data;
 
     const officialPosts = data.officialPosts || [];
     const dcPosts       = data.dcPosts       || [];
@@ -2336,6 +2509,7 @@ async function loadMapleResults() {
     const url = IS_LOCAL ? MAPLE_DATA_URL : `${MAPLE_DATA_URL}?t=${Date.now()}`;
     const res  = await fetch(url);
     const data = await res.json();
+    mapleCachedData = data;
 
     const officialPosts = data.officialPosts || [];
     const dcPosts       = data.dcPosts       || [];
@@ -2485,6 +2659,7 @@ async function loadAion2Results() {
     const url = IS_LOCAL ? AION2_DATA_URL : `${AION2_DATA_URL}?t=${Date.now()}`;
     const res  = await fetch(url);
     const data = await res.json();
+    aion2CachedData = data;
 
     const officialPosts = data.officialPosts || [];
     const dcPosts       = data.dcPosts       || [];
@@ -2646,21 +2821,44 @@ function onClickParent() {
   toggleGameMenu();
 }
 
+/* ── 마케팅 실무 아코디언 ── */
+function toggleMktMenu() {
+  const subMenu = document.getElementById('mktSubMenu');
+  const arrow   = document.getElementById('mktMenuArrow');
+  subMenu.classList.toggle('sub-collapsed');
+  if (arrow) arrow.classList.toggle('arrow-collapsed', subMenu.classList.contains('sub-collapsed'));
+}
+
+function onClickMarketingParent() {
+  toggleMktMenu();
+}
+
 /* ── 게임 선택 ── */
 function selectGame(game) {
   document.querySelectorAll('.sidebar-sub-item').forEach(el => {
     el.classList.toggle('active', el.dataset.game === game);
   });
-  const parentItem = document.querySelector('.sidebar-parent-item');
-  if (parentItem) parentItem.classList.toggle('has-active-child', game !== 'all');
-  document.getElementById('allContent').style.display     = game === 'all'     ? '' : 'none';
-  document.getElementById('lineageContent').style.display = game === 'lineage' ? '' : 'none';
-  document.getElementById('aion2Content').style.display   = game === 'aion2'   ? '' : 'none';
-  document.getElementById('mapleContent').style.display   = game === 'maple'   ? '' : 'none';
+  const isGameChild = ['lineage', 'aion2', 'maple'].includes(game);
+  const isMktChild  = ['mkt-seo', 'mkt-yt', 'mkt-crm'].includes(game);
+  const gameParentItem = document.getElementById('gameParentItem');
+  const mktParentItem  = document.getElementById('mktParentItem');
+  if (gameParentItem) gameParentItem.classList.toggle('has-active-child', isGameChild);
+  if (mktParentItem)  mktParentItem.classList.toggle('has-active-child',  isMktChild);
+
+  document.getElementById('allContent').style.display       = game === 'all'     ? '' : 'none';
+  document.getElementById('lineageContent').style.display   = game === 'lineage' ? '' : 'none';
+  document.getElementById('aion2Content').style.display     = game === 'aion2'   ? '' : 'none';
+  document.getElementById('mapleContent').style.display     = game === 'maple'   ? '' : 'none';
+  document.getElementById('mktSeoContent').style.display    = game === 'mkt-seo' ? '' : 'none';
+  document.getElementById('mktYtContent').style.display     = game === 'mkt-yt'  ? '' : 'none';
+  document.getElementById('mktCrmContent').style.display    = game === 'mkt-crm' ? '' : 'none';
 
   if (game === 'all')                        loadAllResults();
   if (game === 'aion2' && !aion2Loaded)      loadAion2Results();
   if (game === 'maple' && !mapleLoaded)      loadMapleResults();
+  if (game === 'mkt-seo')                    initMktPage('seo');
+  if (game === 'mkt-yt')                     initMktPage('yt');
+  if (game === 'mkt-crm')                    initMktPage('crm');
 
   if (game === 'all') {
     closeHistory(); closeAion2History(); closeMapleHistory();
@@ -2690,6 +2888,231 @@ function toggleSidebar() {
     document.body.classList.add('sidebar-collapsed');
   }
 })();
+
+/* ════════════════════════════════════════════
+   마케팅 실무 페이지
+════════════════════════════════════════════ */
+
+/* ── 마케팅 페이지 초기화 (탭 진입 시) ── */
+function initMktPage(type) {
+  const dateIds = { seo: 'mktSeoDate', yt: 'mktYtDate', crm: 'mktCrmDate' };
+  const el = document.getElementById(dateIds[type]);
+  if (el && !el.value) {
+    el.value = new Date().toISOString().slice(0, 10);
+  }
+  loadMktData(type);
+}
+
+/* ── 조회 버튼 핸들러 ── */
+function queryMktSeo()  { loadMktData('seo'); }
+function queryMktYt()   { loadMktData('yt');  }
+function queryMktCrm()  { loadMktData('crm'); }
+
+/* ── 마케팅 데이터 로드 ── */
+async function loadMktData(type) {
+  const filterIds = { seo: 'mktSeoGameFilter', yt: 'mktYtGameFilter', crm: 'mktCrmGameFilter' };
+  const dateIds   = { seo: 'mktSeoDate',       yt: 'mktYtDate',       crm: 'mktCrmDate'       };
+  const panelIds  = { seo: 'mktSeoPanel',       yt: 'mktYtPanel',       crm: 'mktCrmPanel'     };
+
+  const selectedGame = document.getElementById(filterIds[type])?.value || 'all';
+  const selectedDate = document.getElementById(dateIds[type])?.value   || '';
+  const panel = document.getElementById(panelIds[type]);
+
+  panel.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>불러오는 중...</div>';
+
+  const today  = new Date().toISOString().slice(0, 10);
+  const isToday = !selectedDate || selectedDate === today;
+
+  let lineageD = null, aion2D = null, mapleD = null;
+
+  try {
+    if (isToday) {
+      if (!lineageCachedData) await loadResults();
+      if (!aion2CachedData)   await loadAion2Results();
+      if (!mapleCachedData)   await loadMapleResults();
+      lineageD = lineageCachedData;
+      aion2D   = aion2CachedData;
+      mapleD   = mapleCachedData;
+    } else {
+      [lineageD, aion2D, mapleD] = await Promise.all([
+        fetchHistoryByDate('lineage', selectedDate),
+        fetchHistoryByDate('aion2',   selectedDate),
+        fetchHistoryByDate('maple',   selectedDate),
+      ]);
+    }
+  } catch(e) {
+    console.error('[loadMktData]', e);
+    panel.innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div>데이터 로드 실패</div>';
+    return;
+  }
+
+  const all = [
+    { key: 'lineage', label: '리니지클래식', data: lineageD },
+    { key: 'aion2',   label: '아이온2',      data: aion2D   },
+    { key: 'maple',   label: '메이플스토리', data: mapleD   },
+  ];
+  const games = selectedGame === 'all' ? all : all.filter(g => g.key === selectedGame);
+  panel.innerHTML = renderMktContent(type, games) || '<div class="empty"><div class="empty-icon">📂</div>해당 날짜 데이터 없음</div>';
+}
+
+/* ── 날짜별 히스토리 파일 1개 fetch ── */
+async function fetchHistoryByDate(game, dateStr) {
+  const cfgMap = {
+    lineage: { api: GITHUB_CONTENTS_API,       raw: HISTORY_RAW_BASE,       local: '/api/history'       },
+    aion2:   { api: GITHUB_CONTENTS_API_AION2, raw: HISTORY_RAW_BASE_AION2, local: '/api/aion2-history' },
+    maple:   { api: GITHUB_CONTENTS_API_MAPLE, raw: HISTORY_RAW_BASE_MAPLE, local: '/api/maple-history' },
+  };
+  const cfg = cfgMap[game];
+  try {
+    let files = [];
+    if (IS_LOCAL) {
+      const r = await fetch(cfg.local);
+      if (!r.ok) return null;
+      const all = await r.json();
+      files = all.filter(f => f.startsWith(dateStr)).sort().reverse();
+    } else {
+      const r = await fetch(cfg.api);
+      if (!r.ok) return null;
+      const items = await r.json();
+      files = items
+        .filter(f => f.type === 'file' && f.name.startsWith(dateStr))
+        .map(f => f.name)
+        .sort().reverse();
+    }
+    if (!files.length) return null;
+    const filename = files[0];
+    const url = IS_LOCAL ? `${cfg.local}/${filename}` : `${cfg.raw}/${filename}`;
+    const r2 = await fetch(url);
+    if (!r2.ok) return null;
+    return await r2.json();
+  } catch(e) {
+    console.error(`[fetchHistoryByDate ${game} ${dateStr}]`, e);
+    return null;
+  }
+}
+
+/* ── 마케팅 콘텐츠 렌더 ── */
+function renderMktContent(type, games) {
+  return games.map(g => {
+    const a = g.data?.analysis;
+    let content = '';
+
+    if (type === 'seo') {
+      content = a?.seoSns
+        ? renderMktSeoDetail(a.seoSns)
+        : '<div class="empty"><div class="empty-icon">🔍</div>해당 날짜 데이터 없음</div>';
+
+    } else if (type === 'yt') {
+      if (g.key === 'maple') {
+        content = '<div class="empty"><div class="empty-icon">🎬</div>유튜버 광고 미운영 게임입니다</div>';
+      } else {
+        content = a?.youtubeAd
+          ? renderMktYtDetail(a.youtubeAd)
+          : '<div class="empty"><div class="empty-icon">🎬</div>해당 날짜 데이터 없음</div>';
+      }
+
+    } else if (type === 'crm') {
+      content = a?.crm?.length
+        ? renderMktCrmDetail(a.crm)
+        : '<div class="empty"><div class="empty-icon">🔔</div>해당 날짜 데이터 없음</div>';
+    }
+
+    return `<div class="mkt-game-section">
+      <div class="mkt-game-label">${esc(g.label)}</div>
+      ${content}
+    </div>`;
+  }).join('');
+}
+
+/* ── SEO·SNS 상세 렌더 ── */
+function renderMktSeoDetail(seoSns) {
+  const keywords     = seoSns.keywords     ?? [];
+  const snsMaterials = seoSns.snsMaterials ?? [];
+  if (!keywords.length && !snsMaterials.length) {
+    return '<div class="empty"><div class="empty-icon">🔍</div>데이터 없음</div>';
+  }
+  let html = '<div class="mkt-data-box">';
+  if (keywords.length) {
+    html += `<div class="sec-label">검색 광고 키워드</div>
+      <div class="content-num-list" style="margin-bottom:${snsMaterials.length ? '16px' : '0'}">
+        ${keywords.map((k, i) => `<div class="content-num-item">${i + 1}. ${esc(k)}</div>`).join('')}
+      </div>`;
+  }
+  if (snsMaterials.length) {
+    if (keywords.length) html += '<hr style="border:none;border-top:1px solid var(--border);margin:0 0 16px">';
+    html += `<div class="sec-label">SNS 소재</div>
+      <div class="content-num-list">
+        ${snsMaterials.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('')}
+      </div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+/* ── 유튜브 광고 상세 렌더 ── */
+function renderMktYtDetail(youtubeAd) {
+  const youtubers = youtubeAd?.youtubers ?? [];
+  if (!youtubers.length) {
+    return '<div class="empty"><div class="empty-icon">🎬</div>이번 수집에서 유튜버 언급 없음</div>';
+  }
+  return youtubers.map(y => `
+    <div class="yt-ad-card">
+      <div class="push-label">채널</div>
+      <div class="push-title-text">${esc(y.name ?? '')}</div>
+      <div class="push-label" style="margin-top:10px">이슈</div>
+      <div class="push-body-text">${esc(y.issue ?? '')}</div>
+      <div class="push-label" style="margin-top:10px">광고 아이디어</div>
+      <div class="push-body-text">${esc(y.adIdea ?? '')}</div>
+    </div>
+  `).join('');
+}
+
+/* ── CRM 상세 렌더 ── */
+function renderMktCrmDetail(crm) {
+  return crm.map(p => {
+    const rawTitle = p.title   || '';
+    const rawBody  = p.content || '';
+    const title = rawTitle.startsWith('(광고)') ? rawTitle : rawTitle ? `(광고) ${rawTitle}` : '';
+    const body  = rawBody.startsWith('(광고)')  ? rawBody  : rawBody  ? `(광고) ${rawBody}`  : '';
+    const copyText = [title, body].filter(Boolean).join('\n');
+    return `<div class="crm-card" data-copy="${esc(copyText)}">
+      <button class="crm-copy-btn" onclick="copyCrm(this)">복사</button>
+      ${title ? `<div class="push-label">제목</div><div class="push-title-text" style="margin-bottom:10px;padding-right:52px">${esc(title)}</div>` : ''}
+      <div class="push-label">내용</div>
+      <div class="push-body-text">${esc(body)}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ── CRM 클립보드 복사 ── */
+function copyCrm(btn) {
+  const text = btn.closest('.crm-card')?.dataset.copy || '';
+  const doToast = () => { btn.textContent = '완료'; showToast('클립보드에 복사됐습니다'); setTimeout(() => { btn.textContent = '복사'; }, 1800); };
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(doToast).catch(() => fallbackCopy(text, doToast));
+  } else {
+    fallbackCopy(text, doToast);
+  }
+}
+
+function fallbackCopy(text, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); } catch(_) {}
+  document.body.removeChild(ta);
+  cb();
+}
+
+/* ── 토스트 알림 ── */
+let toastTimer = null;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
 
 selectGame('all');
 loadResults();
