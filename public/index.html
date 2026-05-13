@@ -886,12 +886,42 @@
 
     /* ── FILTER BAR ── */
     .filter-bar {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: flex-start;
       gap: 12px; flex-wrap: wrap;
       background: var(--card-bg); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 16px 24px; margin-bottom: 28px;
     }
-    .filter-bar-left, .filter-bar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .filter-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    /* ── SEO 2-COLUMN LAYOUT ── */
+    .seo-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .seo-col { padding: 0; }
+    .seo-col-right {
+      padding-left: 28px;
+      border-left: 1px solid var(--border);
+      background: #f8fafc;
+      padding-right: 4px;
+      border-radius: 0 8px 8px 0;
+    }
+    .seo-kw-list { display: flex; flex-direction: column; gap: 0; }
+    .seo-kw-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .seo-kw-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .seo-kw-num {
+      flex-shrink: 0; width: 22px; height: 22px;
+      background: var(--accent-bg); border: 1px solid rgba(37,99,235,0.2);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-top: 2px;
+    }
+    .seo-kw-body { flex: 1; }
+    .seo-kw-word { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.5; }
+    .seo-kw-copy { font-size: 13px; color: var(--text2); line-height: 1.6; margin-top: 3px; }
     .filter-select {
       padding: 8px 32px 8px 12px; border: 1px solid var(--border); border-radius: 8px;
       background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23868e96' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 10px center;
@@ -1346,8 +1376,6 @@
           <option value="aion2">아이온2</option>
           <option value="maple">메이플스토리</option>
         </select>
-      </div>
-      <div class="filter-bar-right">
         <input type="date" id="mktSeoDate" class="filter-date">
         <button class="filter-btn" onclick="queryMktSeo()">조회</button>
       </div>
@@ -1368,8 +1396,6 @@
           <option value="aion2">아이온2</option>
           <option value="maple">메이플스토리</option>
         </select>
-      </div>
-      <div class="filter-bar-right">
         <input type="date" id="mktYtDate" class="filter-date">
         <button class="filter-btn" onclick="queryMktYt()">조회</button>
       </div>
@@ -1390,8 +1416,6 @@
           <option value="aion2">아이온2</option>
           <option value="maple">메이플스토리</option>
         </select>
-      </div>
-      <div class="filter-bar-right">
         <input type="date" id="mktCrmDate" class="filter-date">
         <button class="filter-btn" onclick="queryMktCrm()">조회</button>
       </div>
@@ -1933,7 +1957,10 @@ function renderSEO(seoSns) {
   const keywords = seoSns.keywords ?? [];
   const snsMaterials = seoSns.snsMaterials ?? [];
   if (!keywords.length && !snsMaterials.length) return emptyBox('🔍', 'AI 분석 대기 중');
-  const kwItems = keywords.map((s, i) => `<div class="content-num-item">${i + 1}. ${esc(s)}</div>`).join('');
+  const kwItems = keywords.map((k, i) => {
+    const word = (typeof k === 'object' && k !== null) ? (k.keyword ?? '') : String(k);
+    return `<div class="content-num-item">${i + 1}. ${esc(word)}</div>`;
+  }).join('');
   const snsItems = snsMaterials.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('');
   return `<div class="content-num-list">${kwItems}</div>`
     + (snsItems ? `<hr style="border:none;border-top:1px solid var(--border);margin:8px 0"><div class="content-num-list">${snsItems}</div>` : '');
@@ -2618,7 +2645,7 @@ function renderMaterialTable(lineage, aion2, maple) {
     const a = g.data?.analysis;
     return {
       label: g.label,
-      seo: a?.seoSns?.keywords ?? [],
+      seo: (a?.seoSns?.keywords ?? []).map(k => (typeof k === 'object' && k !== null) ? (k.keyword ?? '') : String(k)),
       yt: (a?.youtubeAd?.youtubers ?? []).map(y => y.name ? `${y.name} — ${y.adIdea ?? ''}` : ''),
       push: a?.crm ?? [],
     };
@@ -2872,22 +2899,38 @@ function renderMktSeoDetail(seoSns) {
   if (!keywords.length && !snsMaterials.length) {
     return '<div class="empty"><div class="empty-icon">🔍</div>데이터 없음</div>';
   }
-  let html = '<div class="mkt-data-box">';
-  if (keywords.length) {
-    html += `<div class="sec-label">검색 광고 키워드</div>
-      <div class="content-num-list" style="margin-bottom:${snsMaterials.length ? '16px' : '0'}">
-        ${keywords.map((k, i) => `<div class="content-num-item">${i + 1}. ${esc(k)}</div>`).join('')}
-      </div>`;
-  }
-  if (snsMaterials.length) {
-    if (keywords.length) html += '<hr style="border:none;border-top:1px solid var(--border);margin:0 0 16px">';
-    html += `<div class="sec-label">SNS 소재</div>
+
+  const kwHtml = keywords.length ? `
+    <div class="seo-col">
+      <div class="sec-label">검색 광고 키워드</div>
+      <div class="seo-kw-list">
+        ${keywords.map((k, i) => {
+          const keyword = (typeof k === 'object' && k !== null) ? (k.keyword ?? '') : String(k);
+          const adCopy  = (typeof k === 'object' && k !== null) ? (k.adCopy  ?? '') : '';
+          return `<div class="seo-kw-item">
+            <span class="seo-kw-num">${i + 1}</span>
+            <div class="seo-kw-body">
+              <div class="seo-kw-word">${esc(keyword)}</div>
+              ${adCopy ? `<div class="seo-kw-copy">${esc(adCopy)}</div>` : ''}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>` : '';
+
+  const snsHtml = snsMaterials.length ? `
+    <div class="seo-col seo-col-right">
+      <div class="sec-label">SNS 소재</div>
       <div class="content-num-list">
         ${snsMaterials.map(s => `<div class="content-num-item">${esc(s)}</div>`).join('')}
-      </div>`;
-  }
-  html += '</div>';
-  return html;
+      </div>
+    </div>` : '';
+
+  const inner = keywords.length && snsMaterials.length
+    ? `<div class="seo-two-col">${kwHtml}${snsHtml}</div>`
+    : `${kwHtml}${snsHtml}`;
+
+  return `<div class="mkt-data-box">${inner}</div>`;
 }
 
 /* ── 유튜브 광고 상세 렌더 ── */
