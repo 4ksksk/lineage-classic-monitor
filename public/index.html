@@ -1064,12 +1064,6 @@
 
   <div id="lineageContent" style="display:none">
 
-  <!-- ── AI WARN ── -->
-  <div class="warn-bar" id="warnBar">
-    <span class="warn-icon">WARN</span>
-    <span id="warnText">AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
-  </div>
-
   <!-- ── 지난 기록 ── -->
   <section class="history-section">
     <div class="history-heading">지난 기록 보기</div>
@@ -1089,6 +1083,14 @@
 
     <div id="historyPanel" class="history-panel"></div>
   </section>
+
+  <div id="lineageMainData">
+
+  <!-- ── AI WARN ── -->
+  <div class="warn-bar" id="warnBar">
+    <span class="warn-icon">WARN</span>
+    <span id="warnText">AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
+  </div>
 
   <!-- ── ISSUE BANNER ── -->
   <div class="issue-banner">
@@ -1152,15 +1154,11 @@
 
   <footer id="footerStatus">리니지클래식 모니터 · 6시간마다 자동 수집</footer>
 
+  </div><!-- /lineageMainData -->
   </div><!-- /lineageContent -->
 
   <!-- ── 아이온2 콘텐츠 ── -->
   <div id="aion2Content" style="display:none">
-
-    <div class="warn-bar" id="aion2WarnBar">
-      <span class="warn-icon">WARN</span>
-      <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
-    </div>
 
     <!-- ── 아이온2 지난 기록 ── -->
     <section class="history-section">
@@ -1181,6 +1179,13 @@
 
       <div id="aion2HistoryPanel" class="history-panel"></div>
     </section>
+
+    <div id="aion2MainData">
+
+    <div class="warn-bar" id="aion2WarnBar">
+      <span class="warn-icon">WARN</span>
+      <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
+    </div>
 
     <div class="issue-banner">
       <div class="issue-badge"><div class="pulse"></div> TODAY</div>
@@ -1243,15 +1248,11 @@
 
     <footer id="aion2FooterStatus">아이온2 모니터 · 6시간마다 자동 수집</footer>
 
+    </div><!-- /aion2MainData -->
   </div><!-- /aion2Content -->
 
   <!-- ── 메이플스토리 콘텐츠 ── -->
   <div id="mapleContent" style="display:none">
-
-    <div class="warn-bar" id="mapleWarnBar">
-      <span class="warn-icon">WARN</span>
-      <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
-    </div>
 
     <!-- ── 메이플스토리 지난 기록 ── -->
     <section class="history-section">
@@ -1272,6 +1273,13 @@
 
       <div id="mapleHistoryPanel" class="history-panel"></div>
     </section>
+
+    <div id="mapleMainData">
+
+    <div class="warn-bar" id="mapleWarnBar">
+      <span class="warn-icon">WARN</span>
+      <span>AI 분석 대기 중 — 원본 데이터를 표시합니다.</span>
+    </div>
 
     <div class="issue-banner">
       <div class="issue-badge"><div class="pulse"></div> TODAY</div>
@@ -1334,6 +1342,7 @@
 
     <footer id="mapleFooterStatus">메이플스토리 모니터 · 6시간마다 자동 수집</footer>
 
+    </div><!-- /mapleMainData -->
   </div><!-- /mapleContent -->
 
   <!-- ── SEO·SNS 마케팅 실무 ── -->
@@ -2142,6 +2151,7 @@ function queryHistory() {
   const panel = document.getElementById('historyPanel');
   panel.classList.add('open');
   document.getElementById('historyCloseBtn').style.display = '';
+  document.getElementById('lineageMainData').style.display = 'none';
   loadHistoryData(period);
 }
 
@@ -2150,6 +2160,7 @@ function closeHistory() {
   panel.classList.remove('open');
   panel.innerHTML = '';
   document.getElementById('historyCloseBtn').style.display = 'none';
+  document.getElementById('lineageMainData').style.display = '';
 }
 
 async function loadHistoryData(period) {
@@ -2309,6 +2320,7 @@ function queryMapleHistory() {
   const panel = document.getElementById('mapleHistoryPanel');
   panel.classList.add('open');
   document.getElementById('mapleHistoryCloseBtn').style.display = '';
+  document.getElementById('mapleMainData').style.display = 'none';
   loadMapleHistoryData(period);
 }
 
@@ -2317,6 +2329,7 @@ function closeMapleHistory() {
   panel.classList.remove('open');
   panel.innerHTML = '';
   document.getElementById('mapleHistoryCloseBtn').style.display = 'none';
+  document.getElementById('mapleMainData').style.display = '';
 }
 
 async function loadMapleHistoryData(period) {
@@ -2453,6 +2466,7 @@ function queryAion2History() {
   const panel = document.getElementById('aion2HistoryPanel');
   panel.classList.add('open');
   document.getElementById('aion2HistoryCloseBtn').style.display = '';
+  document.getElementById('aion2MainData').style.display = 'none';
   loadAion2HistoryData(period);
 }
 
@@ -2461,6 +2475,7 @@ function closeAion2History() {
   panel.classList.remove('open');
   panel.innerHTML = '';
   document.getElementById('aion2HistoryCloseBtn').style.display = 'none';
+  document.getElementById('aion2MainData').style.display = '';
 }
 
 async function loadAion2HistoryData(period) {
