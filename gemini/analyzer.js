@@ -19,7 +19,7 @@ const EMPTY_ANALYSIS = {
   official: { summary: null, date: null, keywords: [], marketingTips: [], priceImpact: null },
   dcinside: { keywords: [], summary: null, marketingTips: [], priceImpact: null },
   inven:    { keywords: [], summary: null, marketingTips: [], priceImpact: null },
-  seoSns: { keywords: [], snsMaterials: [] },
+  seoSns: { materials: [] },
   youtubeAd: { youtubers: [] },
   crm: [],
 };
@@ -103,8 +103,7 @@ ${invenSection}
     "priceImpact": "인벤에서 언급된 시세·아이템 관련 동향"
   },
   "seoSns": {
-    "keywords": [{"keyword": "키워드명", "adCopy": "해당 키워드로 집행할 검색광고 문구 한 줄"}],
-    "snsMaterials": ["SNS 콘텐츠 소재 한 줄 문장 2~3개"]
+    "materials": ["SEO 검색광고 또는 SNS에 활용할 구체적 문구 3~5개"]
   },
   "youtubeAd": {
     "youtubers": [
@@ -118,10 +117,11 @@ ${invenSection}
 }
 
 seoSns 작성 규칙:
-- 수집된 게시글에서 검색 광고(키워드 광고)에 활용할 핵심 키워드 3~5개와 SNS 콘텐츠 소재 2~3개를 함께 추출
-- keywords: 각 항목은 { "keyword": "키워드명", "adCopy": "해당 키워드로 집행할 검색광고 소재/문구를 구체적으로 1줄 이내" } 형태로 작성
-- adCopy는 실제 광고 문구처럼 구체적으로 작성하고, 수집된 데이터에 존재하는 내용만 사용
-- SNS 소재는 한 줄 문장으로, 너무 길지 않게 작성
+- 수집된 게시글에서 SEO 검색광고 또는 SNS 포스팅에 바로 활용 가능한 문구 3~5개를 materials 배열로 추출
+- 각 항목은 단답형 1줄, "어떤 콘텐츠/아이템/캐릭터가 어떤 상황인지"가 구체적으로 담긴 문구로 작성
+- 게임명(리니지클래식) 단독 사용 금지
+- "업데이트", "시세", "이벤트" 등 대명사 단독 사용 절대 금지 — 반드시 무엇이 어떤 상황인지 구체적으로 포함
+- 수집 데이터에 실제로 존재하는 내용만 사용
 
 youtubeAd 작성 규칙:
 - 수집된 디시인사이드/인벤 게시글에서 언급된 유튜버 채널명 또는 유튜버 닉네임을 추출
