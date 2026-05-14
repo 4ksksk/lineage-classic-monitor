@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T09:00:21.965Z",
+  "lastUpdated": "2026-05-14T09:39:47.000Z",
   "officialPosts": [
     {
       "title": "5/13(수) 업데이트 (런칭 100일 기념 이벤트/투명 망토 착용 규칙 개선 등)",
@@ -85,6 +85,14 @@
   ],
   "invenPosts": [
     {
+      "title": "5요판 축젤로 7요판 될 확률",
+      "content": "6요판, 7요판 각 50% 씩이야 ? noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14718\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14718\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\";"
+    },
+    {
+      "title": "촐기 몇분인가요",
+      "content": "ㅜㅜ 어디서 구하는게 좋나요 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14716\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14716\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.s"
+    },
+    {
       "title": "켈라우헬 근황",
       "content": "자동+장사꾼+사기꾼+쌀먹 많음. noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14714\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14714\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm"
     },
@@ -98,7 +106,7 @@
     },
     {
       "title": "콘17위즈1 33렙기사",
-      "content": "콘17 위즈 1 준 33렙 사냥만하는 하루3시간 라이트 기사인데다엘한테 힘업하고도 빗방나고 물약퍼주는이상황에힘기사로 전향할까 심히 고민되는데33까지 키웠으면 그냥하라는 사람들도 있어서투표 한번 갈게 의견 부탁해 형들 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); const _IPOLL_RESULT_ = {\"423501\":{\"type\":\"vote\",\"setting\":{\"idx\":423501,\"state\":\"Y\",\"poll_type\":1,\"title\":\"콘vs힘\",\"image\":\"\",\"explain\":\"\",\"random\":\"N\",\"multi_select\":\"N\",\"multi_limit\":0,\"anonymity\":\"N\",\"thumb_order\":\"right\",\"end_set\":\"date\",\"end_date\":\"2026-05-15 16:00:00\",\"end_count_limit\":0,\"result_view\":\"poll\",\"memnick\":\"이태산이태호\",\"participant\":25,\"other\":\"\",\"gamerank\":\"N\",\"come_idx\":6482,\"uidx\":14711,\"use_html\":\"N\",\"link\":\"https://www.inven.co.kr/board/lineageclassic/6482/14711\"},\"choice\":[],\"answers\":[{\"idx\":1355468,\"sidx\":423501,\"order\":1,\"answer\":\"그냥 키워 나중가면 똑같에 콘\",\"thumbnail\":\"\",\"ori"
+      "content": "콘17 위즈 1 준 33렙 사냥만하는 하루3시간 라이트 기사인데다엘한테 힘업하고도 빗방나고 물약퍼주는이상황에힘기사로 전향할까 심히 고민되는데33까지 키웠으면 그냥하라는 사람들도 있어서투표 한번 갈게 의견 부탁해 형들 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); const _IPOLL_RESULT_ = {\"423501\":{\"type\":\"vote\",\"setting\":{\"idx\":423501,\"state\":\"Y\",\"poll_type\":1,\"title\":\"콘vs힘\",\"image\":\"\",\"explain\":\"\",\"random\":\"N\",\"multi_select\":\"N\",\"multi_limit\":0,\"anonymity\":\"N\",\"thumb_order\":\"right\",\"end_set\":\"date\",\"end_date\":\"2026-05-15 16:00:00\",\"end_count_limit\":0,\"result_view\":\"poll\",\"memnick\":\"이태산이태호\",\"participant\":31,\"other\":\"\",\"gamerank\":\"N\",\"come_idx\":6482,\"uidx\":14711,\"use_html\":\"N\",\"link\":\"https://www.inven.co.kr/board/lineageclassic/6482/14711\"},\"choice\":[],\"answers\":[{\"idx\":1355468,\"sidx\":423501,\"order\":1,\"answer\":\"그냥 키워 나중가면 똑같에 콘\",\"thumbnail\":\"\",\"ori"
     },
     {
       "title": "엔씨는 그냥 포션장사 하가로 마음먹은거야?",
@@ -155,99 +163,84 @@
     {
       "title": "이번에는 큐브도 2주판매구나ㅡㅡ",
       "content": "Nc벌 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14693\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14693\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target = \"scrap_add\"; fm.submit(); scr"
-    },
-    {
-      "title": "9싸장 피빠지는거보소 ㄷㄷ",
-      "content": "실제 필드에서 9싸장한테 쑤셔지면레알 찐 공포영화 한장면일듯 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14691\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14691\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm.target ="
-    },
-    {
-      "title": "똘끼 +9싸울 퍼스트 ㄷㄷ",
-      "content": "싸울 제작 4개9일도 9레이3개 날리고 9싸울 성공케이랑 8싸울+7천에 교환 noKidnap('imageCollectDiv'); INVEN.Media.Resizer.collect('imageCollectDiv', '740'); // 신고하기 function report_bd() { var params = \"\"; params = \"rcidx=3&comeidx=6482&uid=14689\"; INVEN.Links.reportArticle(params); } // 광고신고 INVEN.Links.spamArticle = function(params) { var repWin = window.open(\"https://www.inven.co.kr/common/report/spam/?\" + params,\"\",\"left=100,top=100,width=596,height=480,resizable=no,scrollbars=no,toolbar=0\"); } function report_spam() { var params = \"\"; params = \"type=board&index1=6482&index2=14689\"; INVEN.Links.spamArticle(params); } // 스크랩 function scrapOpen() { var scrapWin = window.open('about:blank', 'scrap_add', 'left=50,top=50,height=50,width=50,scrollbars=no,resizable=no'); var fm = document.getElementById(\"fmAddToScrap\"); fm"
     }
   ],
   "analysis": {
-    "todayIssue": "이번 업데이트로 투명 망토 착용 규칙이 개선되었고, 100일 기념 이벤트가 예정되어 많은 기대를 모으고 있습니다.",
+    "todayIssue": "리니지클래식의 런칭 100일을 기념한 업데이트와 커뮤니티에서의 투명 망토 관련 논의가 주요 이슈로 떠올랐다.",
     "official": {
-      "summary": "• 런칭 100일 기념 이벤트 진행\n• 투명 망토 착용 규칙 개선\n• 새로운 마법 방어 장비 추가",
+      "summary": "• 런칭 100일 기념 이벤트 실시\n• 투명 망토 착용 규칙 개선\n• 마법 방어 능력을 강화할 수 있는 장비 추가\n• 채팅 출력 간격 변경\n• 쇼크 스턴 이펙트 개선",
       "date": "2026. 5. 13.",
       "keywords": [
-        "100일 기념 이벤트",
+        "런칭 100일 기념 이벤트",
         "투명 망토",
         "마법 방어 장비",
-        "아렌 서버",
-        "DR+5 세트 효과"
+        "채팅 출력 간격",
+        "쇼크 스턴 이펙트"
       ],
       "marketingTips": [
-        "100일 기념 이벤트 아이템 한정판매",
-        "투명 망토와 관련된 특별 패키지 판매"
+        "100일 기념 이벤트에 맞춰 한정 아이템 런칭",
+        "투명 망토 착용 규칙 변경을 홍보한 아이템 매물 확인 이벤트 진행",
+        "마법 방어 장비 단기 프로모션 진행"
       ],
-      "priceImpact": "투명 망토 착용 규칙의 개선으로 인해 관련 아이템의 시세가 상승할 것으로 예상됩니다."
+      "priceImpact": "이번 업데이트로 인해 투명 망토와 마법 방어 능력이 강화될 가능성이 높아 시세에 긍정적 영향을 미칠 것으로 예상된다."
     },
     "dcinside": {
       "keywords": [
         {
-          "word": "하이네섭",
+          "word": "투명 망토",
+          "count": 3
+        },
+        {
+          "word": "하이네",
           "count": 2
         },
         {
-          "word": "9싸울",
-          "count": 3
-        },
-        {
-          "word": "자동",
-          "count": 3
-        },
-        {
-          "word": "캐릭육성",
+          "word": "시청자",
           "count": 1
         },
         {
-          "word": "가격인상",
+          "word": "장사",
           "count": 1
         }
       ],
-      "summary": "디시인사이드에서는 다양한 캐릭터와 서버 관련 논의가 이어지고 있으며, 특히 하이네섭과 9싸울에 대한 관심이 높습니다. 자동 사냥과 관련된 문제점들도 언급되고 있습니다.",
+      "summary": "디시인사이드에서는 투명 망토와 관련하여 다양한 의견이 오가며, 하이네 서버에서의 이슈와 장사 관련 논의가 두드러진다.",
       "marketingTips": [
-        "9싸울 관련 아이템 누적 구매 시 혜택 제공",
-        "하이네섭 플레이어를 위한 특별 패키지 출시"
+        "서버 이벤트를 통한 아이템 시세 조사 캠페인",
+        "투명 망토 관련 의견 게시판을 통해 사용자 참여 확대"
       ],
-      "priceImpact": "9싸울 및 하이네섭 관련 아이템의 시세가 영향받을 것으로 보입니다."
+      "priceImpact": "투명 망토에 대한 사용자들의 관심이 시세에 미치는 영향이 클 것으로 보이며, 장사 컨텐츠에 대한 반응도 주목할 만하다."
     },
     "inven": {
       "keywords": [
         {
-          "word": "정령옥",
-          "count": 1
-        },
-        {
-          "word": "엘름의 축복",
-          "count": 1
-        },
-        {
-          "word": "기간제 마법인형",
-          "count": 1
-        },
-        {
-          "word": "7싸울",
+          "word": "7요판",
           "count": 2
         },
         {
-          "word": "신규 영지",
+          "word": "마방셋",
+          "count": 1
+        },
+        {
+          "word": "스턴",
+          "count": 1
+        },
+        {
+          "word": "자동",
           "count": 1
         }
       ],
-      "summary": "인벤에서는 정령옥과 엘름 관련 질문이 자주 올라오고 있으며, 7싸울 아이템의 성능 및 신규 영지에 대한 기대감이 고조되고 있습니다.",
+      "summary": "인벤에서는 7요판과 관련된 논의가 풍부하며, 마방셋과 자동 시스템에 대한 궁금증이 제기되고 있다.",
       "marketingTips": [
-        "정령옥 및 엘름 희귀템 패키지 출시",
-        "7싸울 관련 소모품 할인 이벤트"
+        "7요판 관련 소모템 시세 주의보 발령",
+        "마방셋 필요성에 대한 유저 설문 채널 운영"
       ],
-      "priceImpact": "정령옥, 엘름 아이템의 시세 변동이 예상됩니다."
+      "priceImpact": "7요판과 마방셋의 시세 변동이 예상되며, 이를 통해 아이템 이동 수요가 증가할 가능성이 있다."
     },
     "seoSns": {
       "materials": [
-        "100일 기념 이벤트 참여하고 특별 아이템을 확인하세요! 🎉",
-        "하이네섭에서 유용한 아이템 시세 정리해드립니다! 💰",
-        "올 여름 대박 아이템, 9싸울 놓치지 마세요! 🌟"
+        "100일 기념 이벤트로 투명 망토 착용 가능",
+        "하이네 서버에서의 장사 시세 확인",
+        "마법 방어 장비가 추가된 이번 업데이트 주목"
       ]
     },
     "youtubeAd": {
@@ -255,12 +248,12 @@
     },
     "crm": [
       {
-        "title": "(광고) 100일 기념 특별 아이템!",
-        "content": "특별 아이템으로 더 강력해져보세요! 🎉"
+        "title": "(광고) 새로운 아이템 추가! 🔥",
+        "content": "이번 업데이트로 마법 방어 능력 장비 추가!"
       },
       {
-        "title": "(광고) 이번 주 특별 할인 코드!",
-        "content": "본인 캐릭터에게 적용되는 할인으로 격상하시길! 💸"
+        "title": "(광고) 투명 망토 착용 규칙 변화! ✨",
+        "content": "투명 망토의 새로운 착용 가능성 확인!"
       }
     ]
   }
