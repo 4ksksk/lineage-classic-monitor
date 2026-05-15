@@ -1940,7 +1940,7 @@ function renderPush(list) {
   if (!list?.length) return emptyBox('🔔', 'AI 분석 대기 중');
   return list.map(p => {
     const rawTitle = p.title || '';
-    const rawBody  = p.content || '';
+    const rawBody  = p.body || '';
     const title = rawTitle.startsWith('(광고)') ? rawTitle : rawTitle ? `(광고) ${rawTitle}` : '';
     const body  = rawBody.startsWith('(광고)') ? rawBody : rawBody ? `(광고) ${rawBody}` : '';
     return `<div class="push-item">
@@ -2810,8 +2810,8 @@ function renderMktYtDetail(youtubeAd) {
 /* ── CRM 상세 렌더 ── */
 function renderMktCrmDetail(crm) {
   return crm.map(p => {
-    const rawTitle = p.title   || '';
-    const rawBody  = p.content || '';
+    const rawTitle = p.title || '';
+    const rawBody  = p.body  || '';
     const title = rawTitle.startsWith('(광고)') ? rawTitle : rawTitle ? `(광고) ${rawTitle}` : '';
     const body  = rawBody.startsWith('(광고)')  ? rawBody  : rawBody  ? `(광고) ${rawBody}`  : '';
     const copyText = [title, body].filter(Boolean).join('\n');
